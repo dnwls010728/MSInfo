@@ -1,4 +1,5 @@
 ﻿#include "Core.h"
+#include "Graphics/Graphics.h"
 
 Core::Core() : class_name_(L"MSINFO")
 {
@@ -13,6 +14,8 @@ ATOM Core::MyRegisterClass(HINSTANCE hInstance)
     wcex.style = CS_HREDRAW | CS_VREDRAW;
     wcex.lpfnWndProc = StaticWndProc;
     wcex.hInstance = hInstance;
+    wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
+    wcex.hbrBackground = static_cast<HBRUSH>(GetStockObject(BLACK_BRUSH));
     wcex.lpszClassName = class_name_;
 
     return RegisterClassEx(&wcex);
@@ -51,23 +54,63 @@ BOOL Core::InitInstance(HINSTANCE hInstance, int nCmdShow)
 bool Core::InitWindow(HINSTANCE hInstance, int nCmdShow)
 {
     MyRegisterClass(hInstance);
-
+    
     if (!InitInstance(hInstance, nCmdShow)) return false;
+    if (!Graphics::GetInstance()->Init()) return false;
+
+    logic_handle_ = CreateThread(nullptr, 0, LogicThread, nullptr, 0, nullptr);
+    
     return true;
 }
 
 LRESULT Core::StaticWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
-    return Core::GetInstance()->WndProc(hWnd, message, wParam, lParam);
+    return GetInstance()->WndProc(hWnd, message, wParam, lParam);
 }
 
 LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     if (message == WM_DESTROY)
     {
+        is_running_ = false;
+        WaitForSingleObject(logic_handle_, INFINITE);
+        
+        Graphics::GetInstance()->Release();
+        GetInstance()->Release();
+        
         PostQuitMessage(0);
         return 0;
     }
     
     return DefWindowProc(hWnd, message, wParam, lParam);
+}
+
+DWORD Core::LogicThread(LPVOID lpParam)
+{
+    GetInstance()->is_running_ = true;
+    while (GetInstance()->is_running_)
+    {
+        GetInstance()->MainLogic();
+    }
+
+    return 0;
+}
+
+void Core::MainLogic()
+{
+    Graphics::GetInstance()->BeginRenderD3D();
+    Graphics::GetInstance()->BeginRenderD2D();
+
+    Render();
+
+    Graphics::GetInstance()->EndRenderD2D();
+    Graphics::GetInstance()->EndRenderD3D();
+}
+
+void Core::Tick(float delta_time)
+{
+}
+
+void Core::Render()
+{
 }
