@@ -1,6 +1,5 @@
 ﻿#include "Time.h"
-
-#include "../API/APIManager.h"
+#include "../Core.h"
 
 Time::Time() :
     frequency_{},
@@ -21,6 +20,8 @@ void Time::Tick()
 
     delta_time_ = static_cast<float>(current_count_.QuadPart - previous_count_.QuadPart) / frequency_.QuadPart;
     previous_count_ = current_count_;
+
+    // if (delta_time_ < (1.f / 60.f)) delta_time_ = 1.f / 60.f;
 
     frame_count_++;
     frame_timer_ += delta_time_;

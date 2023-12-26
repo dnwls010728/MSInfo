@@ -238,6 +238,9 @@
     <Image Include="MSInfo.ico" />
     <Image Include="small.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\NanumBarunGothic.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

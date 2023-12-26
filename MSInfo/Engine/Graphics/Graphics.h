@@ -19,6 +19,7 @@ public:
     
     void BeginRenderD3D();
     void EndRenderD3D();
+    void DrawRectangle(RECT position);
 
     inline ID3D11Device* GetD3DDevice() const { return d3d_device_; }
     inline ID3D11DeviceContext* GetD3DDeviceContext() const { return d3d_device_context_; }

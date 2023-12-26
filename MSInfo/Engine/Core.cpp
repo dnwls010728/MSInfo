@@ -5,6 +5,7 @@
 #include "../Extension/ImGui/imgui.h"
 #include "../Extension/ImGui/imgui_impl_dx11.h"
 #include "../Extension/ImGui/imgui_impl_win32.h"
+#include "API/APIManager.h"
 
 Core::Core() : class_name_(L"MSINFO")
 {
@@ -71,7 +72,8 @@ bool Core::InitWindow(HINSTANCE hInstance, int nCmdShow)
     
     ImGuiIO& io = ImGui::GetIO();
     static_cast<void>(io);
-    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+    io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
+    io.Fonts->AddFontFromFileTTF(".\\Fonts\\NanumBarunGothic.ttf", 16.f, nullptr, io.Fonts->GetGlyphRangesKorean());
 
     ImGui::StyleColorsDark();
     ImGui_ImplWin32_Init(hWnd_);
@@ -134,8 +136,6 @@ void Core::MainLogic()
 
     Render();
 
-    Graphics::GetInstance()->EndRenderD2D();
-
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
@@ -145,6 +145,7 @@ void Core::MainLogic()
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
     
+    Graphics::GetInstance()->EndRenderD2D();
     Graphics::GetInstance()->EndRenderD3D();
 }
 
@@ -158,8 +159,17 @@ void Core::Render()
 
 void Core::OnGUI()
 {
-    // delta time을 출력합니다.
-    ImGui::Begin("Debug");
-    ImGui::Text("Delta Time: %f", Time::GetInstance()->GetDeltaTime());
-    ImGui::End();
+    ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
+    if (ImGui::BeginMainMenuBar())
+    {
+        if (ImGui::BeginMenu(u8"메뉴"))
+        {
+            if (ImGui::MenuItem(u8"종료"))
+            {
+                PostMessage(hWnd_, WM_DESTROY, 0, 0);
+            }
+            ImGui::EndMenu();
+        }
+        ImGui::EndMainMenuBar();
+    }
 }
