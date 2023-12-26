@@ -169,6 +169,11 @@ void Core::Render()
 
         if (ImGui::Begin(u8"캐릭터 정보"))
         {
+            if (ImGui::Button(u8"GET 요청 테스트"))
+            {
+                APIManager::GetInstance()->RequestGetTest();
+            }
+            
             ImGui::End();
         }
     }

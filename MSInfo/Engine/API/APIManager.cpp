@@ -3,3 +3,7 @@
 APIManager::APIManager()
 {
 }
+
+void APIManager::RequestGetTest()
+{
+}

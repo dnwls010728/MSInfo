@@ -131,28 +131,3 @@ void Graphics::EndRenderD3D()
     if (dxgi_swap_chain_->Present(1, DXGI_PRESENT_TEST) == DXGI_STATUS_OCCLUDED) return;
     dxgi_swap_chain_->Present(0, 0);
 }
-
-void Graphics::DrawRectangle(RECT position)
-{
-    const D2D1_RECT_F rect = D2D1::RectF(
-        static_cast<float>(position.left),
-        static_cast<float>(position.top),
-        static_cast<float>(position.right),
-        static_cast<float>(position.bottom)
-    );
-
-    ID2D1SolidColorBrush* brush;
-    d2d_render_target_->CreateSolidColorBrush(
-        D2D1::ColorF(
-            1.f,
-            0.f,
-            0.f,
-            1.f
-        ),
-        &brush
-    );
-    
-    d2d_render_target_->DrawRectangle(&rect, brush, true);
-
-    brush->Release();
-}
