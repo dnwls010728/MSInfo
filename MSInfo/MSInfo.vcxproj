@@ -147,6 +147,7 @@
     <ClInclude Include="Include\curl\typecheck-gcc.h" />
     <ClInclude Include="Include\curl\urlapi.h" />
     <ClInclude Include="Include\curl\websockets.h" />
+    <ClInclude Include="Include\httplib\httplib.h" />
     <ClInclude Include="Include\imgui\imconfig.h" />
     <ClInclude Include="Include\imgui\imgui.h" />
     <ClInclude Include="Include\imgui\imgui_impl_dx11.h" />
