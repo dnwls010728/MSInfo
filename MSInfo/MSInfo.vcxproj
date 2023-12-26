@@ -102,12 +102,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;CURL_STATICLIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\Woojin Choi\MSInfo\MSInfo\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Users\Woojin Choi\MSInfo\MSInfo\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcurld.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -132,14 +135,26 @@
     <ClInclude Include="Engine\Graphics\Graphics.h" />
     <ClInclude Include="Engine\Singleton.h" />
     <ClInclude Include="Engine\Time\Time.h" />
-    <ClInclude Include="Extension\ImGui\imconfig.h" />
-    <ClInclude Include="Extension\ImGui\imgui.h" />
-    <ClInclude Include="Extension\ImGui\imgui_impl_dx11.h" />
-    <ClInclude Include="Extension\ImGui\imgui_impl_win32.h" />
-    <ClInclude Include="Extension\ImGui\imgui_internal.h" />
-    <ClInclude Include="Extension\ImGui\imstb_rectpack.h" />
-    <ClInclude Include="Extension\ImGui\imstb_textedit.h" />
-    <ClInclude Include="Extension\ImGui\imstb_truetype.h" />
+    <ClInclude Include="Include\curl\curl.h" />
+    <ClInclude Include="Include\curl\curlver.h" />
+    <ClInclude Include="Include\curl\easy.h" />
+    <ClInclude Include="Include\curl\header.h" />
+    <ClInclude Include="Include\curl\mprintf.h" />
+    <ClInclude Include="Include\curl\multi.h" />
+    <ClInclude Include="Include\curl\options.h" />
+    <ClInclude Include="Include\curl\stdcheaders.h" />
+    <ClInclude Include="Include\curl\system.h" />
+    <ClInclude Include="Include\curl\typecheck-gcc.h" />
+    <ClInclude Include="Include\curl\urlapi.h" />
+    <ClInclude Include="Include\curl\websockets.h" />
+    <ClInclude Include="Include\imgui\imconfig.h" />
+    <ClInclude Include="Include\imgui\imgui.h" />
+    <ClInclude Include="Include\imgui\imgui_impl_dx11.h" />
+    <ClInclude Include="Include\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="Include\imgui\imgui_internal.h" />
+    <ClInclude Include="Include\imgui\imstb_rectpack.h" />
+    <ClInclude Include="Include\imgui\imstb_textedit.h" />
+    <ClInclude Include="Include\imgui\imstb_truetype.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MSInfo.h" />
     <ClInclude Include="Resource.h" />
@@ -222,13 +237,13 @@
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
     <ClCompile Include="Engine\Time\Time.cpp" />
-    <ClCompile Include="Extension\ImGui\imgui.cpp" />
-    <ClCompile Include="Extension\ImGui\imgui_demo.cpp" />
-    <ClCompile Include="Extension\ImGui\imgui_draw.cpp" />
-    <ClCompile Include="Extension\ImGui\imgui_impl_dx11.cpp" />
-    <ClCompile Include="Extension\ImGui\imgui_impl_win32.cpp" />
-    <ClCompile Include="Extension\ImGui\imgui_tables.cpp" />
-    <ClCompile Include="Extension\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="Include\imgui\imgui.cpp" />
+    <ClCompile Include="Include\imgui\imgui_demo.cpp" />
+    <ClCompile Include="Include\imgui\imgui_draw.cpp" />
+    <ClCompile Include="Include\imgui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="Include\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Include\imgui\imgui_tables.cpp" />
+    <ClCompile Include="Include\imgui\imgui_widgets.cpp" />
     <ClCompile Include="MSInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -240,6 +255,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Fonts\NanumBarunGothic.ttf" />
+    <Content Include="Include\curl\Makefile.am" />
+    <Content Include="Include\curl\Makefile.in" />
+    <Content Include="libcurld.dll" />
+    <Content Include="Lib\libcurld.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

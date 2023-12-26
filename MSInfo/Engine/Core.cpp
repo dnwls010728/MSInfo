@@ -1,11 +1,12 @@
 ﻿#include "Core.h"
+
 #include "Graphics/Graphics.h"
 #include "Time/Time.h"
-
-#include "../Extension/ImGui/imgui.h"
-#include "../Extension/ImGui/imgui_impl_dx11.h"
-#include "../Extension/ImGui/imgui_impl_win32.h"
 #include "API/APIManager.h"
+
+#include "imgui/imgui.h"
+#include "imgui/imgui_impl_dx11.h"
+#include "imgui/imgui_impl_win32.h"
 
 Core::Core() : class_name_(L"MSINFO")
 {
@@ -32,7 +33,7 @@ BOOL Core::InitInstance(HINSTANCE hInstance, int nCmdShow)
     const int screen_width = GetSystemMetrics(SM_CXSCREEN);
     const int screen_height = GetSystemMetrics(SM_CYSCREEN);
 
-    resolution_ = { 640, 480 };
+    resolution_ = { 960, 960 };
     window_area_ = { 0, 0, resolution_.x, resolution_.y };
     AdjustWindowRect(&window_area_, WS_OVERLAPPEDWINDOW, FALSE);
 
@@ -171,5 +172,10 @@ void Core::OnGUI()
             ImGui::EndMenu();
         }
         ImGui::EndMainMenuBar();
+
+        if (ImGui::Begin(u8"캐릭터 정보"))
+        {
+            ImGui::End();
+        }
     }
 }
