@@ -2,6 +2,10 @@
 #include "Graphics/Graphics.h"
 #include "Time/Time.h"
 
+#include "../Extension/ImGui/imgui.h"
+#include "../Extension/ImGui/imgui_impl_dx11.h"
+#include "../Extension/ImGui/imgui_impl_win32.h"
+
 Core::Core() : class_name_(L"MSINFO")
 {
 }
@@ -57,8 +61,21 @@ bool Core::InitWindow(HINSTANCE hInstance, int nCmdShow)
     MyRegisterClass(hInstance);
     
     if (!InitInstance(hInstance, nCmdShow)) return false;
+    CoInitializeEx(nullptr, COINIT_MULTITHREADED);
+    
     if (!Graphics::GetInstance()->Init()) return false;
     Time::GetInstance()->Init();
+
+    IMGUI_CHECKVERSION();
+    ImGui::CreateContext();
+    
+    ImGuiIO& io = ImGui::GetIO();
+    static_cast<void>(io);
+    io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
+
+    ImGui::StyleColorsDark();
+    ImGui_ImplWin32_Init(hWnd_);
+    ImGui_ImplDX11_Init(Graphics::GetInstance()->GetD3DDevice(), Graphics::GetInstance()->GetD3DDeviceContext());
 
     logic_handle_ = CreateThread(nullptr, 0, LogicThread, nullptr, 0, nullptr);
     
@@ -70,17 +87,25 @@ LRESULT Core::StaticWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
     return GetInstance()->WndProc(hWnd, message, wParam, lParam);
 }
 
+extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
 LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
+    if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam)) return 0;
+    
     if (message == WM_DESTROY)
     {
         is_running_ = false;
         WaitForSingleObject(logic_handle_, INFINITE);
+
+        ImGui_ImplWin32_Shutdown();
+        ImGui_ImplDX11_Shutdown();
+        ImGui::DestroyContext();
         
         Graphics::GetInstance()->Release();
         Time::GetInstance()->Release();
         GetInstance()->Release();
-        
+
+        CoUninitialize();
         PostQuitMessage(0);
         return 0;
     }
@@ -110,6 +135,16 @@ void Core::MainLogic()
     Render();
 
     Graphics::GetInstance()->EndRenderD2D();
+
+    ImGui_ImplDX11_NewFrame();
+    ImGui_ImplWin32_NewFrame();
+    ImGui::NewFrame();
+
+    OnGUI();
+
+    ImGui::Render();
+    ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
+    
     Graphics::GetInstance()->EndRenderD3D();
 }
 
@@ -119,4 +154,12 @@ void Core::Tick(float delta_time)
 
 void Core::Render()
 {
+}
+
+void Core::OnGUI()
+{
+    // delta time을 출력합니다.
+    ImGui::Begin("Debug");
+    ImGui::Text("Delta Time: %f", Time::GetInstance()->GetDeltaTime());
+    ImGui::End();
 }

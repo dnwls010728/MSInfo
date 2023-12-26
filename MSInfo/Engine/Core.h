@@ -24,6 +24,7 @@ private:
     void MainLogic();
     void Tick(float delta_time);
     void Render();
+    void OnGUI();
 
     LPCWSTR class_name_;
 

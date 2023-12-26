@@ -132,6 +132,14 @@
     <ClInclude Include="Engine\Graphics\Graphics.h" />
     <ClInclude Include="Engine\Singleton.h" />
     <ClInclude Include="Engine\Time\Time.h" />
+    <ClInclude Include="Extension\ImGui\imconfig.h" />
+    <ClInclude Include="Extension\ImGui\imgui.h" />
+    <ClInclude Include="Extension\ImGui\imgui_impl_dx11.h" />
+    <ClInclude Include="Extension\ImGui\imgui_impl_win32.h" />
+    <ClInclude Include="Extension\ImGui\imgui_internal.h" />
+    <ClInclude Include="Extension\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="Extension\ImGui\imstb_textedit.h" />
+    <ClInclude Include="Extension\ImGui\imstb_truetype.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MSInfo.h" />
     <ClInclude Include="Resource.h" />
@@ -214,6 +222,13 @@
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
     <ClCompile Include="Engine\Time\Time.cpp" />
+    <ClCompile Include="Extension\ImGui\imgui.cpp" />
+    <ClCompile Include="Extension\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="Extension\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="Extension\ImGui\imgui_impl_dx11.cpp" />
+    <ClCompile Include="Extension\ImGui\imgui_impl_win32.cpp" />
+    <ClCompile Include="Extension\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="Extension\ImGui\imgui_widgets.cpp" />
     <ClCompile Include="MSInfo.cpp" />
   </ItemGroup>
   <ItemGroup>
