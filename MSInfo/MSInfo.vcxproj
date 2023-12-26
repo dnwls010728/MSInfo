@@ -131,6 +131,7 @@
     <ClInclude Include="Engine\Core.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
     <ClInclude Include="Engine\Singleton.h" />
+    <ClInclude Include="Engine\Time\Time.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="MSInfo.h" />
     <ClInclude Include="Resource.h" />
@@ -212,6 +213,7 @@
     </ClCompile>
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
+    <ClCompile Include="Engine\Time\Time.cpp" />
     <ClCompile Include="MSInfo.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 ﻿#include "Core.h"
 #include "Graphics/Graphics.h"
+#include "Time/Time.h"
 
 Core::Core() : class_name_(L"MSINFO")
 {
@@ -57,6 +58,7 @@ bool Core::InitWindow(HINSTANCE hInstance, int nCmdShow)
     
     if (!InitInstance(hInstance, nCmdShow)) return false;
     if (!Graphics::GetInstance()->Init()) return false;
+    Time::GetInstance()->Init();
 
     logic_handle_ = CreateThread(nullptr, 0, LogicThread, nullptr, 0, nullptr);
     
@@ -76,6 +78,7 @@ LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         WaitForSingleObject(logic_handle_, INFINITE);
         
         Graphics::GetInstance()->Release();
+        Time::GetInstance()->Release();
         GetInstance()->Release();
         
         PostQuitMessage(0);
@@ -98,6 +101,9 @@ DWORD Core::LogicThread(LPVOID lpParam)
 
 void Core::MainLogic()
 {
+    Time::GetInstance()->Tick();
+    Tick(Time::GetInstance()->GetDeltaTime());
+    
     Graphics::GetInstance()->BeginRenderD3D();
     Graphics::GetInstance()->BeginRenderD2D();
 
