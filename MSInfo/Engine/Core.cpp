@@ -135,13 +135,11 @@ void Core::MainLogic()
     Graphics::GetInstance()->BeginRenderD3D();
     Graphics::GetInstance()->BeginRenderD2D();
 
-    Render();
-
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
-
-    OnGUI();
+    
+    Render();
 
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
@@ -155,10 +153,6 @@ void Core::Tick(float delta_time)
 }
 
 void Core::Render()
-{
-}
-
-void Core::OnGUI()
 {
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
     if (ImGui::BeginMainMenuBar())
