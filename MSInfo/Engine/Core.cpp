@@ -199,6 +199,8 @@ void Core::Render()
         static char input_character_name[256] = u8"";
         ImGui::InputText(u8"캐릭터 이름", input_character_name, 256);
 
+        ImGui::SameLine();
+        
         if (ImGui::Button(u8"캐릭터 조회"))
         {
             // 캐릭터 식별자 조회
@@ -236,7 +238,7 @@ void Core::Render()
 
             for (int i = 0; i < item_count; ++i)
             {
-                auto& item = DataManager::GetInstance()->item_equip["item_equipment"][i];
+                const rapidjson::Value& item = DataManager::GetInstance()->item_equip["item_equipment"][i];
                 std::string item_image_url = item["item_shape_icon"].GetString();
                 std::string item_name = item["item_name"].GetString();
 

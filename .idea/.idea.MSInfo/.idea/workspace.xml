@@ -7,7 +7,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="" />
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/10.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/11.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/12.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/13.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/14.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/15.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/16.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/17.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/17.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/18.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/18.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/19.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/19.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/20.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/21.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/21.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/22.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/22.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/23.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/23.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/ItemEquip/8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,32 +49,7 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.38.33130/include/xmemory" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -63,32 +67,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "C++ Project.MSInfo.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;C++ Project.MSInfo.executor&quot;: &quot;Debug&quot;,
+    &quot;C++ 프로젝트.MSInfo.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Woojin Choi\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Woojin Choi\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\Woojin Choi\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Woojin Choi\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Woojin Choi\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Woojin Choi\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="MSInfo" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -153,6 +158,8 @@
       <workItem from="1703667417587" duration="315000" />
       <workItem from="1703667988710" duration="516000" />
       <workItem from="1703676093901" duration="7021000" />
+      <workItem from="1703684498666" duration="376000" />
+      <workItem from="1703688142518" duration="961000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -186,7 +193,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703683141435</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="FEAT: 윈도우 사이즈 제한 추가">
+      <option name="closed" value="true" />
+      <created>1703684582070</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1703684582070</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -200,6 +215,7 @@
     <MESSAGE value="FEAT: 누락 파일" />
     <MESSAGE value="CHORE: gitignore 추가" />
     <MESSAGE value="FEAT: 장비 기능 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 장비 기능 추가" />
+    <MESSAGE value="FEAT: 윈도우 사이즈 제한 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 윈도우 사이즈 제한 추가" />
   </component>
 </project>
