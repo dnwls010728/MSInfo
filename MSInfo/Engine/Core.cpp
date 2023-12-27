@@ -189,7 +189,7 @@ void Core::Render()
         static char input_character_name[256] = u8"";
         ImGui::InputText(u8"캐릭터 이름", input_character_name, 256);
 
-        if (ImGui::Button(u8"캐릭터 식별자 조회"))
+        if (ImGui::Button(u8"캐릭터 조회"))
         {
             // 캐릭터 식별자 조회
             std::string character_name = input_character_name;
@@ -212,8 +212,41 @@ void Core::Render()
             bool ret = Graphics::GetInstance()->LoadTexture(".\\Temp\\Character\\character_image.png",
                                                             &texture_view_, &image_width, &image_height);
             IM_ASSERT(ret);
+
+            // 캐릭터 장비 조회
+            rapidjson::Document item_equip_doc = APIManager::GetInstance()->RequestItemEquip(
+                DataManager::GetInstance()->ocid, "2023-12-26");
+            DataManager::GetInstance()->item_equip = std::move(item_equip_doc);
+
+            // 장비 이미지 다운로드
+            std::string a = DataManager::GetInstance()->item_equip["character_class"].GetString();
+            int item_count = DataManager::GetInstance()->item_equip["item_equipment"].Size();
+
+            items_.clear();
+
+            for (int i = 0; i < item_count; ++i)
+            {
+                auto& item = DataManager::GetInstance()->item_equip["item_equipment"][i];
+                std::string item_image_url = item["item_shape_icon"].GetString();
+                std::string item_name = item["item_name"].GetString();
+
+                DownloadManager::GetInstance()->DownloadFile(item_image_url,
+                                                             ".\\Temp\\Character\\ItemEquip\\" + std::to_string(i) + ".png");
+
+                std::unique_ptr<Item> item_ptr = std::make_unique<Item>();
+                item_ptr->item_name = item_name;
+
+                int temp_width = 0;
+                int temp_height = 0;
+                bool ret = Graphics::GetInstance()->LoadTexture(".\\Temp\\Character\\ItemEquip\\" + std::to_string(i) + ".png",
+                                                                &item_ptr->texture_view, &temp_width, &temp_height);
+
+                items_.push_back(*item_ptr);
+            }
         }
     }
+
+    ImGui::End();
 
     if (ImGui::Begin(u8"캐릭터 정보"))
     {
@@ -234,8 +267,66 @@ void Core::Render()
         {
             ImGui::Image(texture_view_, ImVec2(128, 128));
         }
+    }
 
-        ImGui::End();
+    ImGui::End();
+
+    if (ImGui::Begin(u8"장비"))
+    {
+        float height = ImGui::GetWindowHeight();
+        
+        ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_None;
+        if (ImGui::BeginTabBar("Equip", tab_bar_flags))
+        {
+            if (ImGui::BeginTabItem("ALL"))
+            {
+                float tab_height = ImGui::GetFrameHeight();
+                
+                ImGui::BeginChild("ALL Scroll", ImVec2(0, height - tab_height), false, ImGuiWindowFlags_HorizontalScrollbar);
+                
+                for (auto& item : items_)
+                {
+                    ImGui::Columns(2);
+                    
+                    ImGui::SetColumnWidth(0, 48);
+                    ImGui::Image(item.texture_view, ImVec2(32, 32));
+
+                    if (ImGui::IsItemHovered())
+                    {
+                        ImGui::BeginTooltip();
+                        ImGui::Image(item.texture_view, ImVec2(128, 128));
+                        ImGui::SameLine();
+                        ImGui::Text(item.item_name.c_str());
+                        ImGui::EndTooltip();
+                    }
+                    
+                    ImGui::NextColumn();
+                    ImGui::Text(item.item_name.c_str());
+                    
+                    ImGui::Columns(1);
+                }
+
+                ImGui::EndChild();
+                ImGui::EndTabItem();
+            }
+            
+            if (ImGui::BeginTabItem(u8"무보엠"))
+            {
+                ImGui::EndTabItem();
+            }
+            
+            if (ImGui::BeginTabItem(u8"방어구"))
+            {
+                ImGui::EndTabItem();
+            }
+            
+            if (ImGui::BeginTabItem(u8"장신구"))
+            {
+                ImGui::EndTabItem();
+            }
+            
+            ImGui::EndTabBar();
+        }
     }
 
     ImGui::End();

@@ -1,8 +1,11 @@
 ﻿#pragma once
 #include <d3d11.h>
+#include <vector>
 
 #include "Singleton.h"
 #include "../framework.h"
+
+struct Item;
 
 class Core : public Singleton<Core>
 {
@@ -39,5 +42,7 @@ private:
     bool is_running_;
 
     ID3D11ShaderResourceView* texture_view_;
+
+    std::vector<Item> items_;
     
 };

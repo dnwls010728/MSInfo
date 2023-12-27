@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include <d3d11.h>
 #include <future>
 
 #include "../Singleton.h"
@@ -15,8 +16,17 @@ public:
     rapidjson::Document Request(const std::string& api_url);
     rapidjson::Document RequestID(const std::string& character_name);
     rapidjson::Document RequestCharacter(const std::string& ocid, const std::string& date);
+    rapidjson::Document RequestItemEquip(const std::string& ocid, const std::string& date);
 
 private:
     static size_t WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp);
+    
+};
+
+class Item
+{
+public:
+    std::string item_name;
+    ID3D11ShaderResourceView* texture_view;
     
 };

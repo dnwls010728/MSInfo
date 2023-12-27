@@ -11,5 +11,6 @@ public:
     std::string ocid;
 
     rapidjson::Document character_info;
+    rapidjson::Document item_equip;
     
 };
