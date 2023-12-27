@@ -1,26 +1,54 @@
 ﻿#include "APIManager.h"
 
-#include "httplib/httplib.h"
+#include "curl/curl.h"
 
 APIManager::APIManager()
 {
 }
 
-void APIManager::RequestGetTest()
+std::string APIManager::UrlEncode(const std::string& str)
 {
-    httplib::Client cli("http://open.api.nexon.com");
-    httplib::Headers headers = {
-        { "x-nxopen-api-key", "test_0bf77450fb8b1058ad298cc39a29ed3cbc070701fc82eb633a0948ef430d5ec17f653d3c5600e07d31e84750a11f7e19" }
-    };
-
-    auto res = cli.Get("/maplestory/v1/id", headers);
-
-    if (res && res->status == 200)
+    CURL* curl = curl_easy_init();
+    if (curl)
     {
-        std::cout << res->body << std::endl;
+        char* output = curl_easy_escape(curl, str.c_str(), str.length());
+        std::string result(output);
+        curl_free(output);
+        curl_easy_cleanup(curl);
+
+        return result;
     }
-    else
+
+    return "";
+}
+
+std::string APIManager::Request(const std::string& api_url)
+{
+    CURL* curl = curl_easy_init();
+    if (curl)
     {
-        std::cout << "error" << std::endl;
+        std::string url = "http://open.api.nexon.com/maplestory/v1" + api_url;
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
+        
+        struct curl_slist* headers = nullptr;
+        headers = curl_slist_append(headers, "x-nxopen-api-key: test_0bf77450fb8b1058ad298cc39a29ed3cbc070701fc82eb633a0948ef430d5ec17f653d3c5600e07d31e84750a11f7e19");
+        curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+
+        std::string response;
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+
+        CURLcode res_code = curl_easy_perform(curl);
+        if (res_code != CURLE_OK) return "";
+        return response;
     }
+
+    return "";
+}
+
+size_t APIManager::WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp)
+{
+    size_t total_size = size * nmemb;
+    userp->append(contents, total_size);
+    return total_size;
 }

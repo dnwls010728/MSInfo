@@ -169,10 +169,16 @@ void Core::Render()
 
         if (ImGui::Begin(u8"캐릭터 정보"))
         {
-            if (ImGui::Button(u8"GET 요청 테스트"))
+            static char input_character_name[256] = u8"";
+            ImGui::InputText(u8"캐릭터 이름", input_character_name, 256);
+            
+            if (ImGui::Button(u8"캐릭터 식별자 조회"))
             {
-                APIManager::GetInstance()->RequestGetTest();
+                std::string character_name = APIManager::GetInstance()->UrlEncode(input_character_name);
+                response = APIManager::GetInstance()->Request("/id?character_name=" + character_name);
             }
+            
+            ImGui::Text(response.c_str());
             
             ImGui::End();
         }
