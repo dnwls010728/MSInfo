@@ -1,8 +1,12 @@
 ﻿#include "Core.h"
 
+#include <string>
+
 #include "Graphics/Graphics.h"
 #include "Time/Time.h"
 #include "API/APIManager.h"
+#include "API/DataManager.h"
+#include "API/DownloadManager.h"
 
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_dx11.h"
@@ -33,8 +37,8 @@ BOOL Core::InitInstance(HINSTANCE hInstance, int nCmdShow)
     const int screen_width = GetSystemMetrics(SM_CXSCREEN);
     const int screen_height = GetSystemMetrics(SM_CYSCREEN);
 
-    resolution_ = { 960, 960 };
-    window_area_ = { 0, 0, resolution_.x, resolution_.y };
+    resolution_ = {960, 960};
+    window_area_ = {0, 0, resolution_.x, resolution_.y};
     AdjustWindowRect(&window_area_, WS_OVERLAPPEDWINDOW, FALSE);
 
     hWnd_ = CreateWindowEx(
@@ -54,34 +58,34 @@ BOOL Core::InitInstance(HINSTANCE hInstance, int nCmdShow)
 
     if (!hWnd_) return FALSE;
     ShowWindow(hWnd_, nCmdShow);
-    
+
     return TRUE;
 }
 
 bool Core::InitWindow(HINSTANCE hInstance, int nCmdShow)
 {
     MyRegisterClass(hInstance);
-    
+
     if (!InitInstance(hInstance, nCmdShow)) return false;
     CoInitializeEx(nullptr, COINIT_MULTITHREADED);
-    
+
     if (!Graphics::GetInstance()->Init()) return false;
     Time::GetInstance()->Init();
 
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
-    
+
     ImGuiIO& io = ImGui::GetIO();
     static_cast<void>(io);
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     io.Fonts->AddFontFromFileTTF(".\\Fonts\\NanumBarunGothic.ttf", 16.f, nullptr, io.Fonts->GetGlyphRangesKorean());
 
-    ImGui::StyleColorsDark();
+    ImGui::StyleColorsLight();
     ImGui_ImplWin32_Init(hWnd_);
     ImGui_ImplDX11_Init(Graphics::GetInstance()->GetD3DDevice(), Graphics::GetInstance()->GetD3DDeviceContext());
 
     logic_handle_ = CreateThread(nullptr, 0, LogicThread, nullptr, 0, nullptr);
-    
+
     return true;
 }
 
@@ -91,10 +95,11 @@ LRESULT Core::StaticWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 }
 
 extern LRESULT ImGui_ImplWin32_WndProcHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam);
+
 LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     if (ImGui_ImplWin32_WndProcHandler(hWnd, message, wParam, lParam)) return 0;
-    
+
     if (message == WM_DESTROY)
     {
         is_running_ = false;
@@ -103,16 +108,19 @@ LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         ImGui_ImplWin32_Shutdown();
         ImGui_ImplDX11_Shutdown();
         ImGui::DestroyContext();
-        
+
         Graphics::GetInstance()->Release();
         Time::GetInstance()->Release();
+        APIManager::GetInstance()->Release();
+        DataManager::GetInstance()->Release();
+        DownloadManager::GetInstance()->Release();
         GetInstance()->Release();
 
         CoUninitialize();
         PostQuitMessage(0);
         return 0;
     }
-    
+
     return DefWindowProc(hWnd, message, wParam, lParam);
 }
 
@@ -131,19 +139,19 @@ void Core::MainLogic()
 {
     Time::GetInstance()->Tick();
     Tick(Time::GetInstance()->GetDeltaTime());
-    
+
     Graphics::GetInstance()->BeginRenderD3D();
     Graphics::GetInstance()->BeginRenderD2D();
 
     ImGui_ImplDX11_NewFrame();
     ImGui_ImplWin32_NewFrame();
     ImGui::NewFrame();
-    
+
     Render();
 
     ImGui::Render();
     ImGui_ImplDX11_RenderDrawData(ImGui::GetDrawData());
-    
+
     Graphics::GetInstance()->EndRenderD2D();
     Graphics::GetInstance()->EndRenderD3D();
 }
@@ -165,22 +173,70 @@ void Core::Render()
             }
             ImGui::EndMenu();
         }
-        ImGui::EndMainMenuBar();
 
-        if (ImGui::Begin(u8"캐릭터 정보"))
+        if (ImGui::BeginMenu(u8"보기"))
         {
-            static char input_character_name[256] = u8"";
-            ImGui::InputText(u8"캐릭터 이름", input_character_name, 256);
-            
-            if (ImGui::Button(u8"캐릭터 식별자 조회"))
-            {
-                std::string character_name = APIManager::GetInstance()->UrlEncode(input_character_name);
-                response = APIManager::GetInstance()->Request("/id?character_name=" + character_name);
-            }
-            
-            ImGui::Text(response.c_str());
-            
-            ImGui::End();
+            ImGui::EndMenu();
+        }
+
+        ImGui::EndMainMenuBar();
+    }
+
+    if (ImGui::Begin(u8"컨트롤"))
+    {
+        ImGui::Text(u8"데이터 기준일: 2023-12-26");
+
+        static char input_character_name[256] = u8"";
+        ImGui::InputText(u8"캐릭터 이름", input_character_name, 256);
+
+        if (ImGui::Button(u8"캐릭터 식별자 조회"))
+        {
+            // 캐릭터 식별자 조회
+            std::string character_name = input_character_name;
+            rapidjson::Document id_doc = APIManager::GetInstance()->RequestID(character_name);
+            DataManager::GetInstance()->ocid = id_doc["ocid"].GetString();
+
+            rapidjson::Document character_doc = APIManager::GetInstance()->RequestCharacter(
+                DataManager::GetInstance()->ocid, "2023-12-26");
+            DataManager::GetInstance()->character_info = std::move(character_doc);
+
+            // 캐릭터 이미지 다운로드
+            std::string character_image_url = DataManager::GetInstance()->character_info["character_image"].
+                GetString();
+
+            DownloadManager::GetInstance()->DownloadFile(character_image_url,
+                                                         ".\\Temp\\Character\\character_image.png");
+
+            int image_width = 0;
+            int image_height = 0;
+            bool ret = Graphics::GetInstance()->LoadTexture(".\\Temp\\Character\\character_image.png",
+                                                            &texture_view_, &image_width, &image_height);
+            IM_ASSERT(ret);
         }
     }
+
+    if (ImGui::Begin(u8"캐릭터 정보"))
+    {
+        if (!DataManager::GetInstance()->ocid.empty())
+        {
+            std::string name = DataManager::GetInstance()->character_info["character_name"].GetString();
+            std::string world = DataManager::GetInstance()->character_info["world_name"].GetString();
+            std::string _class = DataManager::GetInstance()->character_info["character_class"].GetString();
+            std::string level = std::to_string(
+                DataManager::GetInstance()->character_info["character_level"].GetInt());
+            std::string guild = DataManager::GetInstance()->character_info["character_guild_name"].GetString();
+
+            ImGui::Text(u8"%s %s", name.c_str(), world.c_str());
+            ImGui::Text(u8"%s %s %s", _class.c_str(), level.c_str(), guild.c_str());
+        }
+
+        if (texture_view_)
+        {
+            ImGui::Image(texture_view_, ImVec2(128, 128));
+        }
+
+        ImGui::End();
+    }
+
+    ImGui::End();
 }

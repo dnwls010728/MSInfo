@@ -1,4 +1,6 @@
 ﻿#pragma once
+#include <d3d11.h>
+
 #include "Singleton.h"
 #include "../framework.h"
 
@@ -36,6 +38,6 @@ private:
 
     bool is_running_;
 
-    std::string response;
+    ID3D11ShaderResourceView* texture_view_;
     
 };

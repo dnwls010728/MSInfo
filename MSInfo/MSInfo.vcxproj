@@ -131,6 +131,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Engine\API\APIManager.h" />
+    <ClInclude Include="Engine\API\DataManager.h" />
+    <ClInclude Include="Engine\API\DownloadManager.h" />
     <ClInclude Include="Engine\Core.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
     <ClInclude Include="Engine\Singleton.h" />
@@ -156,84 +158,72 @@
     <ClInclude Include="Include\imgui\imstb_textedit.h" />
     <ClInclude Include="Include\imgui\imstb_truetype.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Include\rapidjson\allocators.h" />
+    <ClInclude Include="Include\rapidjson\cursorstreamwrapper.h" />
+    <ClInclude Include="Include\rapidjson\document.h" />
+    <ClInclude Include="Include\rapidjson\encodedstream.h" />
+    <ClInclude Include="Include\rapidjson\encodings.h" />
+    <ClInclude Include="Include\rapidjson\error\en.h" />
+    <ClInclude Include="Include\rapidjson\error\error.h" />
+    <ClInclude Include="Include\rapidjson\filereadstream.h" />
+    <ClInclude Include="Include\rapidjson\filewritestream.h" />
+    <ClInclude Include="Include\rapidjson\fwd.h" />
+    <ClInclude Include="Include\rapidjson\internal\biginteger.h" />
+    <ClInclude Include="Include\rapidjson\internal\clzll.h" />
+    <ClInclude Include="Include\rapidjson\internal\diyfp.h" />
+    <ClInclude Include="Include\rapidjson\internal\dtoa.h" />
+    <ClInclude Include="Include\rapidjson\internal\ieee754.h" />
+    <ClInclude Include="Include\rapidjson\internal\itoa.h" />
+    <ClInclude Include="Include\rapidjson\internal\meta.h" />
+    <ClInclude Include="Include\rapidjson\internal\pow10.h" />
+    <ClInclude Include="Include\rapidjson\internal\regex.h" />
+    <ClInclude Include="Include\rapidjson\internal\stack.h" />
+    <ClInclude Include="Include\rapidjson\internal\strfunc.h" />
+    <ClInclude Include="Include\rapidjson\internal\strtod.h" />
+    <ClInclude Include="Include\rapidjson\internal\swap.h" />
+    <ClInclude Include="Include\rapidjson\istreamwrapper.h" />
+    <ClInclude Include="Include\rapidjson\memorybuffer.h" />
+    <ClInclude Include="Include\rapidjson\memorystream.h" />
+    <ClInclude Include="Include\rapidjson\msinttypes\inttypes.h" />
+    <ClInclude Include="Include\rapidjson\msinttypes\stdint.h" />
+    <ClInclude Include="Include\rapidjson\ostreamwrapper.h" />
+    <ClInclude Include="Include\rapidjson\pointer.h" />
+    <ClInclude Include="Include\rapidjson\prettywriter.h" />
+    <ClInclude Include="Include\rapidjson\rapidjson.h" />
+    <ClInclude Include="Include\rapidjson\reader.h" />
+    <ClInclude Include="Include\rapidjson\schema.h" />
+    <ClInclude Include="Include\rapidjson\stream.h" />
+    <ClInclude Include="Include\rapidjson\stringbuffer.h" />
+    <ClInclude Include="Include\rapidjson\uri.h" />
+    <ClInclude Include="Include\rapidjson\writer.h" />
+    <ClInclude Include="Include\stb\stb_connected_components.h" />
+    <ClInclude Include="Include\stb\stb_c_lexer.h" />
+    <ClInclude Include="Include\stb\stb_divide.h" />
+    <ClInclude Include="Include\stb\stb_ds.h" />
+    <ClInclude Include="Include\stb\stb_dxt.h" />
+    <ClInclude Include="Include\stb\stb_easy_font.h" />
+    <ClInclude Include="Include\stb\stb_herringbone_wang_tile.h" />
+    <ClInclude Include="Include\stb\stb_hexwave.h" />
+    <ClInclude Include="Include\stb\stb_image.h" />
+    <ClInclude Include="Include\stb\stb_image_resize2.h" />
+    <ClInclude Include="Include\stb\stb_image_write.h" />
+    <ClInclude Include="Include\stb\stb_include.h" />
+    <ClInclude Include="Include\stb\stb_leakcheck.h" />
+    <ClInclude Include="Include\stb\stb_perlin.h" />
+    <ClInclude Include="Include\stb\stb_rect_pack.h" />
+    <ClInclude Include="Include\stb\stb_sprintf.h" />
+    <ClInclude Include="Include\stb\stb_textedit.h" />
+    <ClInclude Include="Include\stb\stb_tilemap_editor.h" />
+    <ClInclude Include="Include\stb\stb_truetype.h" />
+    <ClInclude Include="Include\stb\stb_voxel_render.h" />
     <ClInclude Include="MSInfo.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Engine\API\APIManager.cpp">
-      <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
-      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
-      <Optimization>Disabled</Optimization>
-      <SupportJustMyCode>true</SupportJustMyCode>
-      <AssemblerOutput>NoListing</AssemblerOutput>
-      <AssemblerListingLocation>x64\Debug\</AssemblerListingLocation>
-      <UndefineAllPreprocessorDefinitions>false</UndefineAllPreprocessorDefinitions>
-      <BrowseInformation>false</BrowseInformation>
-      <BrowseInformationFile>x64\Debug\</BrowseInformationFile>
-      <CompileAs>Default</CompileAs>
-      <ConformanceMode>true</ConformanceMode>
-      <DiagnosticsFormat>Column</DiagnosticsFormat>
-      <DisableLanguageExtensions>false</DisableLanguageExtensions>
-      <ErrorReporting>Prompt</ErrorReporting>
-      <ExpandAttributedSource>false</ExpandAttributedSource>
-      <ExceptionHandling>Sync</ExceptionHandling>
-      <EnableASAN>false</EnableASAN>
-      <EnableFuzzer>false</EnableFuzzer>
-      <EnableFiberSafeOptimizations>false</EnableFiberSafeOptimizations>
-      <EnableEnhancedInstructionSet>NotSet</EnableEnhancedInstructionSet>
-      <FloatingPointModel>Precise</FloatingPointModel>
-      <ForceConformanceInForLoopScope>true</ForceConformanceInForLoopScope>
-      <GenerateModuleDependencies>false</GenerateModuleDependencies>
-      <GenerateSourceDependencies>false</GenerateSourceDependencies>
-      <GenerateXMLDocumentationFiles>false</GenerateXMLDocumentationFiles>
-      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
-      <IntrinsicFunctions>false</IntrinsicFunctions>
-      <IgnoreStandardIncludePath>false</IgnoreStandardIncludePath>
-      <LanguageStandard>Default</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
-      <MinimalRebuild>false</MinimalRebuild>
-      <ModuleDependenciesFile>x64\Debug\</ModuleDependenciesFile>
-      <ModuleOutputFile>x64\Debug\</ModuleOutputFile>
-      <OmitDefaultLibName>false</OmitDefaultLibName>
-      <FavorSizeOrSpeed>Neither</FavorSizeOrSpeed>
-      <WholeProgramOptimization>false</WholeProgramOptimization>
-      <ObjectFileName>x64\Debug\</ObjectFileName>
-      <CallingConvention>Cdecl</CallingConvention>
-      <ProgramDataBaseFileName>x64\Debug\vc143.pdb</ProgramDataBaseFileName>
-      <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <PrecompiledHeaderFile>stdafx.h</PrecompiledHeaderFile>
-      <PrecompiledHeaderOutputFile>x64\Debug\MSInfo.pch</PrecompiledHeaderOutputFile>
-      <PreprocessToFile>false</PreprocessToFile>
-      <PreprocessKeepComments>false</PreprocessKeepComments>
-      <PreprocessSuppressLineNumbers>false</PreprocessSuppressLineNumbers>
-      <RemoveUnreferencedCodeData>true</RemoveUnreferencedCodeData>
-      <ScanSourceForModuleDependencies>false</ScanSourceForModuleDependencies>
-      <ShowIncludes>false</ShowIncludes>
-      <SourceDependenciesFile>x64\Debug\</SourceDependenciesFile>
-      <SuppressStartupBanner>true</SuppressStartupBanner>
-      <BufferSecurityCheck>true</BufferSecurityCheck>
-      <SmallerTypeCheck>false</SmallerTypeCheck>
-      <SpectreMitigation>false</SpectreMitigation>
-      <StructMemberAlignment>Default</StructMemberAlignment>
-      <TrackerLogDirectory>x64\Debug\MSInfo.tlog\</TrackerLogDirectory>
-      <TranslateIncludes>false</TranslateIncludes>
-      <MinimalRebuildFromTracking>true</MinimalRebuildFromTracking>
-      <TreatWarningAsError>false</TreatWarningAsError>
-      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
-      <UseFullPaths>true</UseFullPaths>
-      <WarningLevel>Level3</WarningLevel>
-      <XMLDocumentationFileName>x64\Debug\</XMLDocumentationFileName>
-      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
-      <IntelJCCErratum>false</IntelJCCErratum>
-      <TreatAngleIncludeAsExternal>false</TreatAngleIncludeAsExternal>
-      <ExternalWarningLevel>InheritWarningLevel</ExternalWarningLevel>
-      <TreatExternalTemplatesAsInternal>true</TreatExternalTemplatesAsInternal>
-      <DisableAnalyzeExternal>false</DisableAnalyzeExternal>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_UNICODE;UNICODE;</PreprocessorDefinitions>
-      <SDLCheck>true</SDLCheck>
-      <LinkCompiled>true</LinkCompiled>
-    </ClCompile>
+    <ClCompile Include="Engine\API\APIManager.cpp" />
+    <ClCompile Include="Engine\API\DataManager.cpp" />
+    <ClCompile Include="Engine\API\DownloadManager.cpp" />
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
     <ClCompile Include="Engine\Time\Time.cpp" />
@@ -244,6 +234,7 @@
     <ClCompile Include="Include\imgui\imgui_impl_win32.cpp" />
     <ClCompile Include="Include\imgui\imgui_tables.cpp" />
     <ClCompile Include="Include\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="Include\stb\stb_vorbis.c" />
     <ClCompile Include="MSInfo.cpp" />
   </ItemGroup>
   <ItemGroup>

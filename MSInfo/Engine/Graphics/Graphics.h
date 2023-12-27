@@ -19,6 +19,8 @@ public:
     
     void BeginRenderD3D();
     void EndRenderD3D();
+    
+    bool LoadTexture(const std::string& file_name, ID3D11ShaderResourceView** texture_view, int* width, int* height);
 
     inline ID3D11Device* GetD3DDevice() const { return d3d_device_; }
     inline ID3D11DeviceContext* GetD3DDeviceContext() const { return d3d_device_context_; }
