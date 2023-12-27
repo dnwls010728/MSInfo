@@ -4,105 +4,7 @@
     <projectFile>MSInfo/MSInfo.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/allocators.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/cursorstreamwrapper.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/document.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/encodedstream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/encodings.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/error/en.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/error/error.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/filereadstream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/filewritestream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/fwd.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/biginteger.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/clzll.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/diyfp.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/dtoa.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/ieee754.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/itoa.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/meta.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/pow10.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/regex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/stack.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/strfunc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/strtod.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/internal/swap.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/istreamwrapper.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/memorybuffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/memorystream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/msinttypes/inttypes.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/msinttypes/stdint.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/ostreamwrapper.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/pointer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/prettywriter.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/rapidjson.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/reader.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/schema.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/stream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/stringbuffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/uri.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/rapidjson/writer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_c_lexer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_connected_components.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_divide.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_ds.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_dxt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_easy_font.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_herringbone_wang_tile.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_hexwave.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_image.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_image_resize2.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_image_write.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_include.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_leakcheck.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_perlin.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_rect_pack.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_sprintf.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_textedit.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_tilemap_editor.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_truetype.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_vorbis.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Include/stb/stb_voxel_render.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/DataManager.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/DownloadManager.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/stb_vorbis.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/git_toolbox_prj.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/MSInfo/FileContentIndex/914666ef-c572-4432-bc5e-6322e9448be9.vsidx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/MSInfo/FileContentIndex/read.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/MSInfo/v17/.suo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/MSInfo/v17/Browse.VC.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/MSInfo/v17/Solution.VC.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/MSInfo/v17/ipch/AutoPCH/173ae09b0d13bc3/MSINFO.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vs/MSInfo/v17/ipch/AutoPCH/e79b8bae10355c23/MSINFO.ipch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Graphics/Graphics.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Graphics/Graphics.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Graphics/Graphics.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Graphics/Graphics.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/APIManager.obj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/APIManager.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/Core.obj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/Core.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/Graphics.obj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/Graphics.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.ilk" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.ilk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/CL.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/CL.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/CL.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/CL.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/CL.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/CL.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/link.command.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/link.command.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/link.read.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/link.read.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/link.write.1.tlog" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/MSInfo.tlog/link.write.1.tlog" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/vc143.idb" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/vc143.idb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/x64/Debug/vc143.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/x64/Debug/vc143.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/MSInfo.exe" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/MSInfo.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/x64/Debug/MSInfo.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/x64/Debug/MSInfo.pdb" afterDir="false" />
-    </list>
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="CHORE: gitignore 추가" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -126,26 +28,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Nexol\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
+      "C:\\Users\\Nexol\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="MSInfo" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -207,7 +113,33 @@
       <option name="presentableId" value="Default" />
       <updated>1703667058736</updated>
       <workItem from="1703667060524" duration="282000" />
+      <workItem from="1703667417587" duration="315000" />
     </task>
+    <task id="LOCAL-00001" summary="FEAT: 로직 추가">
+      <option name="closed" value="true" />
+      <created>1703667469943</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1703667469943</updated>
+    </task>
+    <task id="LOCAL-00002" summary="FEAT: 누락 파일">
+      <option name="closed" value="true" />
+      <created>1703667591995</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1703667591995</updated>
+    </task>
+    <task id="LOCAL-00003" summary="CHORE: gitignore 추가">
+      <option name="closed" value="true" />
+      <created>1703667727118</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1703667727118</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -216,5 +148,9 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="FEAT: 로직 추가" />
+    <MESSAGE value="FEAT: 누락 파일" />
+    <MESSAGE value="CHORE: gitignore 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="CHORE: gitignore 추가" />
   </component>
 </project>
