@@ -1,7 +1,4 @@
 ﻿#pragma once
-#include <d3d11.h>
-#include <vector>
-
 #include "Singleton.h"
 #include "../framework.h"
 
@@ -40,9 +37,5 @@ private:
     HANDLE logic_handle_;
 
     bool is_running_;
-
-    ID3D11ShaderResourceView* texture_view_;
-
-    std::vector<Item> items_;
     
 };

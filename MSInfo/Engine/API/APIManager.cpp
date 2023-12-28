@@ -1,6 +1,5 @@
 ﻿#include "APIManager.h"
 
-#include "DataManager.h"
 #include "curl/curl.h"
 
 APIManager::APIManager()

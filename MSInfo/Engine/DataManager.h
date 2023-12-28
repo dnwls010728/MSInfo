@@ -1,6 +1,7 @@
 ﻿#pragma once
-#include "../Singleton.h"
+#include "Singleton.h"
 #include "rapidjson/document.h"
+#include "rapidjson/rapidjson.h"
 
 class DataManager : public Singleton<DataManager>
 {
@@ -8,9 +9,9 @@ public:
     DataManager();
     virtual ~DataManager() final = default;
 
-    std::string ocid;
+    std::string GetDataDate();
 
-    rapidjson::Document character_info;
-    rapidjson::Document item_equip;
+    rapidjson::Document id_document;
+    rapidjson::Document character_document;
     
 };

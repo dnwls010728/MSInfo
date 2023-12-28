@@ -1,12 +1,11 @@
 ﻿#include "Core.h"
 
-#include <string>
-
 #include "Graphics/Graphics.h"
 #include "Time/Time.h"
 #include "API/APIManager.h"
-#include "API/DataManager.h"
+#include "DataManager.h"
 #include "API/DownloadManager.h"
+#include "Scene.h"
 
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_dx11.h"
@@ -124,6 +123,7 @@ LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         APIManager::GetInstance()->Release();
         DataManager::GetInstance()->Release();
         DownloadManager::GetInstance()->Release();
+        Scene::GetInstance()->Release();
         GetInstance()->Release();
 
         CoUninitialize();
@@ -168,178 +168,10 @@ void Core::MainLogic()
 
 void Core::Tick(float delta_time)
 {
+    Scene::GetInstance()->Tick(delta_time);
 }
 
 void Core::Render()
 {
-    ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
-    if (ImGui::BeginMainMenuBar())
-    {
-        if (ImGui::BeginMenu(u8"메뉴"))
-        {
-            if (ImGui::MenuItem(u8"종료"))
-            {
-                PostMessage(hWnd_, WM_DESTROY, 0, 0);
-            }
-            ImGui::EndMenu();
-        }
-
-        if (ImGui::BeginMenu(u8"보기"))
-        {
-            ImGui::EndMenu();
-        }
-
-        ImGui::EndMainMenuBar();
-    }
-
-    if (ImGui::Begin(u8"컨트롤"))
-    {
-        ImGui::Text(u8"데이터 기준일: 2023-12-26");
-
-        static char input_character_name[256] = u8"";
-        ImGui::InputText(u8"캐릭터 이름", input_character_name, 256);
-
-        ImGui::SameLine();
-        
-        if (ImGui::Button(u8"캐릭터 조회"))
-        {
-            // 캐릭터 식별자 조회
-            std::string character_name = input_character_name;
-            rapidjson::Document id_doc = APIManager::GetInstance()->RequestID(character_name);
-            DataManager::GetInstance()->ocid = id_doc["ocid"].GetString();
-
-            rapidjson::Document character_doc = APIManager::GetInstance()->RequestCharacter(
-                DataManager::GetInstance()->ocid, "2023-12-26");
-            DataManager::GetInstance()->character_info = std::move(character_doc);
-
-            // 캐릭터 이미지 다운로드
-            std::string character_image_url = DataManager::GetInstance()->character_info["character_image"].
-                GetString();
-
-            DownloadManager::GetInstance()->DownloadFile(character_image_url,
-                                                         ".\\Temp\\Character\\character_image.png");
-
-            int image_width = 0;
-            int image_height = 0;
-            bool ret = Graphics::GetInstance()->LoadTexture(".\\Temp\\Character\\character_image.png",
-                                                            &texture_view_, &image_width, &image_height);
-            IM_ASSERT(ret);
-
-            // 캐릭터 장비 조회
-            rapidjson::Document item_equip_doc = APIManager::GetInstance()->RequestItemEquip(
-                DataManager::GetInstance()->ocid, "2023-12-26");
-            DataManager::GetInstance()->item_equip = std::move(item_equip_doc);
-
-            // 장비 이미지 다운로드
-            std::string a = DataManager::GetInstance()->item_equip["character_class"].GetString();
-            int item_count = DataManager::GetInstance()->item_equip["item_equipment"].Size();
-
-            items_.clear();
-
-            for (int i = 0; i < item_count; ++i)
-            {
-                const rapidjson::Value& item = DataManager::GetInstance()->item_equip["item_equipment"][i];
-                std::string item_image_url = item["item_shape_icon"].GetString();
-                std::string item_name = item["item_name"].GetString();
-
-                DownloadManager::GetInstance()->DownloadFile(item_image_url,
-                                                             ".\\Temp\\Character\\ItemEquip\\" + std::to_string(i) + ".png");
-
-                std::unique_ptr<Item> item_ptr = std::make_unique<Item>();
-                item_ptr->item_name = item_name;
-
-                int temp_width = 0;
-                int temp_height = 0;
-                bool ret = Graphics::GetInstance()->LoadTexture(".\\Temp\\Character\\ItemEquip\\" + std::to_string(i) + ".png",
-                                                                &item_ptr->texture_view, &temp_width, &temp_height);
-
-                items_.push_back(*item_ptr);
-            }
-        }
-    }
-
-    ImGui::End();
-
-    if (ImGui::Begin(u8"캐릭터 정보"))
-    {
-        if (!DataManager::GetInstance()->ocid.empty())
-        {
-            std::string name = DataManager::GetInstance()->character_info["character_name"].GetString();
-            std::string world = DataManager::GetInstance()->character_info["world_name"].GetString();
-            std::string _class = DataManager::GetInstance()->character_info["character_class"].GetString();
-            std::string level = std::to_string(
-                DataManager::GetInstance()->character_info["character_level"].GetInt());
-            std::string guild = DataManager::GetInstance()->character_info["character_guild_name"].GetString();
-
-            ImGui::Text(u8"%s %s", name.c_str(), world.c_str());
-            ImGui::Text(u8"%s %s %s", _class.c_str(), level.c_str(), guild.c_str());
-        }
-
-        if (texture_view_)
-        {
-            ImGui::Image(texture_view_, ImVec2(128, 128));
-        }
-    }
-
-    ImGui::End();
-
-    if (ImGui::Begin(u8"장비"))
-    {
-        float height = ImGui::GetWindowHeight();
-        
-        ImGuiTabBarFlags tab_bar_flags = ImGuiTabBarFlags_None;
-        if (ImGui::BeginTabBar("Equip", tab_bar_flags))
-        {
-            if (ImGui::BeginTabItem("ALL"))
-            {
-                float tab_height = ImGui::GetFrameHeight();
-                
-                ImGui::BeginChild("ALL Scroll", ImVec2(0, height - tab_height), false, ImGuiWindowFlags_HorizontalScrollbar);
-                
-                for (auto& item : items_)
-                {
-                    ImGui::Columns(2);
-                    
-                    ImGui::SetColumnWidth(0, 48);
-                    ImGui::Image(item.texture_view, ImVec2(32, 32));
-
-                    if (ImGui::IsItemHovered())
-                    {
-                        ImGui::BeginTooltip();
-                        ImGui::Image(item.texture_view, ImVec2(128, 128));
-                        ImGui::SameLine();
-                        ImGui::Text(item.item_name.c_str());
-                        ImGui::EndTooltip();
-                    }
-                    
-                    ImGui::NextColumn();
-                    ImGui::Text(item.item_name.c_str());
-                    
-                    ImGui::Columns(1);
-                }
-
-                ImGui::EndChild();
-                ImGui::EndTabItem();
-            }
-            
-            if (ImGui::BeginTabItem(u8"무보엠"))
-            {
-                ImGui::EndTabItem();
-            }
-            
-            if (ImGui::BeginTabItem(u8"방어구"))
-            {
-                ImGui::EndTabItem();
-            }
-            
-            if (ImGui::BeginTabItem(u8"장신구"))
-            {
-                ImGui::EndTabItem();
-            }
-            
-            ImGui::EndTabBar();
-        }
-    }
-
-    ImGui::End();
+    Scene::GetInstance()->Render();
 }
