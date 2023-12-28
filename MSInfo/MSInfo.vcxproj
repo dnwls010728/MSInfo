@@ -133,9 +133,10 @@
     <ClInclude Include="Engine\API\APIManager.h" />
     <ClInclude Include="Engine\API\DownloadManager.h" />
     <ClInclude Include="Engine\Core.h" />
-    <ClInclude Include="Engine\DataManager.h" />
+    <ClInclude Include="Engine\Data\CharacterData.h" />
+    <ClInclude Include="Engine\Data\DataManager.h" />
+    <ClInclude Include="Engine\Data\StatData.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
-    <ClInclude Include="Engine\ItemEquip.h" />
     <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\Singleton.h" />
     <ClInclude Include="Engine\Time\Time.h" />
@@ -226,7 +227,7 @@
     <ClCompile Include="Engine\API\APIManager.cpp" />
     <ClCompile Include="Engine\API\DownloadManager.cpp" />
     <ClCompile Include="Engine\Core.cpp" />
-    <ClCompile Include="Engine\DataManager.cpp">
+    <ClCompile Include="Engine\Data\DataManager.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <Optimization>Disabled</Optimization>
@@ -301,7 +302,6 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
-    <ClCompile Include="Engine\ItemEquip.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\Time\Time.cpp" />
     <ClCompile Include="Include\imgui\imgui.cpp" />

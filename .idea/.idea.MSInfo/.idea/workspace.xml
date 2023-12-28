@@ -7,15 +7,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: Scene 추가">
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/ItemEquip.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/ItemEquip.h" afterDir="false" />
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 장착 아이템 추가">
+      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/CharacterData.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/StatData.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/DownloadManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/DownloadManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/DownloadManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/DownloadManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/DataManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/DataManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/DataManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/DataManager.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/ItemEquip.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/ItemEquip.h" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
@@ -139,8 +142,74 @@
     <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um/winnt.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/include/memory" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/API/APIManager.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/API/APIManager.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/API/APIManager.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/Core.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -255,7 +324,7 @@
       <workItem from="1703676093901" duration="7021000" />
       <workItem from="1703684498666" duration="376000" />
       <workItem from="1703688142518" duration="961000" />
-      <workItem from="1703723118847" duration="17472000" />
+      <workItem from="1703723118847" duration="25459000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -305,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703731172002</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="FEAT: 장착 아이템 추가">
+      <option name="closed" value="true" />
+      <created>1703744244345</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1703744244345</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -321,6 +398,7 @@
     <MESSAGE value="FEAT: 장비 기능 추가" />
     <MESSAGE value="FEAT: 윈도우 사이즈 제한 추가" />
     <MESSAGE value="FEAT: Scene 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: Scene 추가" />
+    <MESSAGE value="FEAT: 장착 아이템 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 장착 아이템 추가" />
   </component>
 </project>
