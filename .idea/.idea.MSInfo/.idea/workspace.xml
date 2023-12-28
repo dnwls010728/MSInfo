@@ -7,7 +7,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 장착 아이템 추가">
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: FormatUnit 추가">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28_오후_9_46_[Changes]/shelved.patch" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" afterDir="false" />
@@ -253,7 +255,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703744244345</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="FEAT: FormatUnit 추가">
+      <option name="closed" value="true" />
+      <created>1703777375428</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1703777375428</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,17 +280,7 @@
     <MESSAGE value="FEAT: 윈도우 사이즈 제한 추가" />
     <MESSAGE value="FEAT: Scene 추가" />
     <MESSAGE value="FEAT: 장착 아이템 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 장착 아이템 추가" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/MSInfo/Engine/Scene.cpp</url>
-          <line>117</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="FEAT: FormatUnit 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: FormatUnit 추가" />
   </component>
 </project>
