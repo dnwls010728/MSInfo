@@ -94,7 +94,13 @@ void Scene::Render()
             ImGui::Text(u8"전투력");
 
             ImGui::TableSetColumnIndex(1);
-            ImGui::Text("%s", DataManager->GetStatInfo().combat_power.c_str());
+
+            if (!DataManager->GetStatInfo().combat_power.empty())
+            {
+                std::string combat_power = DataManager->GetStatInfo().combat_power;
+                std::string format_unit = DataManager->FormatUnit(std::stol(combat_power));
+                ImGui::Text(u8"%s", format_unit.c_str());
+            }
 
             ImGui::EndTable();
         }
@@ -126,7 +132,7 @@ void Scene::SearchCharacter(const std::string& character_name)
         character_document["character_name"].GetString(),
         character_document["world_name"].GetString(),
         character_document["character_class"].GetString(),
-        std::to_string(character_document["character_level"].GetInt()),
+        std::to_string(character_document["character_level"].GetInt64()),
         character_document["character_guild_name"].GetString()
     };
 
