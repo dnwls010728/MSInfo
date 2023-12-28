@@ -1,4 +1,6 @@
 ﻿#pragma once
+
+#include "../Core.h"
 #include "../Singleton.h"
 
 class DownloadManager : public Singleton<DownloadManager>

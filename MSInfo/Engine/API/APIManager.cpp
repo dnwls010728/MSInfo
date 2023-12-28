@@ -40,6 +40,10 @@ rapidjson::Document APIManager::Request(const std::string& api_url)
         curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
 
         CURLcode res_code = curl_easy_perform(curl);
+
+        curl_slist_free_all(headers);
+        curl_easy_cleanup(curl);
+        
         if (res_code != CURLE_OK) return doc;
 
         return std::move(doc.Parse(response.c_str()));

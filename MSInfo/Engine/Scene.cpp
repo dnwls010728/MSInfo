@@ -1,12 +1,20 @@
 ﻿#include "Scene.h"
 
+#include <string>
+
 #include "DataManager.h"
 #include "API/APIManager.h"
 #include "API/DownloadManager.h"
 #include "Graphics/Graphics.h"
+#include "ItemEquip.h"
+
 #include "imgui/imgui.h"
+
 #include "rapidjson/document.h"
 #include "rapidjson/rapidjson.h"
+
+#define CHARACTER_IMAGE_PATH ".\\Temp\\Character\\character_image.png"
+#define ITEM_EQUIP_PATH ".\\Temp\\Character\\ItemEquip\\"
 
 Scene::Scene()
 {
@@ -50,9 +58,6 @@ void Scene::Render()
         if (ImGui::Button(u8"캐릭터 조회"))
         {
             SearchCharacter(input_character_name);
-
-            std::string character_image_url = DataManager::GetInstance()->character_document["character_image"].GetString();
-            DownloadManager::GetInstance()->DownloadFile(character_image_url, ".\\Temp\\Character\\character_image.png");
         }
     }
 
@@ -68,8 +73,39 @@ void Scene::Render()
         }
 
         ImGui::SameLine();
+
+        if (DataManager::GetInstance()->character_document != rapidjson::Document())
+        {
+            std::string character_name = DataManager::GetInstance()->character_document["character_name"].GetString();
+            std::string world_name = DataManager::GetInstance()->character_document["world_name"].GetString();
+            std::string character_class = DataManager::GetInstance()->character_document["character_class"].GetString();
+            std::string character_level = std::to_string(DataManager::GetInstance()->character_document["character_level"].GetInt());
+            std::string character_guild_name = DataManager::GetInstance()->character_document["character_guild_name"].GetString();
+            
+            ImGui::Text(u8"%s (%s)\nLv.%s | %s | %s",
+                character_name.c_str(),
+                world_name.c_str(),
+                character_level.c_str(),
+                character_class.c_str(),
+                character_guild_name.c_str());
+        }
+
+        ImGui::Separator();
     }
 
+    ImGui::End();
+#pragma endregion
+
+#pragma region 장비
+    if (ImGui::Begin(u8"장비"))
+    {
+        for (int i = 0; i < DataManager::GetInstance()->items.size(); i++)
+        {
+            std::unique_ptr<ItemEquip>& item = DataManager::GetInstance()->items[i];
+            ImGui::Image(item->image, ImVec2(item->image_width, item->image_height));
+        }
+    }
+    
     ImGui::End();
 #pragma endregion
 }
@@ -83,10 +119,39 @@ void Scene::SearchCharacter(const std::string& character_name)
 
 #pragma region 캐릭터 정보
     rapidjson::Document character_document = APIManager::GetInstance()->RequestCharacter(DataManager::GetInstance()->id_document["ocid"].GetString(), date_);
-
-    bool ret = Graphics::GetInstance()->LoadTexture(".\\Temp\\Character\\character_image.png", &character_image, &character_image_width, &character_image_height);
+    
+    std::string character_image_url = character_document["character_image"].GetString();
+    DownloadManager::GetInstance()->DownloadFile(character_image_url, CHARACTER_IMAGE_PATH);
+    
+    bool ret = Graphics::GetInstance()->LoadTexture(CHARACTER_IMAGE_PATH, &character_image, &character_image_width, &character_image_height);
     IM_ASSERT(ret);
     
     DataManager::GetInstance()->character_document = std::move(character_document);
+#pragma endregion
+    
+#pragma region 장비
+    rapidjson::Document equipment_document = APIManager::GetInstance()->RequestItemEquip(DataManager::GetInstance()->id_document["ocid"].GetString(), date_);
+    
+    const int size = equipment_document["item_equipment"].Size();
+    rapidjson::Value& item_equipment = equipment_document["item_equipment"].GetArray();
+
+    DataManager::GetInstance()->items.clear();
+    
+    for (int i = 0; i < size; i++)
+    {
+        rapidjson::Value& item = item_equipment[i];
+    
+        std::unique_ptr<ItemEquip> item_equip = std::make_unique<ItemEquip>();
+    
+        std::string item_image_url = item["item_shape_icon"].GetString();
+        DownloadManager::GetInstance()->DownloadFile(item_image_url, ITEM_EQUIP_PATH + std::to_string(i) + ".png");
+    
+        bool ret = Graphics::GetInstance()->LoadTexture(ITEM_EQUIP_PATH + std::to_string(i) + ".png", &item_equip->image, &item_equip->image_width, &item_equip->image_height);
+        IM_ASSERT(ret);
+        
+        item_equip->item_info = std::move(item);
+    
+        DataManager::GetInstance()->items.push_back(std::move(item_equip));
+    }
 #pragma endregion
 }

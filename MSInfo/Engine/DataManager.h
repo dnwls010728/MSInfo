@@ -1,7 +1,9 @@
 ﻿#pragma once
+#include <vector>
+
 #include "Singleton.h"
 #include "rapidjson/document.h"
-#include "rapidjson/rapidjson.h"
+#include "ItemEquip.h"
 
 class DataManager : public Singleton<DataManager>
 {
@@ -13,5 +15,7 @@ public:
 
     rapidjson::Document id_document;
     rapidjson::Document character_document;
+
+    std::vector<std::unique_ptr<ItemEquip>> items;
     
 };

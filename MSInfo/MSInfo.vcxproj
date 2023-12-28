@@ -135,6 +135,7 @@
     <ClInclude Include="Engine\Core.h" />
     <ClInclude Include="Engine\DataManager.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
+    <ClInclude Include="Engine\ItemEquip.h" />
     <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\Singleton.h" />
     <ClInclude Include="Engine\Time\Time.h" />
@@ -300,6 +301,7 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
+    <ClCompile Include="Engine\ItemEquip.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\Time\Time.cpp" />
     <ClCompile Include="Include\imgui\imgui.cpp" />

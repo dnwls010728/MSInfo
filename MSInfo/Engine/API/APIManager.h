@@ -1,6 +1,4 @@
 ﻿#pragma once
-#include <d3d11.h>
-#include <future>
 
 #include "../Singleton.h"
 #include "rapidjson/document.h"
