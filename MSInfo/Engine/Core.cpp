@@ -78,6 +78,11 @@ bool Core::InitWindow(HINSTANCE hInstance, int nCmdShow)
     static_cast<void>(io);
     io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
     io.Fonts->AddFontFromFileTTF(".\\Fonts\\NanumBarunGothic.ttf", 16.f, nullptr, io.Fonts->GetGlyphRangesKorean());
+    io.Fonts->AddFontFromFileTTF(".\\Fonts\\NanumBarunGothicBold.ttf", 16.f, nullptr, io.Fonts->GetGlyphRangesKorean());
+    io.Fonts->AddFontFromFileTTF(".\\Fonts\\NanumBarunGothicLight.ttf", 16.f, nullptr, io.Fonts->GetGlyphRangesKorean());
+    io.Fonts->AddFontFromFileTTF(".\\Fonts\\NanumBarunGothicUltraLight.ttf", 16.f, nullptr, io.Fonts->GetGlyphRangesKorean());
+
+    io.FontDefault = io.Fonts->Fonts[0];
 
     ImGui::StyleColorsLight();
     ImGui_ImplWin32_Init(hWnd_);
