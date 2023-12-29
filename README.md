@@ -6,6 +6,9 @@
 ### 사용 컴파일러
 * VC++
 
+### 사용 API
+* NEXON OPEN API
+
 ### 사용 라이브러리
 * 그래픽 - DirectX 11
 * UI - ImGui
