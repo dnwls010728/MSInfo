@@ -133,6 +133,7 @@
     <ClInclude Include="Engine\API\APIManager.h" />
     <ClInclude Include="Engine\API\DownloadManager.h" />
     <ClInclude Include="Engine\Core.h" />
+    <ClInclude Include="Engine\Data\AbilityData.h" />
     <ClInclude Include="Engine\Data\CharacterData.h" />
     <ClInclude Include="Engine\Data\DataManager.h" />
     <ClInclude Include="Engine\Data\StatData.h" />

@@ -462,10 +462,46 @@ void Scene::Render()
 
         if (ImGui::CollapsingHeader(u8"어빌리티"))
         {
+            if (!DataManager->ability_info.empty())
+            {
+                std::string ability_final_grade = DataManager->ability_info[0].ability_final_grade;
+                ImVec4 final_grade_color = GetColorByGrade(ability_final_grade);
+                
+                ImGui::TextColored(final_grade_color, u8"%s 어빌리티", ability_final_grade.c_str());
+                ImGui::Separator();
+                
+                for (int i = 0; i < DataManager->ability_info.size(); i++)
+                {
+                    std::string ability_grade = DataManager->ability_info[i].ability_grade;
+                    std::string ability_value = DataManager->ability_info[i].ability_value;
+                    ImVec4 grade_color = GetColorByGrade(ability_grade);
+
+                    ImGui::TextColored(grade_color, u8"%s: %s", ability_grade.c_str(), ability_value.c_str());
+                }
+            }
         }
         
         if (ImGui::CollapsingHeader(u8"하이퍼 스텟"))
         {
+            if (ImGui::BeginTabBar("하이퍼 스텟 프리셋"))
+            {
+                if (ImGui::BeginTabItem(u8"프리셋 1"))
+                {
+                    ImGui::EndTabItem();
+                }
+                
+                if (ImGui::BeginTabItem(u8"프리셋 2"))
+                {
+                    ImGui::EndTabItem();
+                }
+                
+                if (ImGui::BeginTabItem(u8"프리셋 3"))
+                {
+                    ImGui::EndTabItem();
+                }
+                
+                ImGui::EndTabBar();
+            }
         }
     }
 
@@ -554,4 +590,49 @@ void Scene::SearchCharacter(const std::string& character_name)
 
     DataManager->SetStatInfo(stat_data);
 #pragma endregion
+
+#pragma region 어빌리티
+    rapidjson::Document ability_document = APIManager::GetInstance()->RequestAbility(DataManager->GetOcid(), date_);
+    rapidjson::Value& ability_info = ability_document["ability_info"].GetArray();
+    
+    int ability_size = ability_info.Size();
+    DataManager->ability_info.clear();
+
+    for (int i = 0; i < ability_size; i++)
+    {
+        struct AbilityData ability_data = {
+            ability_document["ability_grade"].GetString(),
+            ability_info[i]["ability_grade"].GetString(),
+            ability_info[i]["ability_value"].GetString()
+        };
+
+        DataManager->ability_info.push_back(ability_data);
+    }
+    
+#pragma endregion
+}
+
+ImVec4 Scene::GetColorByGrade(const std::string& grade)
+{
+    if (grade.compare(u8"레전드리") == 0)
+    {
+        return ImVec4(140.f / 255.f, 174.f / 255.f, 14.f / 255.f, 1.f);
+    }
+    
+    if (grade.compare(u8"유니크") == 0)
+    {
+        return ImVec4(232.f / 255.f, 156.f / 255.f, 9.f / 255.f, 1.f);
+    }
+    
+    if (grade.compare(u8"에픽") == 0)
+    {
+        return ImVec4(127.f / 255.f, 102.f / 255.f, 211.f / 255.f, 1.f);
+    }
+    
+    if (grade.compare(u8"레어") == 0)
+    {
+        return ImVec4(54.f / 255.f, 184.f / 255.f, 208.f / 255.f, 1.f);
+    }
+
+    return ImVec4(1.f, 1.f, 1.f, 1.f);
 }

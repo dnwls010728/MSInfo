@@ -14,6 +14,8 @@ public:
 
 private:
     void SearchCharacter(const std::string& character_name);
+
+    class ImVec4 GetColorByGrade(const std::string& grade);
     
     std::string date_;
 

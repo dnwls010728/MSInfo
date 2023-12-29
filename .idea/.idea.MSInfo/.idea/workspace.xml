@@ -7,16 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: FormatUnit 추가">
-      <change afterPath="$PROJECT_DIR$/MSInfo/Fonts/NanumBarunGothicBold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Fonts/NanumBarunGothicLight.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Fonts/NanumBarunGothicUltraLight.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" afterDir="false" />
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 스텟 작업">
+      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/AbilityData.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/StatData.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/StatData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,8 +111,9 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Woojin Choi/MSInfo/MSInfo/Engine/Core.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Woojin Choi/MSInfo/MSInfo/Engine/Scene.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui_demo.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui_demo.cpp" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -226,7 +226,7 @@
       <workItem from="1703688142518" duration="961000" />
       <workItem from="1703723118847" duration="25459000" />
       <workItem from="1703812402583" duration="3152000" />
-      <workItem from="1703845986351" duration="10528000" />
+      <workItem from="1703845986351" duration="13731000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -292,7 +292,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703777375428</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="FEAT: 스텟 작업">
+      <option name="closed" value="true" />
+      <created>1703861126172</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1703861126172</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -310,6 +318,7 @@
     <MESSAGE value="FEAT: Scene 추가" />
     <MESSAGE value="FEAT: 장착 아이템 추가" />
     <MESSAGE value="FEAT: FormatUnit 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: FormatUnit 추가" />
+    <MESSAGE value="FEAT: 스텟 작업" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 스텟 작업" />
   </component>
 </project>

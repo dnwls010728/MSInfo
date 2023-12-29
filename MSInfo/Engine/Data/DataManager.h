@@ -1,8 +1,11 @@
 ﻿#pragma once
 
+#include <vector>
+
+#include "../Singleton.h"
 #include "CharacterData.h"
 #include "StatData.h"
-#include "../Singleton.h"
+#include "AbilityData.h"
 
 class DataManager : public Singleton<DataManager>
 {
@@ -13,6 +16,8 @@ public:
     std::string GetDataDate();
     std::string FormatUnit(int val);
     std::string FormatComma(long val);
+    
+    std::vector<struct AbilityData> ability_info;
 
     inline void SetOcid(const std::string& ocid) { ocid_ = ocid; }
     inline std::string GetOcid() { return ocid_; }
@@ -25,6 +30,7 @@ public:
 
 private:
     std::string ocid_;
+    
     struct CharacterData character_info_;
     struct StatData stat_info_;
     
