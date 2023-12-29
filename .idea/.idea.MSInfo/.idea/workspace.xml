@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 스텟 작업">
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 어빌리티 작업">
       <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/AbilityData.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
@@ -29,6 +29,8 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -226,7 +228,7 @@
       <workItem from="1703688142518" duration="961000" />
       <workItem from="1703723118847" duration="25459000" />
       <workItem from="1703812402583" duration="3152000" />
-      <workItem from="1703845986351" duration="13731000" />
+      <workItem from="1703845986351" duration="14063000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -300,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703861126172</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="FEAT: 어빌리티 작업">
+      <option name="closed" value="true" />
+      <created>1703865130451</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1703865130451</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,6 +329,7 @@
     <MESSAGE value="FEAT: 장착 아이템 추가" />
     <MESSAGE value="FEAT: FormatUnit 추가" />
     <MESSAGE value="FEAT: 스텟 작업" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 스텟 작업" />
+    <MESSAGE value="FEAT: 어빌리티 작업" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 어빌리티 작업" />
   </component>
 </project>
