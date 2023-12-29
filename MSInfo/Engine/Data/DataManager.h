@@ -11,7 +11,8 @@ public:
     virtual ~DataManager() final = default;
 
     std::string GetDataDate();
-    std::string FormatUnit(long val);
+    std::string FormatUnit(int val);
+    std::string FormatComma(long val);
 
     inline void SetOcid(const std::string& ocid) { ocid_ = ocid; }
     inline std::string GetOcid() { return ocid_; }

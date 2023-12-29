@@ -26,15 +26,8 @@ std::string DataManager::GetDataDate()
     return date;
 }
 
-std::string DataManager::FormatUnit(long val)
+std::string DataManager::FormatUnit(int val)
 {
-    if (val >= 1000000000000)
-    {
-        int unit = val / 1000000000000;
-        int remain = val % 1000000000000;
-        return std::to_string(unit) + u8"조 " + FormatUnit(remain);
-    }
-    
     if (val >= 100000000)
     {
         int unit = val / 100000000;
@@ -50,4 +43,22 @@ std::string DataManager::FormatUnit(long val)
     }
     
     return std::to_string(val);
+}
+
+std::string DataManager::FormatComma(long val)
+{
+    std::string str = std::to_string(val);
+    int count = 0;
+    
+    for (int i = str.length() - 1; i >= 0; i--)
+    {
+        count++;
+        if (count == 3 && i != 0)
+        {
+            str.insert(i, ",");
+            count = 0;
+        }
+    }
+
+    return str;
 }

@@ -87,22 +87,34 @@ void Scene::Render()
 
         ImGui::Separator();
 
-        if (ImGui::BeginTable("##캐릭터 정보", 2, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
+        if (!DataManager->GetStatInfo().min_stat_attack.empty())
         {
-            ImGui::TableNextRow();
-            ImGui::TableSetColumnIndex(0);
-            ImGui::Text(u8"전투력");
-
-            ImGui::TableSetColumnIndex(1);
-
-            if (!DataManager->GetStatInfo().combat_power.empty())
+            if (ImGui::BeginTable("##캐릭터 정보", 2, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
             {
+                ImGui::TableNextRow();
+                ImGui::TableSetColumnIndex(0);
+                ImGui::Text(u8"전투력");
+
+                ImGui::TableSetColumnIndex(1);
+            
                 std::string combat_power = DataManager->GetStatInfo().combat_power;
                 std::string format_unit = DataManager->FormatUnit(std::stol(combat_power));
                 ImGui::Text(u8"%s", format_unit.c_str());
-            }
 
-            ImGui::EndTable();
+                ImGui::TableNextRow();
+                ImGui::TableSetColumnIndex(0);
+                ImGui::Text(u8"스텟 공격력");
+
+                ImGui::TableSetColumnIndex(1);
+
+                std::string min_stat_attack = DataManager->GetStatInfo().min_stat_attack;
+                std::string max_stat_attack = DataManager->GetStatInfo().max_stat_attack;
+                std::string format_min_stat_attack = DataManager->FormatComma(std::stol(min_stat_attack));
+                std::string format_max_stat_attack = DataManager->FormatComma(std::stol(max_stat_attack));
+                ImGui::Text(u8"%s ~ %s", format_min_stat_attack.c_str(), format_max_stat_attack.c_str());
+
+                ImGui::EndTable();
+            }
         }
     }
 
@@ -132,7 +144,7 @@ void Scene::SearchCharacter(const std::string& character_name)
         character_document["character_name"].GetString(),
         character_document["world_name"].GetString(),
         character_document["character_class"].GetString(),
-        std::to_string(character_document["character_level"].GetInt64()),
+        std::to_string(character_document["character_level"].GetInt()),
         character_document["character_guild_name"].GetString()
     };
 
@@ -143,6 +155,8 @@ void Scene::SearchCharacter(const std::string& character_name)
     rapidjson::Document stat_document = APIManager::GetInstance()->RequestStat(DataManager->GetOcid(), date_);
 
     struct StatData stat_data = {
+        stat_document["final_stat"][0]["stat_value"].GetString(),
+        stat_document["final_stat"][1]["stat_value"].GetString(),
         stat_document["final_stat"][42]["stat_value"].GetString(),
     };
 
