@@ -17,6 +17,8 @@ public:
     rapidjson::Document RequestItemEquip(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestStat(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestAbility(const std::string& ocid, const std::string& date);
+    rapidjson::Document RequestHyperStat(const std::string& ocid, const std::string& date);
+    rapidjson::Document RequestSetEffect(const std::string& ocid, const std::string& date);
 
 private:
     static size_t WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp);

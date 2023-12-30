@@ -6,6 +6,8 @@
 #include "CharacterData.h"
 #include "StatData.h"
 #include "AbilityData.h"
+#include "HyperStatData.h"
+#include "SetEffectData.h"
 
 class DataManager : public Singleton<DataManager>
 {
@@ -16,22 +18,32 @@ public:
     std::string GetDataDate();
     std::string FormatUnit(int val);
     std::string FormatComma(long val);
-    
-    std::vector<struct AbilityData> ability_info;
 
     inline void SetOcid(const std::string& ocid) { ocid_ = ocid; }
     inline std::string GetOcid() { return ocid_; }
 
-    inline void SetCharacterInfo(const struct CharacterData& character_info) { character_info_ = character_info; }
-    inline struct CharacterData GetCharacterInfo() { return character_info_; }
+    inline void SetCharacterData(const struct CharacterData& character_data) { character_data_ = character_data; }
+    inline struct CharacterData GetCharacterData() { return character_data_; }
 
-    inline void SetStatInfo(const struct StatData& stat_info) { stat_info_ = stat_info; }
-    inline struct StatData GetStatInfo() { return stat_info_; }
+    inline void SetStatData(const struct StatData& stat_data) { stat_data_ = stat_data; }
+    inline struct StatData GetStatData() { return stat_data_; }
+
+    inline void SetAbilityData(const struct AbilityData& ability_data) { ability_data_ = ability_data; }
+    inline struct AbilityData GetAbilityData() { return ability_data_; }
+
+    inline void SetHyperStatData(const struct HyperStatData& hyper_stat_data) { hyper_stat_data_ = hyper_stat_data; }
+    inline struct HyperStatData GetHyperStatData() { return hyper_stat_data_; }
+
+    inline void SetSetEffectData(const struct SetEffectData& set_effect_data) { set_effect_data_ = set_effect_data; }
+    inline struct SetEffectData GetSetEffectData() { return set_effect_data_; }
 
 private:
     std::string ocid_;
     
-    struct CharacterData character_info_;
-    struct StatData stat_info_;
+    struct CharacterData character_data_;
+    struct StatData stat_data_;
+    struct AbilityData ability_data_;
+    struct HyperStatData hyper_stat_data_;
+    struct SetEffectData set_effect_data_;
     
 };

@@ -3,7 +3,12 @@
 
 struct AbilityData
 {
-    std::string ability_final_grade;
+    struct Ability
+    {
+        std::string ability_grade;
+        std::string ability_value;
+    };
+    
     std::string ability_grade;
-    std::string ability_value;
+    std::vector<Ability> abilities;
 };

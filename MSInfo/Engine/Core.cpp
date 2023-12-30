@@ -84,7 +84,7 @@ bool Core::InitWindow(HINSTANCE hInstance, int nCmdShow)
 
     io.FontDefault = io.Fonts->Fonts[0];
 
-    ImGui::StyleColorsLight();
+    ImGui::StyleColorsDark();
     ImGui_ImplWin32_Init(hWnd_);
     ImGui_ImplDX11_Init(Graphics::GetInstance()->GetD3DDevice(), Graphics::GetInstance()->GetD3DDeviceContext());
 

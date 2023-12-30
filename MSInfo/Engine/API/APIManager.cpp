@@ -82,6 +82,18 @@ rapidjson::Document APIManager::RequestAbility(const std::string& ocid, const st
     return doc;
 }
 
+rapidjson::Document APIManager::RequestHyperStat(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = Request("/character/hyper-stat?ocid=" + ocid + "&date=" + date);
+    return doc;
+}
+
+rapidjson::Document APIManager::RequestSetEffect(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = Request("/character/set-effect?ocid=" + ocid + "&date=" + date);
+    return doc;
+}
+
 size_t APIManager::WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp)
 {
     size_t total_size = size * nmemb;
