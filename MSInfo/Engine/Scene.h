@@ -2,6 +2,7 @@
 #include <d3d11.h>
 
 #include "Singleton.h"
+#include "rapidjson/document.h"
 
 class Scene : public Singleton<Scene>
 {
@@ -14,6 +15,8 @@ public:
 
 private:
     void SearchCharacter(const std::string& character_name);
+
+    std::string SafeGetString(const rapidjson::Value& value, const std::string& key);
 
     class ImVec4 GetColorByGrade(const std::string& grade);
     

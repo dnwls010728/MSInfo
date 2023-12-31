@@ -65,6 +65,16 @@ void Scene::Render()
         {
             SearchCharacter(input_character_name);
         }
+        
+        if (ImGui::BeginPopupModal(u8"캐릭터 조회 오류", nullptr, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize))
+        {
+            ImGui::Text(u8"캐릭터를 찾을 수 없습니다.");
+            ImGui::Separator();
+        
+            if (ImGui::Button(u8"확인", ImVec2(60,0))) { ImGui::CloseCurrentPopup(); }
+        
+            ImGui::EndPopup();
+        }
     }
 
     ImGui::End();
@@ -98,7 +108,7 @@ void Scene::Render()
             ImGui::SameLine();
 
             std::string combat_power = DataManager->GetStatData().combat_power;
-            std::string format_unit = DataManager->FormatUnit(std::stol(combat_power));
+            std::string format_unit = DataManager->SafeFormatComma(combat_power);
 
             float window_width = ImGui::GetWindowSize().x;
             float text_width = ImGui::CalcTextSize(format_unit.c_str()).x;
@@ -121,8 +131,8 @@ void Scene::Render()
 
                 std::string min_stat_attack = DataManager->GetStatData().min_stat_attack;
                 std::string max_stat_attack = DataManager->GetStatData().max_stat_attack;
-                std::string format_min_stat_attack = DataManager->FormatComma(std::stol(min_stat_attack));
-                std::string format_max_stat_attack = DataManager->FormatComma(std::stol(max_stat_attack));
+                std::string format_min_stat_attack = DataManager->SafeFormatComma(min_stat_attack);
+                std::string format_max_stat_attack = DataManager->SafeFormatComma(max_stat_attack);
                 ImGui::Text(u8"%s ~ %s", format_min_stat_attack.c_str(), format_max_stat_attack.c_str());
 
                 ImGui::EndTable();
@@ -137,7 +147,7 @@ void Scene::Render()
                 ImGui::TableSetColumnIndex(1);
 
                 std::string hp = DataManager->GetStatData().hp;
-                std::string format_comma = DataManager->FormatComma(std::stol(hp));
+                std::string format_comma = DataManager->SafeFormatComma(hp);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableSetColumnIndex(2);
@@ -146,7 +156,7 @@ void Scene::Render()
                 ImGui::TableSetColumnIndex(3);
 
                 std::string mp = DataManager->GetStatData().mp;
-                format_comma = DataManager->FormatComma(std::stol(mp));
+                format_comma = DataManager->SafeFormatComma(mp);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -156,7 +166,7 @@ void Scene::Render()
                 ImGui::TableSetColumnIndex(1);
 
                 std::string stat_str = DataManager->GetStatData().stat_str;
-                format_comma = DataManager->FormatComma(std::stol(stat_str));
+                format_comma = DataManager->SafeFormatComma(stat_str);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableSetColumnIndex(2);
@@ -165,7 +175,7 @@ void Scene::Render()
                 ImGui::TableSetColumnIndex(3);
 
                 std::string stat_dex = DataManager->GetStatData().stat_dex;
-                format_comma = DataManager->FormatComma(std::stol(stat_dex));
+                format_comma = DataManager->SafeFormatComma(stat_dex);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -175,7 +185,7 @@ void Scene::Render()
                 ImGui::TableSetColumnIndex(1);
 
                 std::string stat_int = DataManager->GetStatData().stat_int;
-                format_comma = DataManager->FormatComma(std::stol(stat_int));
+                format_comma = DataManager->SafeFormatComma(stat_int);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableSetColumnIndex(2);
@@ -184,7 +194,7 @@ void Scene::Render()
                 ImGui::TableSetColumnIndex(3);
 
                 std::string stat_luk = DataManager->GetStatData().stat_luk;
-                format_comma = DataManager->FormatComma(std::stol(stat_luk));
+                format_comma = DataManager->SafeFormatComma(stat_luk);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::EndTable();
@@ -243,7 +253,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string attack_power = DataManager->GetStatData().attack_power;
-                std::string format_comma = DataManager->FormatComma(std::stol(attack_power));
+                std::string format_comma = DataManager->SafeFormatComma(attack_power);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -252,7 +262,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string magic_power = DataManager->GetStatData().magic_power;
-                format_comma = DataManager->FormatComma(std::stol(magic_power));
+                format_comma = DataManager->SafeFormatComma(magic_power);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -261,7 +271,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string defense = DataManager->GetStatData().defense;
-                format_comma = DataManager->FormatComma(std::stol(defense));
+                format_comma = DataManager->SafeFormatComma(defense);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -384,7 +394,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string star_force = DataManager->GetStatData().star_force;
-                format_comma = DataManager->FormatComma(std::stol(star_force));
+                format_comma = DataManager->SafeFormatComma(star_force);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -393,7 +403,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string arcane_force = DataManager->GetStatData().arcane_force;
-                format_comma = DataManager->FormatComma(std::stol(arcane_force));
+                format_comma = DataManager->SafeFormatComma(arcane_force);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -402,7 +412,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string authentic_force = DataManager->GetStatData().authentic_force;
-                format_comma = DataManager->FormatComma(std::stol(authentic_force));
+                format_comma = DataManager->SafeFormatComma(authentic_force);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -411,7 +421,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string ap_str = DataManager->GetStatData().ap_str;
-                format_comma = DataManager->FormatComma(std::stol(ap_str));
+                format_comma = DataManager->SafeFormatComma(ap_str);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -420,7 +430,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string ap_dex = DataManager->GetStatData().ap_dex;
-                format_comma = DataManager->FormatComma(std::stol(ap_dex));
+                format_comma = DataManager->SafeFormatComma(ap_dex);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -429,7 +439,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string ap_int = DataManager->GetStatData().ap_int;
-                format_comma = DataManager->FormatComma(std::stol(ap_int));
+                format_comma = DataManager->SafeFormatComma(ap_int);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -438,7 +448,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string ap_luk = DataManager->GetStatData().ap_luk;
-                format_comma = DataManager->FormatComma(std::stol(ap_luk));
+                format_comma = DataManager->SafeFormatComma(ap_luk);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -447,7 +457,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string ap_hp = DataManager->GetStatData().ap_hp;
-                format_comma = DataManager->FormatComma(std::stol(ap_hp));
+                format_comma = DataManager->SafeFormatComma(ap_hp);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::TableNextRow();
@@ -456,7 +466,7 @@ void Scene::Render()
 
                 ImGui::TableSetColumnIndex(1);
                 std::string ap_mp = DataManager->GetStatData().ap_mp;
-                format_comma = DataManager->FormatComma(std::stol(ap_mp));
+                format_comma = DataManager->SafeFormatComma(ap_mp);
                 ImGui::Text(u8"%s", format_comma.c_str());
 
                 ImGui::EndTable();
@@ -566,13 +576,19 @@ void Scene::SearchCharacter(const std::string& character_name)
 
 #pragma region 캐릭터 식별자
     rapidjson::Document id_document = APIManager::GetInstance()->RequestID(character_name);
-    DataManager->SetOcid(id_document["ocid"].GetString());
+    DataManager->SetOcid(SafeGetString(id_document, "ocid"));
 #pragma endregion
+    
+    if (DataManager->GetOcid().empty())
+    {
+        ImGui::OpenPopup(u8"캐릭터 조회 오류");
+        return;
+    }
 
 #pragma region 캐릭터 정보
     rapidjson::Document character_document = APIManager::GetInstance()->RequestCharacter(DataManager->GetOcid(), date_);
 
-    std::string character_image_url = character_document["character_image"].GetString();
+    std::string character_image_url = SafeGetString(character_document, "character_image");
     DownloadManager::GetInstance()->DownloadFile(character_image_url, CHARACTER_IMAGE_PATH);
 
     bool ret = Graphics::GetInstance()->LoadTexture(CHARACTER_IMAGE_PATH, &character_image, &character_image_width,
@@ -580,11 +596,11 @@ void Scene::SearchCharacter(const std::string& character_name)
     IM_ASSERT(ret);
 
     struct CharacterData character_data = {
-        character_document["character_name"].GetString(),
-        character_document["world_name"].GetString(),
-        character_document["character_class"].GetString(),
-        std::to_string(character_document["character_level"].GetInt()),
-        character_document["character_guild_name"].GetString()
+        SafeGetString(character_document, "character_name"),
+        SafeGetString(character_document, "world_name"),
+        SafeGetString(character_document, "character_class"),
+        SafeGetString(character_document, "character_level"),
+        SafeGetString(character_document, "character_guild_name")
     };
 
     DataManager->SetCharacterData(character_data);
@@ -594,50 +610,50 @@ void Scene::SearchCharacter(const std::string& character_name)
     rapidjson::Document stat_document = APIManager::GetInstance()->RequestStat(DataManager->GetOcid(), date_);
 
     struct StatData stat_data = {
-        stat_document["final_stat"][0]["stat_value"].GetString(),
-        stat_document["final_stat"][1]["stat_value"].GetString(),
-        stat_document["final_stat"][2]["stat_value"].GetString(),
-        stat_document["final_stat"][3]["stat_value"].GetString(),
-        stat_document["final_stat"][4]["stat_value"].GetString(),
-        stat_document["final_stat"][5]["stat_value"].GetString(),
-        stat_document["final_stat"][6]["stat_value"].GetString(),
-        stat_document["final_stat"][7]["stat_value"].GetString(),
-        stat_document["final_stat"][8]["stat_value"].GetString(),
-        stat_document["final_stat"][9]["stat_value"].GetString(),
-        stat_document["final_stat"][10]["stat_value"].GetString(),
-        stat_document["final_stat"][11]["stat_value"].GetString(),
-        stat_document["final_stat"][12]["stat_value"].GetString(),
-        stat_document["final_stat"][13]["stat_value"].GetString(),
-        stat_document["final_stat"][14]["stat_value"].GetString(),
-        stat_document["final_stat"][15]["stat_value"].GetString(),
-        stat_document["final_stat"][16]["stat_value"].GetString(),
-        stat_document["final_stat"][17]["stat_value"].GetString(),
-        stat_document["final_stat"][18]["stat_value"].GetString(),
-        stat_document["final_stat"][19]["stat_value"].GetString(),
-        stat_document["final_stat"][20]["stat_value"].GetString(),
-        stat_document["final_stat"][21]["stat_value"].GetString(),
-        stat_document["final_stat"][22]["stat_value"].GetString(),
-        stat_document["final_stat"][23]["stat_value"].GetString(),
-        stat_document["final_stat"][24]["stat_value"].GetString(),
-        stat_document["final_stat"][25]["stat_value"].GetString(),
-        stat_document["final_stat"][26]["stat_value"].GetString(),
-        stat_document["final_stat"][27]["stat_value"].GetString(),
-        stat_document["final_stat"][28]["stat_value"].GetString(),
-        stat_document["final_stat"][29]["stat_value"].GetString(),
-        stat_document["final_stat"][30]["stat_value"].GetString(),
-        stat_document["final_stat"][31]["stat_value"].GetString(),
-        stat_document["final_stat"][32]["stat_value"].GetString(),
-        stat_document["final_stat"][33]["stat_value"].GetString(),
-        stat_document["final_stat"][34]["stat_value"].GetString(),
-        stat_document["final_stat"][35]["stat_value"].GetString(),
-        stat_document["final_stat"][36]["stat_value"].GetString(),
-        stat_document["final_stat"][37]["stat_value"].GetString(),
-        stat_document["final_stat"][38]["stat_value"].GetString(),
-        stat_document["final_stat"][39]["stat_value"].GetString(),
-        stat_document["final_stat"][40]["stat_value"].GetString(),
-        stat_document["final_stat"][41]["stat_value"].GetString(),
-        stat_document["final_stat"][42]["stat_value"].GetString(),
-        stat_document["final_stat"][43]["stat_value"].GetString()
+        SafeGetString(stat_document["final_stat"][0], "stat_value"),
+        SafeGetString(stat_document["final_stat"][1], "stat_value"),
+        SafeGetString(stat_document["final_stat"][2], "stat_value"),
+        SafeGetString(stat_document["final_stat"][3], "stat_value"),
+        SafeGetString(stat_document["final_stat"][4], "stat_value"),
+        SafeGetString(stat_document["final_stat"][5], "stat_value"),
+        SafeGetString(stat_document["final_stat"][6], "stat_value"),
+        SafeGetString(stat_document["final_stat"][7], "stat_value"),
+        SafeGetString(stat_document["final_stat"][8], "stat_value"),
+        SafeGetString(stat_document["final_stat"][9], "stat_value"),
+        SafeGetString(stat_document["final_stat"][10], "stat_value"),
+        SafeGetString(stat_document["final_stat"][11], "stat_value"),
+        SafeGetString(stat_document["final_stat"][12], "stat_value"),
+        SafeGetString(stat_document["final_stat"][13], "stat_value"),
+        SafeGetString(stat_document["final_stat"][14], "stat_value"),
+        SafeGetString(stat_document["final_stat"][15], "stat_value"),
+        SafeGetString(stat_document["final_stat"][16], "stat_value"),
+        SafeGetString(stat_document["final_stat"][17], "stat_value"),
+        SafeGetString(stat_document["final_stat"][18], "stat_value"),
+        SafeGetString(stat_document["final_stat"][19], "stat_value"),
+        SafeGetString(stat_document["final_stat"][20], "stat_value"),
+        SafeGetString(stat_document["final_stat"][21], "stat_value"),
+        SafeGetString(stat_document["final_stat"][22], "stat_value"),
+        SafeGetString(stat_document["final_stat"][23], "stat_value"),
+        SafeGetString(stat_document["final_stat"][24], "stat_value"),
+        SafeGetString(stat_document["final_stat"][25], "stat_value"),
+        SafeGetString(stat_document["final_stat"][26], "stat_value"),
+        SafeGetString(stat_document["final_stat"][27], "stat_value"),
+        SafeGetString(stat_document["final_stat"][28], "stat_value"),
+        SafeGetString(stat_document["final_stat"][29], "stat_value"),
+        SafeGetString(stat_document["final_stat"][30], "stat_value"),
+        SafeGetString(stat_document["final_stat"][31], "stat_value"),
+        SafeGetString(stat_document["final_stat"][32], "stat_value"),
+        SafeGetString(stat_document["final_stat"][33], "stat_value"),
+        SafeGetString(stat_document["final_stat"][34], "stat_value"),
+        SafeGetString(stat_document["final_stat"][35], "stat_value"),
+        SafeGetString(stat_document["final_stat"][36], "stat_value"),
+        SafeGetString(stat_document["final_stat"][37], "stat_value"),
+        SafeGetString(stat_document["final_stat"][38], "stat_value"),
+        SafeGetString(stat_document["final_stat"][39], "stat_value"),
+        SafeGetString(stat_document["final_stat"][40], "stat_value"),
+        SafeGetString(stat_document["final_stat"][41], "stat_value"),
+        SafeGetString(stat_document["final_stat"][42], "stat_value"),
+        SafeGetString(stat_document["final_stat"][43], "stat_value")
     };
 
     DataManager->SetStatData(stat_data);
@@ -648,13 +664,13 @@ void Scene::SearchCharacter(const std::string& character_name)
     rapidjson::Value& ability_info = ability_document["ability_info"].GetArray();
 
     struct AbilityData ability_data;
-    ability_data.ability_grade = ability_info[0]["ability_grade"].GetString();
+    ability_data.ability_grade = SafeGetString(ability_info[0], "ability_grade");
 
     for (int i = 0; i < ability_info.Size(); i++)
     {
         struct AbilityData::Ability ability;
-        ability.ability_grade = ability_info[i]["ability_grade"].GetString();
-        ability.ability_value = ability_info[i]["ability_value"].GetString();
+        ability.ability_grade = SafeGetString(ability_info[i], "ability_grade");
+        ability.ability_value = SafeGetString(ability_info[i], "ability_value");
         ability_data.abilities.push_back(ability);
     }
 
@@ -675,15 +691,10 @@ void Scene::SearchCharacter(const std::string& character_name)
     for (int i = 0; i < hyper_stat_preset_1.Size(); i++)
     {
         struct HyperStatData::HyperStat hyper_stat;
-        hyper_stat.stat_type = hyper_stat_preset_1[i]["stat_type"].GetString();
-
-        bool is_int = hyper_stat_preset_1[i]["stat_point"].IsInt();
-        hyper_stat.stat_point = is_int ? std::to_string(hyper_stat_preset_1[i]["stat_point"].GetInt()) : "";
-
-        hyper_stat.stat_level = std::to_string(hyper_stat_preset_1[i]["stat_level"].GetInt());
-
-        bool is_string = hyper_stat_preset_1[i]["stat_increase"].IsString();
-        hyper_stat.stat_increase = is_string ? hyper_stat_preset_1[i]["stat_increase"].GetString() : "";
+        hyper_stat.stat_type = SafeGetString(hyper_stat_preset_1[i], "stat_type");
+        hyper_stat.stat_point = SafeGetString(hyper_stat_preset_1[i], "stat_point");
+        hyper_stat.stat_level = SafeGetString(hyper_stat_preset_1[i], "stat_level");
+        hyper_stat.stat_increase = SafeGetString(hyper_stat_preset_1[i], "stat_increase");
 
         hyper_stat_data.preset_1.push_back(hyper_stat);
     }
@@ -691,15 +702,10 @@ void Scene::SearchCharacter(const std::string& character_name)
     for (int i = 0; i < hyper_stat_preset_2.Size(); i++)
     {
         struct HyperStatData::HyperStat hyper_stat;
-        hyper_stat.stat_type = hyper_stat_preset_2[i]["stat_type"].GetString();
-
-        bool is_int = hyper_stat_preset_2[i]["stat_point"].IsInt();
-        hyper_stat.stat_point = is_int ? std::to_string(hyper_stat_preset_2[i]["stat_point"].GetInt()) : "";
-
-        hyper_stat.stat_level = std::to_string(hyper_stat_preset_2[i]["stat_level"].GetInt());
-
-        bool is_string = hyper_stat_preset_2[i]["stat_increase"].IsString();
-        hyper_stat.stat_increase = is_string ? hyper_stat_preset_2[i]["stat_increase"].GetString() : "";
+        hyper_stat.stat_type = SafeGetString(hyper_stat_preset_2[i], "stat_type");
+        hyper_stat.stat_point = SafeGetString(hyper_stat_preset_2[i], "stat_point");
+        hyper_stat.stat_level = SafeGetString(hyper_stat_preset_2[i], "stat_level");
+        hyper_stat.stat_increase = SafeGetString(hyper_stat_preset_2[i], "stat_increase");
 
         hyper_stat_data.preset_2.push_back(hyper_stat);
     }
@@ -707,15 +713,10 @@ void Scene::SearchCharacter(const std::string& character_name)
     for (int i = 0; i < hyper_stat_preset_3.Size(); i++)
     {
         struct HyperStatData::HyperStat hyper_stat;
-        hyper_stat.stat_type = hyper_stat_preset_3[i]["stat_type"].GetString();
-
-        bool is_int = hyper_stat_preset_3[i]["stat_point"].IsInt();
-        hyper_stat.stat_point = is_int ? std::to_string(hyper_stat_preset_3[i]["stat_point"].GetInt()) : "";
-
-        hyper_stat.stat_level = std::to_string(hyper_stat_preset_3[i]["stat_level"].GetInt());
-
-        bool is_string = hyper_stat_preset_3[i]["stat_increase"].IsString();
-        hyper_stat.stat_increase = is_string ? hyper_stat_preset_3[i]["stat_increase"].GetString() : "";
+        hyper_stat.stat_type = SafeGetString(hyper_stat_preset_3[i], "stat_type");
+        hyper_stat.stat_point = SafeGetString(hyper_stat_preset_3[i], "stat_point");
+        hyper_stat.stat_level = SafeGetString(hyper_stat_preset_3[i], "stat_level");
+        hyper_stat.stat_increase = SafeGetString(hyper_stat_preset_3[i], "stat_increase");
 
         hyper_stat_data.preset_3.push_back(hyper_stat);
     }
@@ -733,13 +734,28 @@ void Scene::SearchCharacter(const std::string& character_name)
     for (int i = 0; i < set_effect_info.Size(); i++)
     {
         struct SetEffectData::SetEffect set_effect;
-        set_effect.set_name = set_effect_info[i]["set_name"].GetString();
-        set_effect.total_set_count = std::to_string(set_effect_info[i]["total_set_count"].GetInt());
+        set_effect.set_name = SafeGetString(set_effect_info[i], "set_name");
+        set_effect.total_set_count = SafeGetString(set_effect_info[i], "total_set_count");
         set_effect_data.set_effects.push_back(set_effect);
     }
 
     DataManager->SetSetEffectData(set_effect_data);
 #pragma endregion
+}
+
+std::string Scene::SafeGetString(const rapidjson::Value& value, const std::string& key)
+{
+    const rapidjson::Value::ConstMemberIterator iter = value.FindMember(key.c_str());
+    
+    if (iter != value.MemberEnd() && !iter->value.IsNull())
+    {
+        if (iter->value.IsString()) return iter->value.GetString();
+        if (iter->value.IsInt()) return std::to_string(iter->value.GetInt());
+        if (iter->value.IsDouble()) return std::to_string(iter->value.GetDouble());
+        if (iter->value.IsBool()) return std::to_string(iter->value.GetBool());
+    }
+    
+    return "";
 }
 
 ImVec4 Scene::GetColorByGrade(const std::string& grade)
