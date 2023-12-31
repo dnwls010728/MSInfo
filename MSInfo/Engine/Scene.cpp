@@ -13,7 +13,7 @@
 #include "rapidjson/rapidjson.h"
 
 #define CHARACTER_IMAGE_PATH ".\\Temp\\Character\\character_image.png"
-#define ITEM_EQUIP_PATH ".\\Temp\\Character\\ItemEquip\\"
+#define LINK_SKILL_ICON_PATH ".\\Temp\\Icon\\LinkSkill\\"
 
 Scene::Scene()
 {
@@ -27,7 +27,7 @@ void Scene::Tick(float delta_time)
 void Scene::Render()
 {
     std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
-    
+
 #pragma region 기본
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
     if (ImGui::BeginMainMenuBar())
@@ -38,10 +38,15 @@ void Scene::Render()
             {
                 exit(0);
             }
-            
+
             ImGui::EndMenu();
         }
-        
+
+        if (ImGui::BeginMenu(u8"창"))
+        {
+            ImGui::EndMenu();
+        }
+
         ImGui::EndMainMenuBar();
     }
 #pragma endregion
@@ -78,20 +83,20 @@ void Scene::Render()
         if (!DataManager->GetCharacterData().character_name.empty())
         {
             ImGui::Text(u8"%s (%s)\nLv.%s | %s | %s",
-                DataManager->GetCharacterData().character_name.c_str(),
-                DataManager->GetCharacterData().world_name.c_str(),
-                DataManager->GetCharacterData().character_level.c_str(),
-                DataManager->GetCharacterData().character_class.c_str(),
-                DataManager->GetCharacterData().character_guild_name.c_str());
+                        DataManager->GetCharacterData().character_name.c_str(),
+                        DataManager->GetCharacterData().world_name.c_str(),
+                        DataManager->GetCharacterData().character_level.c_str(),
+                        DataManager->GetCharacterData().character_class.c_str(),
+                        DataManager->GetCharacterData().character_guild_name.c_str());
         }
-        
+
         ImGui::Separator();
 
         if (!DataManager->GetStatData().min_stat_attack.empty())
         {
             ImGui::Text(u8"전투력");
             ImGui::SameLine();
-            
+
             std::string combat_power = DataManager->GetStatData().combat_power;
             std::string format_unit = DataManager->FormatUnit(std::stol(combat_power));
 
@@ -103,9 +108,9 @@ void Scene::Render()
             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
             ImGui::TextColored(ImVec4(1.f, 0.f, 0.f, 1.f), u8"%s", format_unit.c_str());
             ImGui::PopFont();
-            
+
             ImGui::Separator();
-            
+
             if (ImGui::BeginTable("##캐릭터 정보_1", 2, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
             {
                 ImGui::TableNextRow();
@@ -122,7 +127,7 @@ void Scene::Render()
 
                 ImGui::EndTable();
             }
-            
+
             if (ImGui::BeginTable("##캐릭터 정보_2", 4, ImGuiTableFlags_Borders | ImGuiTableFlags_RowBg))
             {
                 ImGui::TableNextRow();
@@ -130,11 +135,11 @@ void Scene::Render()
                 ImGui::Text(u8"HP");
 
                 ImGui::TableSetColumnIndex(1);
-                
+
                 std::string hp = DataManager->GetStatData().hp;
                 std::string format_comma = DataManager->FormatComma(std::stol(hp));
                 ImGui::Text(u8"%s", format_comma.c_str());
-                
+
                 ImGui::TableSetColumnIndex(2);
                 ImGui::Text(u8"MP");
 
@@ -143,7 +148,7 @@ void Scene::Render()
                 std::string mp = DataManager->GetStatData().mp;
                 format_comma = DataManager->FormatComma(std::stol(mp));
                 ImGui::Text(u8"%s", format_comma.c_str());
-                
+
                 ImGui::TableNextRow();
                 ImGui::TableSetColumnIndex(0);
                 ImGui::Text(u8"STR");
@@ -184,7 +189,7 @@ void Scene::Render()
 
                 ImGui::EndTable();
             }
-            
+
             ImGui::Separator();
 
             ImGui::BeginChild("Stat Scroll", ImVec2(0, 200), false, ImGuiWindowFlags_HorizontalScrollbar);
@@ -399,7 +404,7 @@ void Scene::Render()
                 std::string authentic_force = DataManager->GetStatData().authentic_force;
                 format_comma = DataManager->FormatComma(std::stol(authentic_force));
                 ImGui::Text(u8"%s", format_comma.c_str());
-                
+
                 ImGui::TableNextRow();
                 ImGui::TableSetColumnIndex(0);
                 ImGui::Text(u8"AP 배분 STR");
@@ -453,10 +458,10 @@ void Scene::Render()
                 std::string ap_mp = DataManager->GetStatData().ap_mp;
                 format_comma = DataManager->FormatComma(std::stol(ap_mp));
                 ImGui::Text(u8"%s", format_comma.c_str());
-                
+
                 ImGui::EndTable();
             }
-            
+
             ImGui::EndChild();
         }
 
@@ -485,12 +490,12 @@ void Scene::Render()
                 }
             }
         }
-        
+
         if (ImGui::CollapsingHeader(u8"하이퍼 스텟"))
         {
             struct HyperStatData hyper_stat_data = DataManager->GetHyperStatData();
             ImGui::Text(u8"현재 프리셋: 프리셋 %s", hyper_stat_data.use_preset_no.c_str());
-            
+
             if (ImGui::BeginTabBar("하이퍼 스텟 프리셋"))
             {
                 if (ImGui::BeginTabItem(u8"프리셋 1"))
@@ -506,10 +511,10 @@ void Scene::Render()
 
                         ImGui::Text(u8"Lv.%s: %s", stat_level.c_str(), stat_increase.c_str());
                     }
-                    
+
                     ImGui::EndTabItem();
                 }
-                
+
                 if (ImGui::BeginTabItem(u8"프리셋 2"))
                 {
                     for (auto& hyper_stat : hyper_stat_data.preset_2)
@@ -523,10 +528,10 @@ void Scene::Render()
 
                         ImGui::Text(u8"Lv.%s: %s", stat_level.c_str(), stat_increase.c_str());
                     }
-                    
+
                     ImGui::EndTabItem();
                 }
-                
+
                 if (ImGui::BeginTabItem(u8"프리셋 3"))
                 {
                     for (auto& hyper_stat : hyper_stat_data.preset_3)
@@ -540,10 +545,10 @@ void Scene::Render()
 
                         ImGui::Text(u8"Lv.%s: %s", stat_level.c_str(), stat_increase.c_str());
                     }
-                    
+
                     ImGui::EndTabItem();
                 }
-                
+
                 ImGui::EndTabBar();
             }
         }
@@ -558,7 +563,7 @@ void Scene::Render()
 void Scene::SearchCharacter(const std::string& character_name)
 {
     std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
-    
+
 #pragma region 캐릭터 식별자
     rapidjson::Document id_document = APIManager::GetInstance()->RequestID(character_name);
     DataManager->SetOcid(id_document["ocid"].GetString());
@@ -566,11 +571,12 @@ void Scene::SearchCharacter(const std::string& character_name)
 
 #pragma region 캐릭터 정보
     rapidjson::Document character_document = APIManager::GetInstance()->RequestCharacter(DataManager->GetOcid(), date_);
-    
+
     std::string character_image_url = character_document["character_image"].GetString();
     DownloadManager::GetInstance()->DownloadFile(character_image_url, CHARACTER_IMAGE_PATH);
-    
-    bool ret = Graphics::GetInstance()->LoadTexture(CHARACTER_IMAGE_PATH, &character_image, &character_image_width, &character_image_height);
+
+    bool ret = Graphics::GetInstance()->LoadTexture(CHARACTER_IMAGE_PATH, &character_image, &character_image_width,
+                                                    &character_image_height);
     IM_ASSERT(ret);
 
     struct CharacterData character_data = {
@@ -643,7 +649,7 @@ void Scene::SearchCharacter(const std::string& character_name)
 
     struct AbilityData ability_data;
     ability_data.ability_grade = ability_info[0]["ability_grade"].GetString();
-    
+
     for (int i = 0; i < ability_info.Size(); i++)
     {
         struct AbilityData::Ability ability;
@@ -653,11 +659,12 @@ void Scene::SearchCharacter(const std::string& character_name)
     }
 
     DataManager->SetAbilityData(ability_data);
-    
+
 #pragma endregion
 
 #pragma region 하이퍼 스텟
-    rapidjson::Document hyper_stat_document = APIManager::GetInstance()->RequestHyperStat(DataManager->GetOcid(), date_);
+    rapidjson::Document hyper_stat_document = APIManager::GetInstance()->
+        RequestHyperStat(DataManager->GetOcid(), date_);
     rapidjson::Value& hyper_stat_preset_1 = hyper_stat_document["hyper_stat_preset_1"].GetArray();
     rapidjson::Value& hyper_stat_preset_2 = hyper_stat_document["hyper_stat_preset_2"].GetArray();
     rapidjson::Value& hyper_stat_preset_3 = hyper_stat_document["hyper_stat_preset_3"].GetArray();
@@ -677,7 +684,7 @@ void Scene::SearchCharacter(const std::string& character_name)
 
         bool is_string = hyper_stat_preset_1[i]["stat_increase"].IsString();
         hyper_stat.stat_increase = is_string ? hyper_stat_preset_1[i]["stat_increase"].GetString() : "";
-        
+
         hyper_stat_data.preset_1.push_back(hyper_stat);
     }
 
@@ -693,7 +700,7 @@ void Scene::SearchCharacter(const std::string& character_name)
 
         bool is_string = hyper_stat_preset_2[i]["stat_increase"].IsString();
         hyper_stat.stat_increase = is_string ? hyper_stat_preset_2[i]["stat_increase"].GetString() : "";
-        
+
         hyper_stat_data.preset_2.push_back(hyper_stat);
     }
 
@@ -709,16 +716,17 @@ void Scene::SearchCharacter(const std::string& character_name)
 
         bool is_string = hyper_stat_preset_3[i]["stat_increase"].IsString();
         hyper_stat.stat_increase = is_string ? hyper_stat_preset_3[i]["stat_increase"].GetString() : "";
-        
+
         hyper_stat_data.preset_3.push_back(hyper_stat);
     }
 
     DataManager->SetHyperStatData(hyper_stat_data);
-    
+
 #pragma endregion
 
 #pragma region 세트 장비
-    rapidjson::Document set_effect_document = APIManager::GetInstance()->RequestSetEffect(DataManager->GetOcid(), date_);
+    rapidjson::Document set_effect_document = APIManager::GetInstance()->
+        RequestSetEffect(DataManager->GetOcid(), date_);
     rapidjson::Value& set_effect_info = set_effect_document["set_effect"].GetArray();
 
     struct SetEffectData set_effect_data;
@@ -740,17 +748,17 @@ ImVec4 Scene::GetColorByGrade(const std::string& grade)
     {
         return ImVec4(140.f / 255.f, 174.f / 255.f, 14.f / 255.f, 1.f);
     }
-    
+
     if (grade.compare(u8"유니크") == 0)
     {
         return ImVec4(232.f / 255.f, 156.f / 255.f, 9.f / 255.f, 1.f);
     }
-    
+
     if (grade.compare(u8"에픽") == 0)
     {
         return ImVec4(127.f / 255.f, 102.f / 255.f, 211.f / 255.f, 1.f);
     }
-    
+
     if (grade.compare(u8"레어") == 0)
     {
         return ImVec4(54.f / 255.f, 184.f / 255.f, 208.f / 255.f, 1.f);

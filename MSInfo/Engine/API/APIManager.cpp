@@ -94,6 +94,12 @@ rapidjson::Document APIManager::RequestSetEffect(const std::string& ocid, const 
     return doc;
 }
 
+rapidjson::Document APIManager::RequestLinkSkill(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = Request("/character/link-skill?ocid=" + ocid + "&date=" + date);
+    return doc;
+}
+
 size_t APIManager::WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp)
 {
     size_t total_size = size * nmemb;

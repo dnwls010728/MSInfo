@@ -8,6 +8,7 @@
 #include "AbilityData.h"
 #include "HyperStatData.h"
 #include "SetEffectData.h"
+#include "LinkSkillData.h"
 
 class DataManager : public Singleton<DataManager>
 {
@@ -37,6 +38,8 @@ public:
     inline void SetSetEffectData(const struct SetEffectData& set_effect_data) { set_effect_data_ = set_effect_data; }
     inline struct SetEffectData GetSetEffectData() { return set_effect_data_; }
 
+    inline std::vector<struct LinkSkillData>& GetLinkSkillData() { return link_skill_data_; }
+
 private:
     std::string ocid_;
     
@@ -45,5 +48,7 @@ private:
     struct AbilityData ability_data_;
     struct HyperStatData hyper_stat_data_;
     struct SetEffectData set_effect_data_;
+
+    std::vector<struct LinkSkillData> link_skill_data_;
     
 };
