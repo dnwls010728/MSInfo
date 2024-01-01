@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33213.308
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MSInfo", "MSInfo\MSInfo.vcxproj", "{3B8BBE29-458C-4BD1-8102-53C97E5FE37D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "AutoUpdater", "AutoUpdater\AutoUpdater.vcxproj", "{BD889CF4-7832-4F3E-A91D-AEF29050C654}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,6 +23,14 @@ Global
 		{3B8BBE29-458C-4BD1-8102-53C97E5FE37D}.Release|x64.Build.0 = Release|x64
 		{3B8BBE29-458C-4BD1-8102-53C97E5FE37D}.Release|x86.ActiveCfg = Release|Win32
 		{3B8BBE29-458C-4BD1-8102-53C97E5FE37D}.Release|x86.Build.0 = Release|Win32
+		{BD889CF4-7832-4F3E-A91D-AEF29050C654}.Debug|x64.ActiveCfg = Debug|x64
+		{BD889CF4-7832-4F3E-A91D-AEF29050C654}.Debug|x64.Build.0 = Debug|x64
+		{BD889CF4-7832-4F3E-A91D-AEF29050C654}.Debug|x86.ActiveCfg = Debug|Win32
+		{BD889CF4-7832-4F3E-A91D-AEF29050C654}.Debug|x86.Build.0 = Debug|Win32
+		{BD889CF4-7832-4F3E-A91D-AEF29050C654}.Release|x64.ActiveCfg = Release|x64
+		{BD889CF4-7832-4F3E-A91D-AEF29050C654}.Release|x64.Build.0 = Release|x64
+		{BD889CF4-7832-4F3E-A91D-AEF29050C654}.Release|x86.ActiveCfg = Release|Win32
+		{BD889CF4-7832-4F3E-A91D-AEF29050C654}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
