@@ -8,117 +8,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Core.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Core.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Graphics/Graphics.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Graphics/Graphics.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Scene.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Scene.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Singleton.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Time/Time.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Time/Time.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/Makefile.am" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/Makefile.in" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/curl.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/curlver.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/easy.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/header.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/mprintf.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/multi.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/options.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/stdcheaders.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/system.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/typecheck-gcc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/urlapi.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/curl/websockets.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imconfig.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_demo.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_draw.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_impl_dx11.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_impl_dx11.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_impl_win32.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_impl_win32.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_internal.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_tables.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imgui_widgets.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imstb_rectpack.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imstb_textedit.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/imgui/imstb_truetype.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/allocators.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/cursorstreamwrapper.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/document.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/encodedstream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/encodings.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/error/en.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/error/error.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/filereadstream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/filewritestream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/fwd.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/biginteger.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/clzll.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/diyfp.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/dtoa.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/ieee754.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/itoa.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/meta.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/pow10.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/regex.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/stack.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/strfunc.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/strtod.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/internal/swap.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/istreamwrapper.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/memorybuffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/memorystream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/msinttypes/inttypes.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/msinttypes/stdint.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/ostreamwrapper.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/pointer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/prettywriter.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/rapidjson.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/reader.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/schema.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/stream.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/stringbuffer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/uri.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/rapidjson/writer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_c_lexer.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_connected_components.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_divide.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_ds.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_dxt.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_easy_font.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_herringbone_wang_tile.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_hexwave.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_image.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_image_resize2.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_image_write.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_include.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_leakcheck.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_perlin.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_rect_pack.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_sprintf.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_textedit.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_tilemap_editor.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_truetype.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_vorbis.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Include/stb/stb_voxel_render.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AutoUpdater/Lib/libcurld.lib" afterDir="false" />
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: Auto Updater 프로젝트 추가">
+      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/API/DownloadManager.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AutoUpdater/Engine/API/DownloadManager.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AutoUpdater/test.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo.sln" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoUpdater/AutoUpdater.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/AutoUpdater/AutoUpdater.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoUpdater/Engine/Core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Core.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoUpdater/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoUpdater/Engine/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Scene.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoUpdater/Engine/Time/Time.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/AutoUpdater/Engine/Time/Time.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AutoUpdater/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/AutoUpdater/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -538,7 +438,7 @@
       <workItem from="1704005986470" duration="13314000" />
       <workItem from="1704070127580" duration="6290000" />
       <workItem from="1704096473056" duration="164000" />
-      <workItem from="1704096853398" duration="299000" />
+      <workItem from="1704096853398" duration="3215000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -644,7 +544,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704095395990</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="FEAT: Auto Updater 프로젝트 추가">
+      <option name="closed" value="true" />
+      <created>1704097401917</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1704097401918</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -667,6 +575,7 @@
     <MESSAGE value="FEAT: 링크 스킬 API 추가" />
     <MESSAGE value="FEAT: 전체 예외 처리" />
     <MESSAGE value="FEAT: 링크 스킬 재작업" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 링크 스킬 재작업" />
+    <MESSAGE value="FEAT: Auto Updater 프로젝트 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: Auto Updater 프로젝트 추가" />
   </component>
 </project>

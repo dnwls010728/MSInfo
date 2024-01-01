@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AutoUpdater.h" />
+    <ClInclude Include="Engine\API\DownloadManager.h" />
     <ClInclude Include="Engine\Core.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
     <ClInclude Include="Engine\Scene.h" />
@@ -220,6 +221,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AutoUpdater.cpp" />
+    <ClCompile Include="Engine\API\DownloadManager.cpp" />
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
