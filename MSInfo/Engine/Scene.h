@@ -15,6 +15,7 @@ public:
 
 private:
     void SearchCharacter(const std::string& character_name);
+    void ShowLinkSkill(bool* p_open);
 
     std::string SafeGetString(const rapidjson::Value& value, const std::string& key);
 

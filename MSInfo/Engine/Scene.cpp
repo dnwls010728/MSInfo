@@ -28,6 +28,8 @@ void Scene::Render()
 {
     std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
 
+    static bool show_link_skill = false;
+
 #pragma region 기본
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
     if (ImGui::BeginMainMenuBar())
@@ -44,6 +46,8 @@ void Scene::Render()
 
         if (ImGui::BeginMenu(u8"창"))
         {
+            ImGui::MenuItem(u8"링크 스킬", nullptr, &show_link_skill);
+            
             ImGui::EndMenu();
         }
 
@@ -71,7 +75,7 @@ void Scene::Render()
             ImGui::Text(u8"캐릭터를 찾을 수 없습니다.");
             ImGui::Separator();
         
-            if (ImGui::Button(u8"확인", ImVec2(60,0))) { ImGui::CloseCurrentPopup(); }
+            if (ImGui::Button(u8"확인", ImVec2(60,0))) { ImGui::CloseCurrentPopup(); }    
         
             ImGui::EndPopup();
         }
@@ -108,7 +112,7 @@ void Scene::Render()
             ImGui::SameLine();
 
             std::string combat_power = DataManager->GetStatData().combat_power;
-            std::string format_unit = DataManager->SafeFormatComma(combat_power);
+            std::string format_unit = DataManager->SafeFormatUnit(combat_power);
 
             float window_width = ImGui::GetWindowSize().x;
             float text_width = ImGui::CalcTextSize(format_unit.c_str()).x;
@@ -568,8 +572,11 @@ void Scene::Render()
 
     ImGui::End();
 #pragma endregion
+    
+    if (show_link_skill) ShowLinkSkill(&show_link_skill);
 }
 
+// 추후 성능 확인 후 멀티 스레드로 개선
 void Scene::SearchCharacter(const std::string& character_name)
 {
     std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
@@ -741,6 +748,58 @@ void Scene::SearchCharacter(const std::string& character_name)
 
     DataManager->SetSetEffectData(set_effect_data);
 #pragma endregion
+
+#pragma region 링크 스킬
+    rapidjson::Document link_skill_document = APIManager::GetInstance()->
+        RequestLinkSkill(DataManager->GetOcid(), date_);
+    rapidjson::Value& link_skill_info = link_skill_document["character_link_skill"].GetArray();
+
+    DataManager->GetLinkSkillData().clear();
+
+    for (int i = 0; i < link_skill_info.Size(); i++)
+    {
+        struct LinkSkillData link_skill_data;
+        link_skill_data.skill_name = SafeGetString(link_skill_info[i], "skill_name");
+        link_skill_data.skill_description = SafeGetString(link_skill_info[i], "skill_description");
+        link_skill_data.skill_level = SafeGetString(link_skill_info[i], "skill_level");
+        link_skill_data.skill_effect = SafeGetString(link_skill_info[i], "skill_effect");
+
+        std::string icon_url = SafeGetString(link_skill_info[i], "skill_icon");
+        DownloadManager::GetInstance()->DownloadFile(icon_url, LINK_SKILL_ICON_PATH + std::to_string(i) + ".png");
+
+        bool ret = Graphics::GetInstance()->LoadTexture(LINK_SKILL_ICON_PATH + std::to_string(i) + ".png",
+                                                        &link_skill_data.icon, &link_skill_data.icon_width,
+                                                        &link_skill_data.icon_height);
+
+        IM_ASSERT(ret);
+        
+        DataManager->GetLinkSkillData().push_back(link_skill_data);
+    }
+#pragma endregion
+}
+
+void Scene::ShowLinkSkill(bool* p_open)
+{
+    if (!ImGui::Begin(u8"링크 스킬", p_open))
+    {
+        ImGui::End();
+        return;
+    }
+
+    for (auto& link_skill : DataManager::GetInstance()->GetLinkSkillData())
+    {
+        ImGui::Image(link_skill.icon, ImVec2(link_skill.icon_width, link_skill.icon_height));
+        ImGui::SameLine();
+
+        ImGui::BeginGroup();
+        ImGui::Text(u8"%s Lv.%s", link_skill.skill_name.c_str(), link_skill.skill_level.c_str());
+        ImGui::TextWrapped(u8"%s", link_skill.skill_effect.c_str());
+        ImGui::EndGroup();
+
+        ImGui::Separator();
+    }
+    
+    ImGui::End();
 }
 
 std::string Scene::SafeGetString(const rapidjson::Value& value, const std::string& key)
