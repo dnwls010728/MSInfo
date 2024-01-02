@@ -860,7 +860,7 @@ void Scene::ShowSkill(bool* p_open)
 
             if (ImGui::BeginTabItem((skill_grade + u8"차").c_str()))
             {
-                ImGui::BeginChild("Scrolling", ImVec2(0, 0), false, ImGuiWindowFlags_HorizontalScrollbar);
+                ImGui::BeginChild("Scrolling", ImVec2(0, 0), false, ImGuiWindowFlags_AlwaysVerticalScrollbar);
 
                 for (auto& skill : DataManager->skill_data[i])
                 {
