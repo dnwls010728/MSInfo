@@ -483,7 +483,7 @@ void Scene::Render()
         }
 
         ImVec2 window_size = ImGui::GetWindowSize();
-        ImGui::BeginChild("Other Scroll", ImVec2(0, window_size.y - 465), false, ImGuiWindowFlags_HorizontalScrollbar);
+        ImGui::BeginChild("Other Scroll", ImVec2(0, 0), false, ImGuiWindowFlags_HorizontalScrollbar);
 
         if (ImGui::CollapsingHeader(u8"세트 장비"))
         {
@@ -860,6 +860,8 @@ void Scene::ShowSkill(bool* p_open)
 
             if (ImGui::BeginTabItem((skill_grade + u8"차").c_str()))
             {
+                ImGui::BeginChild("Scrolling", ImVec2(0, 0), false, ImGuiWindowFlags_HorizontalScrollbar);
+
                 for (auto& skill : DataManager->skill_data[i])
                 {
                     ImGui::Image(skill.icon, ImVec2(skill.icon_width, skill.icon_height));
@@ -872,7 +874,8 @@ void Scene::ShowSkill(bool* p_open)
 
                     ImGui::Separator();
                 }
-                
+
+                ImGui::EndChild();
                 ImGui::EndTabItem();
             }
         }

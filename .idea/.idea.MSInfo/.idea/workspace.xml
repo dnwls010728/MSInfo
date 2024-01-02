@@ -8,25 +8,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: Auto Updater 프로젝트 추가">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-29__2_52__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-29__2_52__Changes_.xml" afterDir="false" />
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/LinkSkillData.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/SkillData.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/10.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/10.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/11.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/11.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/7.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -383,7 +368,7 @@
       <workItem from="1704096473056" duration="164000" />
       <workItem from="1704096853398" duration="3215000" />
       <workItem from="1704162724134" duration="1329000" />
-      <workItem from="1704175176781" duration="4520000" />
+      <workItem from="1704175176781" duration="4884000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -497,7 +482,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704097401918</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="FEAT: 스킬 추가">
+      <option name="closed" value="true" />
+      <created>1704182444176</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1704182444176</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,6 +514,7 @@
     <MESSAGE value="FEAT: 전체 예외 처리" />
     <MESSAGE value="FEAT: 링크 스킬 재작업" />
     <MESSAGE value="FEAT: Auto Updater 프로젝트 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: Auto Updater 프로젝트 추가" />
+    <MESSAGE value="FEAT: 스킬 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 스킬 추가" />
   </component>
 </project>
