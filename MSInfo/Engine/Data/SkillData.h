@@ -3,7 +3,7 @@
 #include <string>
 #include <d3d11.h>
 
-struct LinkSkillData
+struct SkillData
 {
     std::string skill_name;
     std::string skill_description;

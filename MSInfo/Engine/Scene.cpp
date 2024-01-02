@@ -14,6 +14,7 @@
 
 #define CHARACTER_IMAGE_PATH ".\\Temp\\Character\\character_image.png"
 #define LINK_SKILL_ICON_PATH ".\\Temp\\Icon\\LinkSkill\\"
+#define SKILL_ICON_PATH ".\\Temp\\Icon\\Skill\\"
 
 Scene::Scene()
 {
@@ -29,6 +30,7 @@ void Scene::Render()
     std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
 
     static bool show_link_skill = false;
+    static bool show_skill = false;
 
 #pragma region 기본
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
@@ -47,6 +49,7 @@ void Scene::Render()
         if (ImGui::BeginMenu(u8"창"))
         {
             ImGui::MenuItem(u8"링크 스킬", nullptr, &show_link_skill);
+            ImGui::MenuItem(u8"스킬", nullptr, &show_skill);
             
             ImGui::EndMenu();
         }
@@ -574,6 +577,7 @@ void Scene::Render()
 #pragma endregion
     
     if (show_link_skill) ShowLinkSkill(&show_link_skill);
+    if (show_skill) ShowSkill(&show_skill);
 }
 
 // 추후 성능 확인 후 멀티 스레드로 개선
@@ -758,7 +762,7 @@ void Scene::SearchCharacter(const std::string& character_name)
 
     for (int i = 0; i < link_skill_info.Size(); i++)
     {
-        struct LinkSkillData link_skill_data;
+        struct SkillData link_skill_data;
         link_skill_data.skill_name = SafeGetString(link_skill_info[i], "skill_name");
         link_skill_data.skill_description = SafeGetString(link_skill_info[i], "skill_description");
         link_skill_data.skill_level = SafeGetString(link_skill_info[i], "skill_level");
@@ -776,10 +780,45 @@ void Scene::SearchCharacter(const std::string& character_name)
         DataManager->GetLinkSkillData().push_back(link_skill_data);
     }
 #pragma endregion
+
+#pragma region 스킬
+    for (int i = 0; i < 2; i++)
+    {
+        DataManager::GetInstance()->skill_data[i].clear();
+        
+        std::string skill_grade = std::to_string(i + 5);
+        
+        rapidjson::Document skill_document = APIManager::GetInstance()->
+            RequestSkill(DataManager->GetOcid(), date_, skill_grade);
+
+        rapidjson::Value& skill_info = skill_document["character_skill"].GetArray();
+        
+        for (int j = 0; j < skill_info.Size(); j++)
+        {
+            struct SkillData skill_data;
+            skill_data.skill_name = SafeGetString(skill_info[j], "skill_name");
+            skill_data.skill_description = SafeGetString(skill_info[j], "skill_description");
+            skill_data.skill_level = SafeGetString(skill_info[j], "skill_level");
+            skill_data.skill_effect = SafeGetString(skill_info[j], "skill_effect");
+
+            std::string icon_url = SafeGetString(skill_info[j], "skill_icon");
+            DownloadManager::GetInstance()->DownloadFile(icon_url, SKILL_ICON_PATH + skill_grade + "\\" + std::to_string(j) + ".png");
+
+            bool ret = Graphics::GetInstance()->LoadTexture(SKILL_ICON_PATH + skill_grade + "\\" + std::to_string(j) + ".png",
+                                                            &skill_data.icon, &skill_data.icon_width,
+                                                            &skill_data.icon_height);
+
+            IM_ASSERT(ret);
+
+            DataManager::GetInstance()->skill_data[i].push_back(skill_data);
+        }
+    }
+#pragma endregion
 }
 
 void Scene::ShowLinkSkill(bool* p_open)
 {
+    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
     if (!ImGui::Begin(u8"링크 스킬", p_open))
     {
         ImGui::End();
@@ -799,6 +838,47 @@ void Scene::ShowLinkSkill(bool* p_open)
         ImGui::Separator();
     }
     
+    ImGui::End();
+}
+
+void Scene::ShowSkill(bool* p_open)
+{
+    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
+    if (!ImGui::Begin(u8"스킬", p_open))
+    {
+        ImGui::End();
+        return;
+    }
+
+    std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
+
+    if (ImGui::BeginTabBar(u8"전직 차수"))
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            std::string skill_grade = std::to_string(i + 5);
+
+            if (ImGui::BeginTabItem((skill_grade + u8"차").c_str()))
+            {
+                for (auto& skill : DataManager->skill_data[i])
+                {
+                    ImGui::Image(skill.icon, ImVec2(skill.icon_width, skill.icon_height));
+                    ImGui::SameLine();
+
+                    ImGui::BeginGroup();
+                    ImGui::Text(u8"%s Lv.%s", skill.skill_name.c_str(), skill.skill_level.c_str());
+                    ImGui::TextWrapped(u8"%s", skill.skill_effect.c_str());
+                    ImGui::EndGroup();
+
+                    ImGui::Separator();
+                }
+                
+                ImGui::EndTabItem();
+            }
+        }
+    }
+
+    ImGui::EndTabBar();
     ImGui::End();
 }
 

@@ -126,6 +126,13 @@ rapidjson::Document APIManager::RequestLinkSkill(const std::string& ocid, const 
     return doc;
 }
 
+rapidjson::Document APIManager::RequestSkill(const std::string& ocid, const std::string& date,
+    const std::string& skill_grade)
+{
+    rapidjson::Document doc = RequestAPI("/character/skill?ocid=" + ocid + "&date=" + date + "&character_skill_grade=" + skill_grade);
+    return doc;
+}
+
 size_t APIManager::WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp)
 {
     size_t total_size = size * nmemb;

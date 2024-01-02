@@ -137,7 +137,7 @@
     <ClInclude Include="Engine\Data\CharacterData.h" />
     <ClInclude Include="Engine\Data\DataManager.h" />
     <ClInclude Include="Engine\Data\HyperStatData.h" />
-    <ClInclude Include="Engine\Data\LinkSkillData.h" />
+    <ClInclude Include="Engine\Data\SkillData.h" />
     <ClInclude Include="Engine\Data\SetEffectData.h" />
     <ClInclude Include="Engine\Data\StatData.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
