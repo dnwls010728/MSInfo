@@ -51,8 +51,8 @@ void Scene::Render()
 
 DWORD Scene::DownloadThread(LPVOID lpParam)
 {
-    std::string download_url = "https://download01.logi.com/web/ftp/pub/techsupport/gaming/lghub_installer.exe";
-    DownloadManager::GetInstance()->DownloadFile(download_url, ".\\test.exe");
+    std::string download_url = "https://my-bundle-bucket.s3.ap-northeast-2.amazonaws.com/MSInfo.exe";
+    DownloadManager::GetInstance()->DownloadFile(download_url, ".\\MSInfo.exe");
 
     return 0;
 }

@@ -23,7 +23,14 @@ std::string DataManager::GetDataDate()
     int month = time_info.tm_mon + 1;
     int day = time_info.tm_mday;
 
-    std::string date = std::to_string(year) + "-" + std::to_string(month) + "-" + std::to_string(day);
+    std::string date = std::to_string(year) + "-";
+    
+    if (month < 10) date += "0";
+    date += std::to_string(month) + "-";
+    
+    if (day < 10) date += "0";
+    date += std::to_string(day);
+    
     return date;
 }
 

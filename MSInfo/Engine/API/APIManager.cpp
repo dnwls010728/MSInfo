@@ -22,7 +22,33 @@ std::string APIManager::UrlEncode(const std::string& str)
     return "";
 }
 
-rapidjson::Document APIManager::Request(const std::string& api_url)
+rapidjson::Document APIManager::Request(const std::string& url)
+{
+    rapidjson::Document doc;
+    CURL* curl = curl_easy_init();
+    if (curl)
+    {
+        std::string http_url = url;
+        http_url.replace(0, 5, "http");
+        curl_easy_setopt(curl, CURLOPT_URL, http_url.c_str());
+
+        std::string response;
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &response);
+
+        CURLcode res_code = curl_easy_perform(curl);
+
+        curl_easy_cleanup(curl);
+        
+        if (res_code != CURLE_OK) return doc;
+
+        return std::move(doc.Parse(response.c_str()));
+    }
+
+    return doc;
+}
+
+rapidjson::Document APIManager::RequestAPI(const std::string& api_url)
 {
     rapidjson::Document doc;
     CURL* curl = curl_easy_init();
@@ -54,49 +80,49 @@ rapidjson::Document APIManager::Request(const std::string& api_url)
 
 rapidjson::Document APIManager::RequestID(const std::string& character_name)
 {
-    rapidjson::Document doc = Request("/id?character_name=" + UrlEncode(character_name));
+    rapidjson::Document doc = RequestAPI("/id?character_name=" + UrlEncode(character_name));
     return doc;
 }
 
 rapidjson::Document APIManager::RequestCharacter(const std::string& ocid, const std::string& date)
 {
-    rapidjson::Document doc = Request("/character/basic?ocid=" + ocid + "&date=" + date);
+    rapidjson::Document doc = RequestAPI("/character/basic?ocid=" + ocid + "&date=" + date);
     return doc;
 }
 
 rapidjson::Document APIManager::RequestItemEquip(const std::string& ocid, const std::string& date)
 {
-    rapidjson::Document doc = Request("/character/item-equipment?ocid=" + ocid + "&date=" + date);
+    rapidjson::Document doc = RequestAPI("/character/item-equipment?ocid=" + ocid + "&date=" + date);
     return doc;
 }
 
 rapidjson::Document APIManager::RequestStat(const std::string& ocid, const std::string& date)
 {
-    rapidjson::Document doc = Request("/character/stat?ocid=" + ocid + "&date=" + date);
+    rapidjson::Document doc = RequestAPI("/character/stat?ocid=" + ocid + "&date=" + date);
     return doc;
 }
 
 rapidjson::Document APIManager::RequestAbility(const std::string& ocid, const std::string& date)
 {
-    rapidjson::Document doc = Request("/character/ability?ocid=" + ocid + "&date=" + date);
+    rapidjson::Document doc = RequestAPI("/character/ability?ocid=" + ocid + "&date=" + date);
     return doc;
 }
 
 rapidjson::Document APIManager::RequestHyperStat(const std::string& ocid, const std::string& date)
 {
-    rapidjson::Document doc = Request("/character/hyper-stat?ocid=" + ocid + "&date=" + date);
+    rapidjson::Document doc = RequestAPI("/character/hyper-stat?ocid=" + ocid + "&date=" + date);
     return doc;
 }
 
 rapidjson::Document APIManager::RequestSetEffect(const std::string& ocid, const std::string& date)
 {
-    rapidjson::Document doc = Request("/character/set-effect?ocid=" + ocid + "&date=" + date);
+    rapidjson::Document doc = RequestAPI("/character/set-effect?ocid=" + ocid + "&date=" + date);
     return doc;
 }
 
 rapidjson::Document APIManager::RequestLinkSkill(const std::string& ocid, const std::string& date)
 {
-    rapidjson::Document doc = Request("/character/link-skill?ocid=" + ocid + "&date=" + date);
+    rapidjson::Document doc = RequestAPI("/character/link-skill?ocid=" + ocid + "&date=" + date);
     return doc;
 }
 

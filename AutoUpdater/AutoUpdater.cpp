@@ -14,6 +14,19 @@ int APIENTRY wWinMain(
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
+    
+    if (lpCmdLine != nullptr && wcscmp(lpCmdLine, L"update") != 0)
+    {
+        return 0;
+    }
+    
+    HANDLE mutex_handle = CreateMutex(nullptr, FALSE, L"AutoUpdater");
+    if (GetLastError() == ERROR_ALREADY_EXISTS)
+    {
+        CloseHandle(mutex_handle);
+        MessageBox(Core::GetInstance()->GetWindowHandle(), L"이미 업데이트 중입니다.", L"Error", MB_OK);
+        return 0;
+    }
 
     if (!Core::GetInstance()->InitWindow(hInstance, nCmdShow)) return 0;
 
