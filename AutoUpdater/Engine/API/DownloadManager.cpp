@@ -8,13 +8,10 @@ void DownloadManager::DownloadFile(const std::string& url, const std::string& fi
     CURL* curl = curl_easy_init();
     if (curl)
     {
-        std::string http_url = url;
-        http_url.replace(0, 5, "http");
-        
         FILE* fp = nullptr;
         fopen_s(&fp, file_name.c_str(), "wb");
 
-        curl_easy_setopt(curl, CURLOPT_URL, http_url.c_str());
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 
         curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, ProgressCallback);
         curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);

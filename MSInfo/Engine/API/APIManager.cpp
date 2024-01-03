@@ -28,9 +28,7 @@ rapidjson::Document APIManager::Request(const std::string& url)
     CURL* curl = curl_easy_init();
     if (curl)
     {
-        std::string http_url = url;
-        http_url.replace(0, 5, "http");
-        curl_easy_setopt(curl, CURLOPT_URL, http_url.c_str());
+        curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
 
         std::string response;
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
@@ -54,7 +52,7 @@ rapidjson::Document APIManager::RequestAPI(const std::string& api_url)
     CURL* curl = curl_easy_init();
     if (curl)
     {
-        std::string url = "http://open.api.nexon.com/maplestory/v1" + api_url;
+        std::string url = "https://open.api.nexon.com/maplestory/v1" + api_url;
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
         
         struct curl_slist* headers = nullptr;

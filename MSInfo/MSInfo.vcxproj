@@ -129,7 +129,7 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>$(SolutionDir)\MSInfo\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>libcurld.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -332,7 +332,9 @@
     <Content Include="Fonts\NanumBarunGothic.ttf" />
     <Content Include="Include\curl\Makefile.am" />
     <Content Include="Include\curl\Makefile.in" />
+    <Content Include="libcurl.dll" />
     <Content Include="libcurld.dll" />
+    <Content Include="Lib\libcurl.lib" />
     <Content Include="Lib\libcurld.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
