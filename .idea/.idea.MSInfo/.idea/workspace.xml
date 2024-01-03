@@ -12,6 +12,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-29__2_52__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-29__2_52__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,9 +198,9 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Nexol\\AppData\\Local\\Symbols\\src&quot;
+      &quot;C:\\Users\\Woojin Choi\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Woojin Choi\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Woojin Choi\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
@@ -333,6 +334,8 @@
       <workItem from="1704175176781" duration="4884000" />
       <workItem from="1704248462011" duration="6857000" />
       <workItem from="1704271638689" duration="513000" />
+      <workItem from="1704282580989" duration="736000" />
+      <workItem from="1704284135334" duration="879000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
