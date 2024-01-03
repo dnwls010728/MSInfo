@@ -8,9 +8,62 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: LIB 변경 및 HTTPS로 변경">
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="CHORE: 불필요한 파일 제거">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AutoUpdater/test.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/DownloadManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/DownloadManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/DownloadManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/DownloadManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/9.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +77,136 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um/shellapi.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/API/APIManager.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui_demo.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -72,7 +255,7 @@
     ]
   }
 }</component>
-  <component name="RunManager" selected="C++ Project.AutoUpdater">
+  <component name="RunManager" selected="C++ Project.MSInfo">
     <configuration name="AutoUpdater" type="CppProject" factoryName="C++ Project">
       <configuration_1>
         <option name="CONFIGURATION" value="Debug" />
@@ -200,7 +383,7 @@
       <workItem from="1704096853398" duration="3215000" />
       <workItem from="1704162724134" duration="1329000" />
       <workItem from="1704175176781" duration="4884000" />
-      <workItem from="1704248462011" duration="633000" />
+      <workItem from="1704248462011" duration="6857000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -330,7 +513,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704248773410</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="CHORE: 불필요한 파일 제거">
+      <option name="closed" value="true" />
+      <created>1704249424168</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1704249424168</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,6 +547,7 @@
     <MESSAGE value="FEAT: Auto Updater 프로젝트 추가" />
     <MESSAGE value="FEAT: 스킬 추가" />
     <MESSAGE value="FEAT: LIB 변경 및 HTTPS로 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: LIB 변경 및 HTTPS로 변경" />
+    <MESSAGE value="CHORE: 불필요한 파일 제거" />
+    <option name="LAST_COMMIT_MESSAGE" value="CHORE: 불필요한 파일 제거" />
   </component>
 </project>

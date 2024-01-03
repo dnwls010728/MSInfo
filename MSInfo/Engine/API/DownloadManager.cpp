@@ -2,11 +2,15 @@
 
 #include "curl/curl.h"
 
+#include <filesystem>
+
 void DownloadManager::DownloadFile(const std::string& url, const std::string& file_name)
 {
     CURL* curl = curl_easy_init();
     if (curl)
     {
+        CheckDirectory(file_name.substr(0, file_name.find_last_of('\\')));
+        
         FILE* fp = nullptr;
         fopen_s(&fp, file_name.c_str(), "wb");
 
@@ -21,6 +25,16 @@ void DownloadManager::DownloadFile(const std::string& url, const std::string& fi
         
         curl_easy_cleanup(curl);
     }
+}
+
+bool DownloadManager::CheckDirectory(const std::string& path)
+{
+    std::filesystem::path dir(path);
+    if (std::filesystem::exists(dir)) return true;
+    if (CheckDirectory(dir.parent_path().string()))
+        return std::filesystem::create_directory(dir);
+    
+    return false;
 }
 
 size_t DownloadManager::WriteCallback(void* contents, size_t size, size_t nmemb, FILE* userp)
