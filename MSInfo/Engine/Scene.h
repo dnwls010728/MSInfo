@@ -17,6 +17,7 @@ private:
     void SearchCharacter(const std::string& character_name);
     void ShowLinkSkill(bool* p_open);
     void ShowSkill(bool* p_open);
+    void ShowUnion(bool* p_open);
 
     std::string SafeGetString(const rapidjson::Value& value, const std::string& key);
 
@@ -26,7 +27,10 @@ private:
 
     int character_image_width;
     int character_image_height;
+    int union_board_image_width;
+    int union_board_image_height;
 
     ID3D11ShaderResourceView* character_image;
+    ID3D11ShaderResourceView* union_board_image;
     
 };

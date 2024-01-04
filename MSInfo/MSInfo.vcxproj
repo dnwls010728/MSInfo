@@ -147,6 +147,7 @@
     <ClInclude Include="Engine\Data\SetEffectData.h" />
     <ClInclude Include="Engine\Data\StatData.h" />
     <ClInclude Include="Engine\Data\Union\UnionBlockData.h" />
+    <ClInclude Include="Engine\Data\Union\UnionBlockPointData.h" />
     <ClInclude Include="Engine\Data\Union\UnionRaiderData.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
     <ClInclude Include="Engine\Scene.h" />

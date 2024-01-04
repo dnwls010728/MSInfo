@@ -2,19 +2,15 @@
 #include <string>
 #include <vector>
 
+#include "UnionBlockPointData.h"
+
 struct UnionBlockData
 {
-    struct BlockPoint
-    {
-        std::string x;
-        std::string y;
-    };
-
     std::string block_type;
     std::string block_class;
     std::string block_level;
     
-    struct BlockPoint block_control_point;
+    struct UnionBlockPointData block_control_point;
     
-    std::vector<BlockPoint> block_position;
+    std::vector<UnionBlockPointData> block_position;
 };
