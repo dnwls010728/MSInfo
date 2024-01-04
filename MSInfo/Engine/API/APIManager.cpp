@@ -131,6 +131,12 @@ rapidjson::Document APIManager::RequestSkill(const std::string& ocid, const std:
     return doc;
 }
 
+rapidjson::Document APIManager::RequestUnionRaider(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = RequestAPI("/character/union-raider?ocid=" + ocid + "&date=" + date);
+    return doc;
+}
+
 size_t APIManager::WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp)
 {
     size_t total_size = size * nmemb;

@@ -606,86 +606,77 @@ void Scene::SearchCharacter(const std::string& character_name)
                                                     &character_image_height);
     IM_ASSERT(ret);
 
-    struct CharacterData character_data = {
-        SafeGetString(character_document, "character_name"),
-        SafeGetString(character_document, "world_name"),
-        SafeGetString(character_document, "character_class"),
-        SafeGetString(character_document, "character_level"),
-        SafeGetString(character_document, "character_guild_name")
-    };
-
-    DataManager->SetCharacterData(character_data);
+    DataManager->GetCharacterData().character_name = SafeGetString(character_document, "character_name");
+    DataManager->GetCharacterData().world_name = SafeGetString(character_document, "world_name");
+    DataManager->GetCharacterData().character_class = SafeGetString(character_document, "character_class");
+    DataManager->GetCharacterData().character_level = SafeGetString(character_document, "character_level");
+    DataManager->GetCharacterData().character_guild_name = SafeGetString(character_document, "character_guild_name");
 #pragma endregion
 
 #pragma region 스텟
     rapidjson::Document stat_document = APIManager::GetInstance()->RequestStat(DataManager->GetOcid(), date_);
 
-    struct StatData stat_data = {
-        SafeGetString(stat_document["final_stat"][0], "stat_value"),
-        SafeGetString(stat_document["final_stat"][1], "stat_value"),
-        SafeGetString(stat_document["final_stat"][2], "stat_value"),
-        SafeGetString(stat_document["final_stat"][3], "stat_value"),
-        SafeGetString(stat_document["final_stat"][4], "stat_value"),
-        SafeGetString(stat_document["final_stat"][5], "stat_value"),
-        SafeGetString(stat_document["final_stat"][6], "stat_value"),
-        SafeGetString(stat_document["final_stat"][7], "stat_value"),
-        SafeGetString(stat_document["final_stat"][8], "stat_value"),
-        SafeGetString(stat_document["final_stat"][9], "stat_value"),
-        SafeGetString(stat_document["final_stat"][10], "stat_value"),
-        SafeGetString(stat_document["final_stat"][11], "stat_value"),
-        SafeGetString(stat_document["final_stat"][12], "stat_value"),
-        SafeGetString(stat_document["final_stat"][13], "stat_value"),
-        SafeGetString(stat_document["final_stat"][14], "stat_value"),
-        SafeGetString(stat_document["final_stat"][15], "stat_value"),
-        SafeGetString(stat_document["final_stat"][16], "stat_value"),
-        SafeGetString(stat_document["final_stat"][17], "stat_value"),
-        SafeGetString(stat_document["final_stat"][18], "stat_value"),
-        SafeGetString(stat_document["final_stat"][19], "stat_value"),
-        SafeGetString(stat_document["final_stat"][20], "stat_value"),
-        SafeGetString(stat_document["final_stat"][21], "stat_value"),
-        SafeGetString(stat_document["final_stat"][22], "stat_value"),
-        SafeGetString(stat_document["final_stat"][23], "stat_value"),
-        SafeGetString(stat_document["final_stat"][24], "stat_value"),
-        SafeGetString(stat_document["final_stat"][25], "stat_value"),
-        SafeGetString(stat_document["final_stat"][26], "stat_value"),
-        SafeGetString(stat_document["final_stat"][27], "stat_value"),
-        SafeGetString(stat_document["final_stat"][28], "stat_value"),
-        SafeGetString(stat_document["final_stat"][29], "stat_value"),
-        SafeGetString(stat_document["final_stat"][30], "stat_value"),
-        SafeGetString(stat_document["final_stat"][31], "stat_value"),
-        SafeGetString(stat_document["final_stat"][32], "stat_value"),
-        SafeGetString(stat_document["final_stat"][33], "stat_value"),
-        SafeGetString(stat_document["final_stat"][34], "stat_value"),
-        SafeGetString(stat_document["final_stat"][35], "stat_value"),
-        SafeGetString(stat_document["final_stat"][36], "stat_value"),
-        SafeGetString(stat_document["final_stat"][37], "stat_value"),
-        SafeGetString(stat_document["final_stat"][38], "stat_value"),
-        SafeGetString(stat_document["final_stat"][39], "stat_value"),
-        SafeGetString(stat_document["final_stat"][40], "stat_value"),
-        SafeGetString(stat_document["final_stat"][41], "stat_value"),
-        SafeGetString(stat_document["final_stat"][42], "stat_value"),
-        SafeGetString(stat_document["final_stat"][43], "stat_value")
-    };
-
-    DataManager->SetStatData(stat_data);
+    DataManager->GetStatData().min_stat_attack = SafeGetString(stat_document["final_stat"][0], "stat_value");
+    DataManager->GetStatData().max_stat_attack = SafeGetString(stat_document["final_stat"][1], "stat_value");
+    DataManager->GetStatData().damage = SafeGetString(stat_document["final_stat"][2], "stat_value");
+    DataManager->GetStatData().boss_damage = SafeGetString(stat_document["final_stat"][3], "stat_value");
+    DataManager->GetStatData().final_damage = SafeGetString(stat_document["final_stat"][4], "stat_value");
+    DataManager->GetStatData().ignore_defense = SafeGetString(stat_document["final_stat"][5], "stat_value");
+    DataManager->GetStatData().critical_rate = SafeGetString(stat_document["final_stat"][6], "stat_value");
+    DataManager->GetStatData().critical_damage = SafeGetString(stat_document["final_stat"][7], "stat_value");
+    DataManager->GetStatData().status_resistance = SafeGetString(stat_document["final_stat"][8], "stat_value");
+    DataManager->GetStatData().stance = SafeGetString(stat_document["final_stat"][9], "stat_value");
+    DataManager->GetStatData().defense = SafeGetString(stat_document["final_stat"][10], "stat_value");
+    DataManager->GetStatData().speed = SafeGetString(stat_document["final_stat"][11], "stat_value");
+    DataManager->GetStatData().jump = SafeGetString(stat_document["final_stat"][12], "stat_value");
+    DataManager->GetStatData().star_force = SafeGetString(stat_document["final_stat"][13], "stat_value");
+    DataManager->GetStatData().arcane_force = SafeGetString(stat_document["final_stat"][14], "stat_value");
+    DataManager->GetStatData().authentic_force = SafeGetString(stat_document["final_stat"][15], "stat_value");
+    DataManager->GetStatData().stat_str = SafeGetString(stat_document["final_stat"][16], "stat_value");
+    DataManager->GetStatData().stat_dex = SafeGetString(stat_document["final_stat"][17], "stat_value");
+    DataManager->GetStatData().stat_int = SafeGetString(stat_document["final_stat"][18], "stat_value");
+    DataManager->GetStatData().stat_luk = SafeGetString(stat_document["final_stat"][19], "stat_value");
+    DataManager->GetStatData().hp = SafeGetString(stat_document["final_stat"][20], "stat_value");
+    DataManager->GetStatData().mp = SafeGetString(stat_document["final_stat"][21], "stat_value");
+    DataManager->GetStatData().ap_str = SafeGetString(stat_document["final_stat"][22], "stat_value");
+    DataManager->GetStatData().ap_dex = SafeGetString(stat_document["final_stat"][23], "stat_value");
+    DataManager->GetStatData().ap_int = SafeGetString(stat_document["final_stat"][24], "stat_value");
+    DataManager->GetStatData().ap_luk = SafeGetString(stat_document["final_stat"][25], "stat_value");
+    DataManager->GetStatData().ap_hp = SafeGetString(stat_document["final_stat"][26], "stat_value");
+    DataManager->GetStatData().ap_mp = SafeGetString(stat_document["final_stat"][27], "stat_value");
+    DataManager->GetStatData().item_drop_rate = SafeGetString(stat_document["final_stat"][28], "stat_value");
+    DataManager->GetStatData().meso_drop_rate = SafeGetString(stat_document["final_stat"][29], "stat_value");
+    DataManager->GetStatData().buff_duration = SafeGetString(stat_document["final_stat"][30], "stat_value");
+    DataManager->GetStatData().attack_speed = SafeGetString(stat_document["final_stat"][31], "stat_value");
+    DataManager->GetStatData().normal_monster_damage = SafeGetString(stat_document["final_stat"][32], "stat_value");
+    DataManager->GetStatData().cooldown_reduction = SafeGetString(stat_document["final_stat"][33], "stat_value");
+    DataManager->GetStatData().cooldown_reduction_percent = SafeGetString(stat_document["final_stat"][34], "stat_value");
+    DataManager->GetStatData().cooldown_reduction_not_apply = SafeGetString(stat_document["final_stat"][35], "stat_value");
+    DataManager->GetStatData().status_resistance_ignore = SafeGetString(stat_document["final_stat"][36], "stat_value");
+    DataManager->GetStatData().additional_damage = SafeGetString(stat_document["final_stat"][37], "stat_value");
+    DataManager->GetStatData().weapon_mastery = SafeGetString(stat_document["final_stat"][38], "stat_value");
+    DataManager->GetStatData().additional_exp = SafeGetString(stat_document["final_stat"][39], "stat_value");
+    DataManager->GetStatData().attack_power = SafeGetString(stat_document["final_stat"][40], "stat_value");
+    DataManager->GetStatData().magic_power = SafeGetString(stat_document["final_stat"][41], "stat_value");
+    DataManager->GetStatData().combat_power = SafeGetString(stat_document["final_stat"][42], "stat_value");
+    DataManager->GetStatData().summon_duration = SafeGetString(stat_document["final_stat"][43], "stat_value");
 #pragma endregion
 
 #pragma region 어빌리티
     rapidjson::Document ability_document = APIManager::GetInstance()->RequestAbility(DataManager->GetOcid(), date_);
     rapidjson::Value& ability_info = ability_document["ability_info"].GetArray();
 
-    struct AbilityData ability_data;
-    ability_data.ability_grade = SafeGetString(ability_info[0], "ability_grade");
+    DataManager->GetAbilityData().ability_grade = SafeGetString(ability_document, "ability_grade");
+    DataManager->GetAbilityData().abilities.clear();
 
     for (int i = 0; i < ability_info.Size(); i++)
     {
         struct AbilityData::Ability ability;
         ability.ability_grade = SafeGetString(ability_info[i], "ability_grade");
         ability.ability_value = SafeGetString(ability_info[i], "ability_value");
-        ability_data.abilities.push_back(ability);
-    }
 
-    DataManager->SetAbilityData(ability_data);
+        DataManager->GetAbilityData().abilities.push_back(ability);
+    }
 
 #pragma endregion
 
@@ -696,8 +687,10 @@ void Scene::SearchCharacter(const std::string& character_name)
     rapidjson::Value& hyper_stat_preset_2 = hyper_stat_document["hyper_stat_preset_2"].GetArray();
     rapidjson::Value& hyper_stat_preset_3 = hyper_stat_document["hyper_stat_preset_3"].GetArray();
 
-    struct HyperStatData hyper_stat_data;
-    hyper_stat_data.use_preset_no = hyper_stat_document["use_preset_no"].GetString();
+    DataManager->GetHyperStatData().use_preset_no = SafeGetString(hyper_stat_document, "use_preset_no");
+    DataManager->GetHyperStatData().preset_1.clear();
+    DataManager->GetHyperStatData().preset_2.clear();
+    DataManager->GetHyperStatData().preset_3.clear();
 
     for (int i = 0; i < hyper_stat_preset_1.Size(); i++)
     {
@@ -707,7 +700,7 @@ void Scene::SearchCharacter(const std::string& character_name)
         hyper_stat.stat_level = SafeGetString(hyper_stat_preset_1[i], "stat_level");
         hyper_stat.stat_increase = SafeGetString(hyper_stat_preset_1[i], "stat_increase");
 
-        hyper_stat_data.preset_1.push_back(hyper_stat);
+        DataManager->GetHyperStatData().preset_1.push_back(hyper_stat);
     }
 
     for (int i = 0; i < hyper_stat_preset_2.Size(); i++)
@@ -718,7 +711,7 @@ void Scene::SearchCharacter(const std::string& character_name)
         hyper_stat.stat_level = SafeGetString(hyper_stat_preset_2[i], "stat_level");
         hyper_stat.stat_increase = SafeGetString(hyper_stat_preset_2[i], "stat_increase");
 
-        hyper_stat_data.preset_2.push_back(hyper_stat);
+        DataManager->GetHyperStatData().preset_2.push_back(hyper_stat);
     }
 
     for (int i = 0; i < hyper_stat_preset_3.Size(); i++)
@@ -729,10 +722,8 @@ void Scene::SearchCharacter(const std::string& character_name)
         hyper_stat.stat_level = SafeGetString(hyper_stat_preset_3[i], "stat_level");
         hyper_stat.stat_increase = SafeGetString(hyper_stat_preset_3[i], "stat_increase");
 
-        hyper_stat_data.preset_3.push_back(hyper_stat);
+        DataManager->GetHyperStatData().preset_3.push_back(hyper_stat);
     }
-
-    DataManager->SetHyperStatData(hyper_stat_data);
 
 #pragma endregion
 
@@ -741,16 +732,16 @@ void Scene::SearchCharacter(const std::string& character_name)
         RequestSetEffect(DataManager->GetOcid(), date_);
     rapidjson::Value& set_effect_info = set_effect_document["set_effect"].GetArray();
 
-    struct SetEffectData set_effect_data;
+    DataManager->GetSetEffectData().set_effects.clear();
+
     for (int i = 0; i < set_effect_info.Size(); i++)
     {
         struct SetEffectData::SetEffect set_effect;
         set_effect.set_name = SafeGetString(set_effect_info[i], "set_name");
         set_effect.total_set_count = SafeGetString(set_effect_info[i], "total_set_count");
-        set_effect_data.set_effects.push_back(set_effect);
-    }
 
-    DataManager->SetSetEffectData(set_effect_data);
+        DataManager->GetSetEffectData().set_effects.push_back(set_effect);
+    }
 #pragma endregion
 
 #pragma region 링크 스킬
@@ -813,6 +804,13 @@ void Scene::SearchCharacter(const std::string& character_name)
             DataManager::GetInstance()->skill_data[i].push_back(skill_data);
         }
     }
+#pragma endregion
+
+#pragma region 유니온 공격대
+    rapidjson::Document union_raider_document = APIManager::GetInstance()->
+        RequestUnionRaider(DataManager->GetOcid(), date_);
+    rapidjson::Value& union_raider_stat = union_raider_document["union_raider_stat"].GetArray();
+    rapidjson::Value& union_occupied_stat = union_raider_document["union_occupied_stat"].GetArray();
 #pragma endregion
 }
 
