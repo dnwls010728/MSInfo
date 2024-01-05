@@ -9,7 +9,7 @@
 #include "HyperStatData.h"
 #include "SetEffectData.h"
 #include "SkillData.h"
-#include "Union/UnionRaiderData.h"
+#include "ItemEquipment/ItemEquipmentData.h"
 
 class DataManager : public Singleton<DataManager>
 {
@@ -31,7 +31,6 @@ public:
     inline struct AbilityData& GetAbilityData() { return ability_data_; }
     inline struct HyperStatData& GetHyperStatData() { return hyper_stat_data_; }
     inline struct SetEffectData& GetSetEffectData() { return set_effect_data_; }
-    inline struct UnionRaiderData& GetUnionRaiderData() { return union_raider_data_; }
     
     inline std::vector<struct SkillData>& GetLinkSkillData() { return link_skill_data_; }
     
@@ -45,7 +44,7 @@ private:
     struct AbilityData ability_data_;
     struct HyperStatData hyper_stat_data_;
     struct SetEffectData set_effect_data_;
-    struct UnionRaiderData union_raider_data_;
+    struct ItemEquipmentData item_equipment_data_;
 
     std::vector<struct SkillData> link_skill_data_;
     

@@ -15,7 +15,6 @@
 #define CHARACTER_IMAGE_PATH ".\\Temp\\Character\\character_image.png"
 #define LINK_SKILL_ICON_PATH ".\\Temp\\Icon\\LinkSkill\\"
 #define SKILL_ICON_PATH ".\\Temp\\Icon\\Skill\\"
-#define UNION_BOARD_IMAGE_PATH ".\\Resources\\outline-union-board.png"
 
 Scene::Scene()
 {
@@ -32,7 +31,6 @@ void Scene::Render()
 
     static bool show_link_skill = false;
     static bool show_skill = false;
-    static bool show_union = false;
 
 #pragma region 기본
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
@@ -52,7 +50,6 @@ void Scene::Render()
         {
             ImGui::MenuItem(u8"링크 스킬", nullptr, &show_link_skill);
             ImGui::MenuItem(u8"스킬", nullptr, &show_skill);
-            ImGui::MenuItem(u8"유니온", nullptr, &show_union);
             
             ImGui::EndMenu();
         }
@@ -581,7 +578,6 @@ void Scene::Render()
     
     if (show_link_skill) ShowLinkSkill(&show_link_skill);
     if (show_skill) ShowSkill(&show_skill);
-    if (show_union) ShowUnion(&show_union);
 }
 
 // 추후 성능 확인 후 멀티 스레드로 개선
@@ -809,47 +805,6 @@ void Scene::SearchCharacter(const std::string& character_name)
         }
     }
 #pragma endregion
-
-#pragma region 유니온 공격대
-    rapidjson::Document union_raider_document = APIManager::GetInstance()->
-        RequestUnionRaider(DataManager->GetOcid(), date_);
-    rapidjson::Value& union_raider_stat = union_raider_document["union_raider_stat"].GetArray();
-    rapidjson::Value& union_occupied_stat = union_raider_document["union_occupied_stat"].GetArray();
-    rapidjson::Value& union_block = union_raider_document["union_block"].GetArray();
-
-    for (int i = 0; i < union_raider_stat.Size(); i++)
-    {
-        DataManager->GetUnionRaiderData().union_raider_stat.push_back(union_raider_stat[i].GetString());
-    }
-
-    for (int i = 0; i < union_occupied_stat.Size(); i++)
-    {
-        DataManager->GetUnionRaiderData().union_occupied_stat.push_back(union_occupied_stat[i].GetString());
-    }
-
-    for (int i = 0; i < union_block.Size(); i++)
-    {
-        struct UnionBlockData union_block_data;
-        union_block_data.block_type = SafeGetString(union_block[i], "block_type");
-        union_block_data.block_class = SafeGetString(union_block[i], "block_class");
-        union_block_data.block_level = SafeGetString(union_block[i], "block_level");
-
-        union_block_data.block_control_point.x = SafeGetString(union_block["block_control_point"], "x");
-        union_block_data.block_control_point.y = SafeGetString(union_block["block_control_point"], "y");
-
-        rapidjson::Value& block_position = union_block[i]["block_position"].GetArray();
-        for (int j = 0; j < block_position.Size(); j++)
-        {
-            struct UnionBlockPointData union_block_point_data;
-            union_block_point_data.x = SafeGetString(block_position[j], "x");
-            union_block_point_data.y = SafeGetString(block_position[j], "y");
-
-            union_block_data.block_position.push_back(union_block_point_data);
-        }
-
-        DataManager->GetUnionRaiderData().union_block.push_back(union_block_data);
-    }
-#pragma endregion
 }
 
 void Scene::ShowLinkSkill(bool* p_open)
@@ -918,28 +873,6 @@ void Scene::ShowSkill(bool* p_open)
     }
 
     ImGui::EndTabBar();
-    ImGui::End();
-}
-
-void Scene::ShowUnion(bool* p_open)
-{
-    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin(u8"유니온 공격대", p_open))
-    {
-        ImGui::End();
-        return;
-    }
-
-    if (!union_board_image)
-    {
-        bool ret = Graphics::GetInstance()->LoadTexture(UNION_BOARD_IMAGE_PATH, &union_board_image,
-                                                        &union_board_image_width, &union_board_image_height);
-
-        IM_ASSERT(ret);
-    }
-
-    ImGui::Image(union_board_image, ImVec2(union_board_image_width, union_board_image_height));
-
     ImGui::End();
 }
 
