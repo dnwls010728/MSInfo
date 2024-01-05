@@ -88,12 +88,6 @@ rapidjson::Document APIManager::RequestCharacter(const std::string& ocid, const 
     return doc;
 }
 
-rapidjson::Document APIManager::RequestItemEquip(const std::string& ocid, const std::string& date)
-{
-    rapidjson::Document doc = RequestAPI("/character/item-equipment?ocid=" + ocid + "&date=" + date);
-    return doc;
-}
-
 rapidjson::Document APIManager::RequestStat(const std::string& ocid, const std::string& date)
 {
     rapidjson::Document doc = RequestAPI("/character/stat?ocid=" + ocid + "&date=" + date);
@@ -128,6 +122,12 @@ rapidjson::Document APIManager::RequestSkill(const std::string& ocid, const std:
     const std::string& skill_grade)
 {
     rapidjson::Document doc = RequestAPI("/character/skill?ocid=" + ocid + "&date=" + date + "&character_skill_grade=" + skill_grade);
+    return doc;
+}
+
+rapidjson::Document APIManager::RequestItemEquipment(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = RequestAPI("/character/item-equipment?ocid=" + ocid + "&date=" + date);
     return doc;
 }
 

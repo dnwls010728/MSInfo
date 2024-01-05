@@ -12,9 +12,21 @@
 #include "rapidjson/document.h"
 #include "rapidjson/rapidjson.h"
 
+#include "Data/ItemEquipment/ItemEquipmentInfoData.h"
+#include "Data/ItemEquipment/ItemTotalOptionData.h"
+#include "Data/ItemEquipment/ItemBaseOptionData.h"
+#include "Data/ItemEquipment/ItemExceptionalOptionData.h"
+#include "Data/ItemEquipment/ItemAddOptionData.h"
+
 #define CHARACTER_IMAGE_PATH ".\\Temp\\Character\\character_image.png"
 #define LINK_SKILL_ICON_PATH ".\\Temp\\Icon\\LinkSkill\\"
 #define SKILL_ICON_PATH ".\\Temp\\Icon\\Skill\\"
+#define ITEM_EQUIPMENT_ICON_PATH ".\\Temp\\Icon\\ItemEquipment\\"
+
+#define TOTAL_OPTION() ImVec4(99.f / 255.f, 244.f / 255.f, 244.f / 255.f, 1.f)
+#define ADD_OPTION() ImVec4(175.f / 255.f, 218.f / 255.f, 5.f / 255.f, 1.f);
+#define ETC_OPTION() ImVec4(139.f / 255.f, 139.f / 255.f, 204.f / 255.f, 1.f);
+#define STARFORCE_OPTION() ImVec4(235.f / 255.f, 189.f / 255.f, 3.f / 255.f, 1.f);
 
 Scene::Scene()
 {
@@ -31,6 +43,7 @@ void Scene::Render()
 
     static bool show_link_skill = false;
     static bool show_skill = false;
+    static bool show_equipment = false;
 
 #pragma region 기본
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
@@ -50,6 +63,7 @@ void Scene::Render()
         {
             ImGui::MenuItem(u8"링크 스킬", nullptr, &show_link_skill);
             ImGui::MenuItem(u8"스킬", nullptr, &show_skill);
+            ImGui::MenuItem(u8"장비", nullptr, &show_equipment);
             
             ImGui::EndMenu();
         }
@@ -578,6 +592,7 @@ void Scene::Render()
     
     if (show_link_skill) ShowLinkSkill(&show_link_skill);
     if (show_skill) ShowSkill(&show_skill);
+    if (show_equipment) ShowEquipment(&show_equipment);
 }
 
 // 추후 성능 확인 후 멀티 스레드로 개선
@@ -805,6 +820,152 @@ void Scene::SearchCharacter(const std::string& character_name)
         }
     }
 #pragma endregion
+
+#pragma region 장비
+    rapidjson::Document equipment_document = APIManager::GetInstance()->
+        RequestItemEquipment(DataManager->GetOcid(), date_);
+
+    rapidjson::Value& item_equipment_info = equipment_document["item_equipment"].GetArray();
+
+    DataManager->GetItemEquipmentData().item_equipment.clear();
+    DataManager->GetItemEquipmentData().dragon_equipment.clear();
+    DataManager->GetItemEquipmentData().mechanic_equipment.clear();
+    
+    for (int i = 0; i < item_equipment_info.Size(); i++)
+    {
+        struct ItemEquipmentInfoData item_equipment_info_data;
+        item_equipment_info_data.item_equipment_part = SafeGetString(item_equipment_info[i], "item_equipment_part");
+        item_equipment_info_data.item_equipment_slot = SafeGetString(item_equipment_info[i], "item_equipment_slot");
+        item_equipment_info_data.item_name = SafeGetString(item_equipment_info[i], "item_name");
+        item_equipment_info_data.item_description = SafeGetString(item_equipment_info[i], "item_description");
+        item_equipment_info_data.item_shape_name = SafeGetString(item_equipment_info[i], "item_shape_name");
+
+        std::string item_icon_url = SafeGetString(item_equipment_info[i], "item_shape_icon");
+        DownloadManager::GetInstance()->DownloadFile(item_icon_url, ITEM_EQUIPMENT_ICON_PATH + std::to_string(i) + ".png");
+
+        bool ret = Graphics::GetInstance()->LoadTexture(ITEM_EQUIPMENT_ICON_PATH + std::to_string(i) + ".png",
+                                                        &item_equipment_info_data.icon,
+                                                        &item_equipment_info_data.icon_width,
+                                                        &item_equipment_info_data.icon_height);
+
+        IM_ASSERT(ret);
+        
+        item_equipment_info_data.item_gender = SafeGetString(item_equipment_info[i], "item_gender");
+
+        item_equipment_info_data.item_total_option.stat_str = SafeGetString(item_equipment_info[i]["item_total_option"], "str");
+        item_equipment_info_data.item_total_option.stat_dex = SafeGetString(item_equipment_info[i]["item_total_option"], "dex");
+        item_equipment_info_data.item_total_option.stat_int = SafeGetString(item_equipment_info[i]["item_total_option"], "int");
+        item_equipment_info_data.item_total_option.stat_luk = SafeGetString(item_equipment_info[i]["item_total_option"], "luk");
+        item_equipment_info_data.item_total_option.max_hp = SafeGetString(item_equipment_info[i]["item_total_option"], "max_hp");
+        item_equipment_info_data.item_total_option.max_mp = SafeGetString(item_equipment_info[i]["item_total_option"], "max_mp");
+        item_equipment_info_data.item_total_option.attack_power = SafeGetString(item_equipment_info[i]["item_total_option"], "attack_power");
+        item_equipment_info_data.item_total_option.magic_power = SafeGetString(item_equipment_info[i]["item_total_option"], "magic_power");
+        item_equipment_info_data.item_total_option.armor = SafeGetString(item_equipment_info[i]["item_total_option"], "armor");
+        item_equipment_info_data.item_total_option.speed = SafeGetString(item_equipment_info[i]["item_total_option"], "speed");
+        item_equipment_info_data.item_total_option.jump = SafeGetString(item_equipment_info[i]["item_total_option"], "jump");
+        item_equipment_info_data.item_total_option.boss_damage = SafeGetString(item_equipment_info[i]["item_total_option"], "boss_damage");
+        item_equipment_info_data.item_total_option.ignore_monster_armor = SafeGetString(item_equipment_info[i]["item_total_option"], "ignore_monster_armor");
+        item_equipment_info_data.item_total_option.all_stat = SafeGetString(item_equipment_info[i]["item_total_option"], "all_stat");
+        item_equipment_info_data.item_total_option.damage = SafeGetString(item_equipment_info[i]["item_total_option"], "damage");
+        item_equipment_info_data.item_total_option.equipment_level_decrease = SafeGetString(item_equipment_info[i]["item_total_option"], "equipment_level_decrease");
+        item_equipment_info_data.item_total_option.max_hp_rate = SafeGetString(item_equipment_info[i]["item_total_option"], "max_hp_rate");
+        item_equipment_info_data.item_total_option.max_mp_rate = SafeGetString(item_equipment_info[i]["item_total_option"], "max_mp_rate");
+
+        item_equipment_info_data.item_base_option.stat_str = SafeGetString(item_equipment_info[i]["item_base_option"], "str");
+        item_equipment_info_data.item_base_option.stat_dex = SafeGetString(item_equipment_info[i]["item_base_option"], "dex");
+        item_equipment_info_data.item_base_option.stat_int = SafeGetString(item_equipment_info[i]["item_base_option"], "int");
+        item_equipment_info_data.item_base_option.stat_luk = SafeGetString(item_equipment_info[i]["item_base_option"], "luk");
+        item_equipment_info_data.item_base_option.max_hp = SafeGetString(item_equipment_info[i]["item_base_option"], "max_hp");
+        item_equipment_info_data.item_base_option.max_mp = SafeGetString(item_equipment_info[i]["item_base_option"], "max_mp");
+        item_equipment_info_data.item_base_option.attack_power = SafeGetString(item_equipment_info[i]["item_base_option"], "attack_power");
+        item_equipment_info_data.item_base_option.magic_power = SafeGetString(item_equipment_info[i]["item_base_option"], "magic_power");
+        item_equipment_info_data.item_base_option.armor = SafeGetString(item_equipment_info[i]["item_base_option"], "armor");
+        item_equipment_info_data.item_base_option.speed = SafeGetString(item_equipment_info[i]["item_base_option"], "speed");
+        item_equipment_info_data.item_base_option.jump = SafeGetString(item_equipment_info[i]["item_base_option"], "jump");
+        item_equipment_info_data.item_base_option.boss_damage = SafeGetString(item_equipment_info[i]["item_base_option"], "boss_damage");
+        item_equipment_info_data.item_base_option.ignore_monster_armor = SafeGetString(item_equipment_info[i]["item_base_option"], "ignore_monster_armor");
+        item_equipment_info_data.item_base_option.all_stat = SafeGetString(item_equipment_info[i]["item_base_option"], "all_stat");
+        item_equipment_info_data.item_base_option.max_hp_rate = SafeGetString(item_equipment_info[i]["item_base_option"], "max_hp_rate");
+        item_equipment_info_data.item_base_option.max_mp_rate = SafeGetString(item_equipment_info[i]["item_base_option"], "max_mp_rate");
+        item_equipment_info_data.item_base_option.base_equipment_level = SafeGetString(item_equipment_info[i]["item_base_option"], "base_equipment_level");
+
+        item_equipment_info_data.potential_option_grade = SafeGetString(item_equipment_info[i], "potential_option_grade");
+        item_equipment_info_data.potential_option_1 = SafeGetString(item_equipment_info[i], "potential_option_1");
+        item_equipment_info_data.potential_option_2 = SafeGetString(item_equipment_info[i], "potential_option_2");
+        item_equipment_info_data.potential_option_3 = SafeGetString(item_equipment_info[i], "potential_option_3");
+        item_equipment_info_data.additional_potential_option_grade = SafeGetString(item_equipment_info[i], "additional_potential_option_grade");
+        item_equipment_info_data.additional_potential_option_1 = SafeGetString(item_equipment_info[i], "additional_potential_option_1");
+        item_equipment_info_data.additional_potential_option_2 = SafeGetString(item_equipment_info[i], "additional_potential_option_2");
+        item_equipment_info_data.additional_potential_option_3 = SafeGetString(item_equipment_info[i], "additional_potential_option_3");
+        item_equipment_info_data.equipment_level_increase = SafeGetString(item_equipment_info[i], "equipment_level_increase");
+
+        item_equipment_info_data.item_exceptional_option.stat_str = SafeGetString(item_equipment_info[i]["item_exceptional_option"], "str");
+        item_equipment_info_data.item_exceptional_option.stat_dex = SafeGetString(item_equipment_info[i]["item_exceptional_option"], "dex");
+        item_equipment_info_data.item_exceptional_option.stat_int = SafeGetString(item_equipment_info[i]["item_exceptional_option"], "int");
+        item_equipment_info_data.item_exceptional_option.stat_luk = SafeGetString(item_equipment_info[i]["item_exceptional_option"], "luk");
+        item_equipment_info_data.item_exceptional_option.max_hp = SafeGetString(item_equipment_info[i]["item_exceptional_option"], "max_hp");
+        item_equipment_info_data.item_exceptional_option.max_mp = SafeGetString(item_equipment_info[i]["item_exceptional_option"], "max_mp");
+        item_equipment_info_data.item_exceptional_option.attack_power = SafeGetString(item_equipment_info[i]["item_exceptional_option"], "attack_power");
+        item_equipment_info_data.item_exceptional_option.magic_power = SafeGetString(item_equipment_info[i]["item_exceptional_option"], "magic_power");
+
+        item_equipment_info_data.item_add_option.stat_str = SafeGetString(item_equipment_info[i]["item_add_option"], "str");
+        item_equipment_info_data.item_add_option.stat_dex = SafeGetString(item_equipment_info[i]["item_add_option"], "dex");
+        item_equipment_info_data.item_add_option.stat_int = SafeGetString(item_equipment_info[i]["item_add_option"], "int");
+        item_equipment_info_data.item_add_option.stat_luk = SafeGetString(item_equipment_info[i]["item_add_option"], "luk");
+        item_equipment_info_data.item_add_option.max_hp = SafeGetString(item_equipment_info[i]["item_add_option"], "max_hp");
+        item_equipment_info_data.item_add_option.max_mp = SafeGetString(item_equipment_info[i]["item_add_option"], "max_mp");
+        item_equipment_info_data.item_add_option.attack_power = SafeGetString(item_equipment_info[i]["item_add_option"], "attack_power");
+        item_equipment_info_data.item_add_option.magic_power = SafeGetString(item_equipment_info[i]["item_add_option"], "magic_power");
+        item_equipment_info_data.item_add_option.armor = SafeGetString(item_equipment_info[i]["item_add_option"], "armor");
+        item_equipment_info_data.item_add_option.speed = SafeGetString(item_equipment_info[i]["item_add_option"], "speed");
+        item_equipment_info_data.item_add_option.jump = SafeGetString(item_equipment_info[i]["item_add_option"], "jump");
+        item_equipment_info_data.item_add_option.boss_damage = SafeGetString(item_equipment_info[i]["item_add_option"], "boss_damage");
+        item_equipment_info_data.item_add_option.damage = SafeGetString(item_equipment_info[i]["item_add_option"], "damage");
+        item_equipment_info_data.item_add_option.all_stat = SafeGetString(item_equipment_info[i]["item_add_option"], "all_stat");
+        item_equipment_info_data.item_add_option.equipment_level_decrease = SafeGetString(item_equipment_info[i]["item_add_option"], "equipment_level_decrease");
+
+        item_equipment_info_data.growth_exp = SafeGetString(item_equipment_info[i], "growth_exp");
+        item_equipment_info_data.growth_level = SafeGetString(item_equipment_info[i], "growth_level");
+        item_equipment_info_data.scroll_upgrade = SafeGetString(item_equipment_info[i], "scroll_upgrade");
+        item_equipment_info_data.cuttable_count = SafeGetString(item_equipment_info[i], "cuttable_count");
+        item_equipment_info_data.scroll_resilience_count = SafeGetString(item_equipment_info[i], "scroll_resilience_count");
+        item_equipment_info_data.scroll_upgradeable_count = SafeGetString(item_equipment_info[i], "scroll_upgradeable_count");
+        item_equipment_info_data.soul_name = SafeGetString(item_equipment_info[i], "soul_name");
+        item_equipment_info_data.soul_option = SafeGetString(item_equipment_info[i], "soul_option");
+
+        item_equipment_info_data.item_etc_option.stat_str = SafeGetString(item_equipment_info[i]["item_etc_option"], "str");
+        item_equipment_info_data.item_etc_option.stat_dex = SafeGetString(item_equipment_info[i]["item_etc_option"], "dex");
+        item_equipment_info_data.item_etc_option.stat_int = SafeGetString(item_equipment_info[i]["item_etc_option"], "int");
+        item_equipment_info_data.item_etc_option.stat_luk = SafeGetString(item_equipment_info[i]["item_etc_option"], "luk");
+        item_equipment_info_data.item_etc_option.max_hp = SafeGetString(item_equipment_info[i]["item_etc_option"], "max_hp");
+        item_equipment_info_data.item_etc_option.max_mp = SafeGetString(item_equipment_info[i]["item_etc_option"], "max_mp");
+        item_equipment_info_data.item_etc_option.attack_power = SafeGetString(item_equipment_info[i]["item_etc_option"], "attack_power");
+        item_equipment_info_data.item_etc_option.magic_power = SafeGetString(item_equipment_info[i]["item_etc_option"], "magic_power");
+        item_equipment_info_data.item_etc_option.armor = SafeGetString(item_equipment_info[i]["item_etc_option"], "armor");
+        item_equipment_info_data.item_etc_option.speed = SafeGetString(item_equipment_info[i]["item_etc_option"], "speed");
+        item_equipment_info_data.item_etc_option.jump = SafeGetString(item_equipment_info[i]["item_etc_option"], "jump");
+
+        item_equipment_info_data.starforce = SafeGetString(item_equipment_info[i], "starforce");
+        item_equipment_info_data.starforce_scroll_flag = SafeGetString(item_equipment_info[i], "starforce_scroll_flag");
+
+        item_equipment_info_data.item_starforce_option.stat_str = SafeGetString(item_equipment_info[i]["item_starforce_option"], "str");
+        item_equipment_info_data.item_starforce_option.stat_dex = SafeGetString(item_equipment_info[i]["item_starforce_option"], "dex");
+        item_equipment_info_data.item_starforce_option.stat_int = SafeGetString(item_equipment_info[i]["item_starforce_option"], "int");
+        item_equipment_info_data.item_starforce_option.stat_luk = SafeGetString(item_equipment_info[i]["item_starforce_option"], "luk");
+        item_equipment_info_data.item_starforce_option.max_hp = SafeGetString(item_equipment_info[i]["item_starforce_option"], "max_hp");
+        item_equipment_info_data.item_starforce_option.max_mp = SafeGetString(item_equipment_info[i]["item_starforce_option"], "max_mp");
+        item_equipment_info_data.item_starforce_option.attack_power = SafeGetString(item_equipment_info[i]["item_starforce_option"], "attack_power");
+        item_equipment_info_data.item_starforce_option.magic_power = SafeGetString(item_equipment_info[i]["item_starforce_option"], "magic_power");
+        item_equipment_info_data.item_starforce_option.armor = SafeGetString(item_equipment_info[i]["item_starforce_option"], "armor");
+        item_equipment_info_data.item_starforce_option.speed = SafeGetString(item_equipment_info[i]["item_starforce_option"], "speed");
+        item_equipment_info_data.item_starforce_option.jump = SafeGetString(item_equipment_info[i]["item_starforce_option"], "jump");
+
+        item_equipment_info_data.special_ring_level = SafeGetString(item_equipment_info[i], "special_ring_level");
+        item_equipment_info_data.date_expire = SafeGetString(item_equipment_info[i], "date_expire");
+
+        DataManager::GetInstance()->GetItemEquipmentData().item_equipment.push_back(item_equipment_info_data);
+    }
+#pragma endregion
 }
 
 void Scene::ShowLinkSkill(bool* p_open)
@@ -873,6 +1034,99 @@ void Scene::ShowSkill(bool* p_open)
     }
 
     ImGui::EndTabBar();
+    ImGui::End();
+}
+
+void Scene::ShowEquipment(bool* p_open)
+{
+    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
+    if (!ImGui::Begin(u8"장비", p_open))
+    {
+        ImGui::End();
+        return;
+    }
+
+    struct ItemEquipmentData& item_equipment_data = DataManager::GetInstance()->GetItemEquipmentData();
+    for (auto& item_equipment : item_equipment_data.item_equipment)
+    {
+        ImGui::Image(item_equipment.icon, ImVec2(item_equipment.icon_width, item_equipment.icon_height));
+        ImGui::SameLine();
+
+        ImGui::BeginGroup();
+        ImGui::Text(u8"%s", item_equipment.item_name.c_str());
+
+        if (item_equipment.starforce.compare("0") != 0)
+            ImGui::Text(u8"%s", item_equipment.starforce.c_str());
+        
+        ImGui::EndGroup();
+
+        if (ImGui::IsItemHovered())
+        {
+            ImGui::BeginTooltip();
+            ImGui::Text(u8"%s (+%s)", item_equipment.item_name.c_str(), item_equipment.scroll_upgrade.c_str());
+            ImGui::Text(u8"(%s 아이템)", item_equipment.potential_option_grade.c_str());
+            ImGui::Separator();
+            ImGui::Image(item_equipment.icon, ImVec2(item_equipment.icon_width, item_equipment.icon_height));
+            ImGui::Separator();
+            ImGui::Text(u8"장비분류: %s", item_equipment.item_equipment_part.c_str());
+            
+            ImVec4 add_option_color = ADD_OPTION();
+            ImVec4 etc_option_color = ETC_OPTION();
+            ImVec4 starforce_option_color = STARFORCE_OPTION();
+
+            if (item_equipment.item_total_option.stat_str.compare("0") != 0)
+            {
+                ImGui::Text(u8"STR: +%s", item_equipment.item_total_option.stat_str.c_str());
+
+                if (item_equipment.item_starforce_option.stat_str.compare("0") != 0)
+                {
+                    ImGui::SameLine();
+                    ImGui::Text(u8"(%s", item_equipment.item_base_option.stat_str.c_str());
+                    ImGui::SameLine();
+                    ImGui::Text(u8"+");
+                    ImGui::SameLine();
+                    ImGui::TextColored(add_option_color, item_equipment.item_add_option.stat_str.c_str());
+                    ImGui::SameLine();
+                    ImGui::Text(u8"+");
+                    ImGui::SameLine();
+                    ImGui::TextColored(etc_option_color, item_equipment.item_etc_option.stat_str.c_str());
+                    ImGui::SameLine();
+                    ImGui::Text(u8"+");
+                    ImGui::SameLine();
+                    ImGui::TextColored(starforce_option_color, u8"%s)", item_equipment.item_starforce_option.stat_str.c_str());
+                }
+            }
+
+            if (item_equipment.potential_option_grade.empty())
+            {
+                ImGui::Separator();
+                
+                ImVec4 potential_value_color = GetColorByGrade(item_equipment.potential_option_grade);
+                ImGui::TextColored(potential_value_color, u8"잠재옵션");
+
+                ImGui::Text(u8"%s", item_equipment.potential_option_1.c_str());
+                ImGui::Text(u8"%s", item_equipment.potential_option_2.c_str());
+                ImGui::Text(u8"%s", item_equipment.potential_option_3.c_str());
+            }
+
+            if (!item_equipment.additional_potential_option_grade.empty())
+            {
+                ImGui::Separator();
+                
+                ImVec4 additional_potential_value_color = GetColorByGrade(item_equipment.additional_potential_option_grade);
+                ImGui::TextColored(additional_potential_value_color, u8"에디셔널 잠재옵션");
+
+                ImGui::Text(u8"%s", item_equipment.additional_potential_option_1.c_str());
+                ImGui::Text(u8"%s", item_equipment.additional_potential_option_2.c_str());
+                ImGui::Text(u8"%s", item_equipment.additional_potential_option_3.c_str());
+            }
+            
+            ImGui::EndTooltip();
+        }
+
+        ImGui::Separator();
+    }
+
     ImGui::End();
 }
 

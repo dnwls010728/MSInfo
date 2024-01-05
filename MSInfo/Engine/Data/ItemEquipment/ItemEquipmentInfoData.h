@@ -1,15 +1,25 @@
 ﻿#pragma once
 #include <string>
 
+#include "ItemTotalOptionData.h"
+#include "ItemBaseOptionData.h"
+#include "ItemExceptionalOptionData.h"
+#include "ItemAddOptionData.h"
+#include "ItemEtcOptionData.h"
+#include "ItemStarforceOptionData.h"
+
 struct ItemEquipmentInfoData
 {
+    int icon_width;
+    int icon_height;
+
+    ID3D11ShaderResourceView* icon;
+    
     std::string item_equipment_part;
     std::string item_equipment_slot;
     std::string item_name;
-    std::string item_icon;
     std::string item_description;
     std::string item_shape_name;
-    std::string item_shape_icon;
     std::string item_gender;
     std::string potential_option_grade;
     std::string additional_potential_option_grade;
@@ -23,6 +33,7 @@ struct ItemEquipmentInfoData
     std::string growth_exp;
     std::string growth_level;
     std::string scroll_upgrade;
+    std::string cuttable_count;
     std::string golden_hammer_flag;
     std::string scroll_resilience_count;
     std::string scroll_upgradeable_count;

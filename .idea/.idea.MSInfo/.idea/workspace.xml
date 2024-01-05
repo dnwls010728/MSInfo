@@ -8,27 +8,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: DataManager 최적화">
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemAddOptionData.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemBaseOptionData.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemEquipmentData.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemEtcOptionData.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemExceptionalOptionData.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemStarforceOptionData.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemTotalOptionData.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/TitleData.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/TitleData.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28__9_46__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-28_오후_9_46_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-29__2_52__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/shelf/Uncommitted_changes_before_Update_at_2023-12-29__2_52__Changes_.xml" afterDir="false" />
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 장비 추가">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/Union/UnionBlockData.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/Union/UnionBlockPointData.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/Union/UnionRaiderData.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemBaseOptionData.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemBaseOptionData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemEquipmentData.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemEquipmentData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemEquipmentInfoData.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemEquipmentInfoData.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemTotalOptionData.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/ItemEquipment/ItemTotalOptionData.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Resources/outline-union-board.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +38,12 @@
     <option name="projectConfigVersion" value="5" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/include/vector" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/API/APIManager.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui_demo.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -223,7 +225,7 @@
       <workItem from="1704282580989" duration="736000" />
       <workItem from="1704284135334" duration="879000" />
       <workItem from="1704367302921" duration="10366000" />
-      <workItem from="1704428348296" duration="3606000" />
+      <workItem from="1704428348296" duration="14504000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -369,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704374304579</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="FEAT: 장비 추가">
+      <option name="closed" value="true" />
+      <created>1704436006210</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1704436006210</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,6 +407,7 @@
     <MESSAGE value="FEAT: LIB 변경 및 HTTPS로 변경" />
     <MESSAGE value="CHORE: 불필요한 파일 제거" />
     <MESSAGE value="FEAT: DataManager 최적화" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: DataManager 최적화" />
+    <MESSAGE value="FEAT: 장비 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 장비 추가" />
   </component>
 </project>

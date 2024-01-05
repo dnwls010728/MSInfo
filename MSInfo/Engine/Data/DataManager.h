@@ -31,6 +31,7 @@ public:
     inline struct AbilityData& GetAbilityData() { return ability_data_; }
     inline struct HyperStatData& GetHyperStatData() { return hyper_stat_data_; }
     inline struct SetEffectData& GetSetEffectData() { return set_effect_data_; }
+    inline struct ItemEquipmentData& GetItemEquipmentData() { return item_equipment_data_; }
     
     inline std::vector<struct SkillData>& GetLinkSkillData() { return link_skill_data_; }
     

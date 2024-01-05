@@ -1,7 +1,8 @@
 ﻿#pragma once
 #include <vector>
 
-struct ItemEquipmentInfoData;
+#include "ItemEquipmentInfoData.h"
+#include "TitleData.h"
 
 struct ItemEquipmentData
 {
