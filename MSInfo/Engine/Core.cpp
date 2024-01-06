@@ -43,7 +43,7 @@ BOOL Core::InitInstance(HINSTANCE hInstance, int nCmdShow)
     hWnd_ = CreateWindowEx(
         0,
         class_name_,
-        L"메이플스토리 정보",
+        L"대적자 정보 탐색기 - v1.0",
         WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX,
         (screen_width - (window_area_.right - window_area_.left)) / 2,
         (screen_height - (window_area_.bottom - window_area_.top)) / 2,

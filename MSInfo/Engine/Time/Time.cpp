@@ -30,9 +30,9 @@ void Time::Tick()
     {
         fps_ = frame_count_;
 
-        wchar_t title[256];
-        swprintf_s(title, L"메이플스토리 정보 - FPS: %.2f", fps_);
-        SetWindowText(Core::GetInstance()->GetWindowHandle(), title);
+        // wchar_t title[256];
+        // swprintf_s(title, L"메이플스토리 정보 - FPS: %.2f", fps_);
+        // SetWindowText(Core::GetInstance()->GetWindowHandle(), title);
         
         frame_count_ = 0.f;
         frame_timer_ = 0.f;

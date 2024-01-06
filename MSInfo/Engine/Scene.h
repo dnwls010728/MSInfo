@@ -14,6 +14,8 @@ public:
     void Render();
 
 private:
+    void SetAlignCenter(std::string text);
+    void DrawOption(std::string option, std::string total, std::string base, std::string add, std::string etc, std::string starforce, bool is_percent = false);
     void SearchCharacter(const std::string& character_name);
     void ShowLinkSkill(bool* p_open);
     void ShowSkill(bool* p_open);
@@ -27,10 +29,10 @@ private:
 
     int character_image_width;
     int character_image_height;
-    int union_board_image_width;
-    int union_board_image_height;
+    int star_icon_width;
+    int star_icon_height;
 
     ID3D11ShaderResourceView* character_image;
-    ID3D11ShaderResourceView* union_board_image;
+    ID3D11ShaderResourceView* star_icon;
     
 };

@@ -1,5 +1,5 @@
 ﻿#define _CRTDBG_MAP_ALLOC
-#define VERSION "0.2"
+#define VERSION "1.0"
 
 #include <Windows.h>
 
