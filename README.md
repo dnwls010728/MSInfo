@@ -1,5 +1,9 @@
 # MSInfo
 
+![image](https://github.com/UnitySio/MSInfo/assets/38973547/6864dbfa-355e-43aa-a757-6c5e33024cd2)
+
+메이플스토리의 Open API를 활용하여 각종 정보를 확인할 수 있게 만든 프로그램입니다.
+
 ### 사용 언어
 * C++
 
