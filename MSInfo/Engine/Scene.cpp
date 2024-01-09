@@ -991,7 +991,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
     std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
 
 #pragma region 캐릭터 식별자
-    GetInstance()->SetSearchContent(u8"캐릭터 식별자 조회 중...");
+    GetInstance()->SetSearchContent(u8"캐릭터 식별자 데이터 요청 중...");
     
     rapidjson::Document id_document = APIManager::GetInstance()->RequestID(character_name);
     DataManager->SetOcid(GetInstance()->SafeGetString(id_document, "ocid"));
@@ -1003,7 +1003,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
     }
 
 #pragma region 캐릭터 정보
-    GetInstance()->SetSearchContent(u8"캐릭터 정보 조회 중...");
+    GetInstance()->SetSearchContent(u8"캐릭터 정보 데이터 요청 중...");
     rapidjson::Document character_document = APIManager::GetInstance()->RequestCharacter(DataManager->GetOcid(), GetInstance()->GetDate());
 
     GetInstance()->SetSearchContent(u8"캐릭터 이미지 다운로드 중...");
@@ -1022,7 +1022,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
 #pragma endregion
 
 #pragma region 스텟
-    GetInstance()->SetSearchContent(u8"스텟 조회 중...");
+    GetInstance()->SetSearchContent(u8"스텟 데이터 요청 중...");
     rapidjson::Document stat_document = APIManager::GetInstance()->RequestStat(DataManager->GetOcid(), GetInstance()->GetDate());
 
     DataManager->GetStatData().min_stat_attack = GetInstance()->SafeGetString(stat_document["final_stat"][0], "stat_value");
@@ -1072,7 +1072,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
 #pragma endregion
 
 #pragma region 어빌리티
-    GetInstance()->SetSearchContent(u8"어빌리티 조회 중...");
+    GetInstance()->SetSearchContent(u8"어빌리티 데이터 요청 중...");
     rapidjson::Document ability_document = APIManager::GetInstance()->RequestAbility(DataManager->GetOcid(), GetInstance()->GetDate());
     rapidjson::Value& ability_info = ability_document["ability_info"].GetArray();
 
@@ -1091,7 +1091,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
 #pragma endregion
 
 #pragma region 하이퍼 스텟
-    GetInstance()->SetSearchContent(u8"하이퍼 스텟 조회 중...");
+    GetInstance()->SetSearchContent(u8"하이퍼 스텟 데이터 요청 중...");
     rapidjson::Document hyper_stat_document = APIManager::GetInstance()->
         RequestHyperStat(DataManager->GetOcid(), GetInstance()->GetDate());
     rapidjson::Value& hyper_stat_preset_1 = hyper_stat_document["hyper_stat_preset_1"].GetArray();
@@ -1139,7 +1139,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
 #pragma endregion
 
 #pragma region 세트 장비
-    GetInstance()->SetSearchContent(u8"세트 장비 조회 중...");
+    GetInstance()->SetSearchContent(u8"세트 장비 데이터 요청 중...");
     rapidjson::Document set_effect_document = APIManager::GetInstance()->
         RequestSetEffect(DataManager->GetOcid(), GetInstance()->GetDate());
     rapidjson::Value& set_effect_info = set_effect_document["set_effect"].GetArray();
@@ -1157,7 +1157,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
 #pragma endregion
 
 #pragma region 링크 스킬
-    GetInstance()->SetSearchContent(u8"링크 스킬 조회 중...");
+    GetInstance()->SetSearchContent(u8"링크 스킬 데이터 요청 중...");
     rapidjson::Document link_skill_document = APIManager::GetInstance()->
         RequestLinkSkill(DataManager->GetOcid(), GetInstance()->GetDate());
     rapidjson::Value& link_skill_info = link_skill_document["character_link_skill"].GetArray();
@@ -1193,7 +1193,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
         
         std::string skill_grade = std::to_string(i + 5);
 
-        GetInstance()->SetSearchContent(u8"스킬 조회 중...");
+        GetInstance()->SetSearchContent(u8"스킬 데이터 요청 중...");
         rapidjson::Document skill_document = APIManager::GetInstance()->
             RequestSkill(DataManager->GetOcid(), GetInstance()->GetDate(), skill_grade);
 
@@ -1223,7 +1223,7 @@ DWORD Scene::SearchThread(LPVOID lpParam)
 #pragma endregion
 
 #pragma region 장비
-    GetInstance()->SetSearchContent(u8"장비 조회 중...");
+    GetInstance()->SetSearchContent(u8"장비 데이터 요청 중...");
     rapidjson::Document equipment_document = APIManager::GetInstance()->
         RequestItemEquipment(DataManager->GetOcid(), GetInstance()->GetDate());
 
