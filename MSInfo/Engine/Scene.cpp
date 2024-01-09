@@ -721,7 +721,6 @@ void Scene::DrawOption(std::string option, std::string total, std::string base, 
     ImGui::Text(u8"%s: +%s%s", option.c_str(), total.c_str(), is_percent ? u8"%" : "");
 }
 
-// 추후 성능 확인 후 멀티 스레드로 개선
 void Scene::SearchCharacter(const std::string& character_name)
 {
     character_name_ = character_name;
@@ -926,6 +925,18 @@ void Scene::ShowVersion(bool* p_open)
         return;
     }
 
+    std::vector<std::string> log = {
+        u8"v1.1",
+        u8"프로그램 최적화",
+        u8"도움말 메뉴 추가"
+    };
+
+    for (auto& log_text : log)
+    {
+        SetAlignCenter(log_text);
+        ImGui::Text(u8"%s", log_text.c_str());
+    }
+
     ImGui::End();
 }
 
@@ -938,9 +949,29 @@ void Scene::ShowInfo(bool* p_open)
         return;
     }
 
-    std::string title = u8"대적자 정보 탐색기 - v1.1";
-    SetAlignCenter(title);
-    ImGui::Separator();
+    std::string api = u8"대적자 정보 탐색기 - v1.1";
+    std::string email = u8"이메일: dnwls010728@gmail.com";
+    std::string github = u8"GitHub: https://github.com/UnitySio";
+    std::string content = u8"함계 개발해 나가실 분이 있다면, 위의 이메일로 연락 부탁드립니다.";
+
+    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+    SetAlignCenter(api);
+    ImGui::Text(u8"%s", api.c_str());
+    ImGui::PopFont();
+
+    ImGui::NewLine();
+    ImGui::NewLine();
+
+    SetAlignCenter(email);
+    ImGui::Text(u8"%s", email.c_str());
+    
+    SetAlignCenter(github);
+    ImGui::Text(u8"%s", github.c_str());
+
+    ImGui::NewLine();
+
+    SetAlignCenter(content);
+    ImGui::Text(u8"%s", content.c_str());
 
     ImGui::End();
 }
