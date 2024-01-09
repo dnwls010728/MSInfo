@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include "../Singleton.h"
+#include "curl/system.h"
 #include "rapidjson/document.h"
 
 class APIManager : public Singleton<APIManager>
@@ -25,5 +26,6 @@ public:
 
 private:
     static size_t WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp);
+    static int ProgressCallback(void* clientp, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow);
     
 };

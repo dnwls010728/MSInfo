@@ -29,7 +29,8 @@ int APIENTRY wWinMain(
         MessageBox(Core::GetInstance()->GetWindowHandle(), L"이미 실행 중입니다.", L"Error", MB_OK);
         return 0;
     }
-    
+
+#ifdef NDEBUG
     rapidjson::Document version_document = APIManager::GetInstance()->Request("https://my-bundle-bucket.s3.ap-northeast-2.amazonaws.com/version.json");
     std::string latest_version = version_document["version"].GetString();
     if (latest_version.compare(VERSION) != 0)
@@ -38,6 +39,7 @@ int APIENTRY wWinMain(
         ShellExecute(Core::GetInstance()->GetWindowHandle(), L"open", L"AutoUpdater.exe", L"update", nullptr, SW_SHOW);
         return 0;
     }
+#endif
 
     if (!Core::GetInstance()->InitWindow(hInstance, nCmdShow)) return 0;
 

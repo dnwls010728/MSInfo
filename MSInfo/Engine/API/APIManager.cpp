@@ -1,5 +1,6 @@
 ﻿#include "APIManager.h"
 
+#include "../Scene.h"
 #include "curl/curl.h"
 
 APIManager::APIManager()
@@ -58,6 +59,9 @@ rapidjson::Document APIManager::RequestAPI(const std::string& api_url)
         struct curl_slist* headers = nullptr;
         headers = curl_slist_append(headers, "x-nxopen-api-key: test_0bf77450fb8b1058ad298cc39a29ed3cbc070701fc82eb633a0948ef430d5ec17f653d3c5600e07d31e84750a11f7e19");
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
+        
+        curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, ProgressCallback);
+        curl_easy_setopt(curl, CURLOPT_NOPROGRESS, 0L);
 
         std::string response;
         curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
@@ -136,4 +140,10 @@ size_t APIManager::WriteCallback(char* contents, size_t size, size_t nmemb, std:
     size_t total_size = size * nmemb;
     userp->append(contents, total_size);
     return total_size;
+}
+
+int APIManager::ProgressCallback(void* clientp, curl_off_t dltotal, curl_off_t dlnow, curl_off_t ultotal, curl_off_t ulnow)
+{
+    Scene::GetInstance()->SetProgress(static_cast<float>(dlnow) / static_cast<float>(dltotal));
+    return 0;
 }
