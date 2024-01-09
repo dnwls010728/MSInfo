@@ -926,6 +926,8 @@ void Scene::ShowVersion(bool* p_open)
     }
 
     std::vector<std::string> log = {
+        u8"v1.15",
+        u8"API Key 변경",
         u8"v1.1",
         u8"프로그램 최적화",
         u8"도움말 메뉴 추가"

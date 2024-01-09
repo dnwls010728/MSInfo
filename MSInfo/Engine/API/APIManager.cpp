@@ -57,7 +57,11 @@ rapidjson::Document APIManager::RequestAPI(const std::string& api_url)
         curl_easy_setopt(curl, CURLOPT_URL, url.c_str());
         
         struct curl_slist* headers = nullptr;
+#ifdef _DEBUG
         headers = curl_slist_append(headers, "x-nxopen-api-key: test_0bf77450fb8b1058ad298cc39a29ed3cbc070701fc82eb633a0948ef430d5ec17f653d3c5600e07d31e84750a11f7e19");
+#else
+        headers = curl_slist_append(headers, "x-nxopen-api-key: live_0bf77450fb8b1058ad298cc39a29ed3cfdd3c90c949584fe41947c380e74f95afe66f4be6304193cd3a13b029251c136");
+#endif
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, headers);
         
         curl_easy_setopt(curl, CURLOPT_XFERINFOFUNCTION, ProgressCallback);

@@ -8,10 +8,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="CHORE: 문구 수정">
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +175,7 @@
     <setting file="mock:///Dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/include/vector" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/include/xstring" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/Core.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/Scene.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui.h" root0="SKIP_HIGHLIGHTING" />
@@ -195,34 +198,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "C++ Project.AutoUpdater.executor": "Debug",
-    "C++ Project.MSInfo.executor": "Debug",
-    "C++ 프로젝트.MSInfo.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;C++ Project.AutoUpdater.executor&quot;: &quot;Debug&quot;,
+    &quot;C++ Project.MSInfo.executor&quot;: &quot;Debug&quot;,
+    &quot;C++ 프로젝트.MSInfo.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\Nexol\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Nexol\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C++ Project.MSInfo">
     <configuration name="AutoUpdater" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -361,7 +364,8 @@
       <workItem from="1704457599559" duration="5496000" />
       <workItem from="1704509497121" duration="6319000" />
       <workItem from="1704522872921" duration="1908000" />
-      <workItem from="1704763139033" duration="13635000" />
+      <workItem from="1704763139033" duration="13985000" />
+      <workItem from="1704780835195" duration="391000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -531,7 +535,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704776399048</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="FEAT: 메뉴 수정">
+      <option name="closed" value="true" />
+      <created>1704779456923</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1704779456923</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -562,6 +574,7 @@
     <MESSAGE value="FEAT: 장비 추가" />
     <MESSAGE value="FEAT: 최적화 작업" />
     <MESSAGE value="CHORE: 문구 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="CHORE: 문구 수정" />
+    <MESSAGE value="FEAT: 메뉴 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 메뉴 수정" />
   </component>
 </project>
