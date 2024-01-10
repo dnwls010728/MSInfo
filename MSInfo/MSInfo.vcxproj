@@ -140,6 +140,7 @@
     <ClInclude Include="Engine\API\DownloadManager.h" />
     <ClInclude Include="Engine\Core.h" />
     <ClInclude Include="Engine\Data\AbilityData.h" />
+    <ClInclude Include="Engine\Data\BeautyEquipmentData.h" />
     <ClInclude Include="Engine\Data\CashItemEquipment\CashItemEquipmentData.h" />
     <ClInclude Include="Engine\Data\CashItemEquipment\CashItemEquipmentInfoData.h" />
     <ClInclude Include="Engine\Data\CharacterData.h" />

@@ -931,6 +931,21 @@ void Scene::ShowCashItemEquipment(bool* p_open)
 
     struct CashItemEquipmentData& cash_item_equipment_data = DataManager::GetInstance()->GetCashItemEquipmentData();
     ImGui::Text(u8"현재 프리셋: %s", cash_item_equipment_data.preset_no.c_str());
+
+    ImGui::Separator();
+
+    struct BeautyEquipmentData& beauty_equipment_data = DataManager::GetInstance()->GetBeautyEquipmentData();
+    ImGui::Text(u8"헤어: %s", beauty_equipment_data.character_hair.name.c_str());
+    ImGui::Text(u8"성형: %s", beauty_equipment_data.character_face.name.c_str());
+    ImGui::Text(u8"피부: %s", beauty_equipment_data.character_skin_name.c_str());
+
+    if (!beauty_equipment_data.additional_character_face.name.empty())
+    {
+        ImGui::Separator();
+        ImGui::Text(u8"헤어: %s", beauty_equipment_data.additional_character_hair.name.c_str());
+        ImGui::Text(u8"성형: %s", beauty_equipment_data.additional_character_face.name.c_str());
+        ImGui::Text(u8"피부: %s", beauty_equipment_data.additional_character_skin_name.c_str());
+    }
     
     if (ImGui::BeginTabBar(u8"##캐시 장비"))
     {
@@ -976,6 +991,8 @@ void Scene::ShowVersion(bool* p_open)
     std::vector<std::string> log = {
         u8"v2.0",
         u8"캐시 장비 메뉴 추가",
+        u8"헤어, 성형, 피부 추가",
+        u8"유니온 관련 메뉴 추가",
         u8"v1.15",
         u8"API Key 변경",
         u8"v1.1",
@@ -1508,6 +1525,50 @@ DWORD Scene::SearchThread(LPVOID lpParam)
             
             DataManager::GetInstance()->GetCashItemEquipmentData().presets[i].push_back(cash_item_equipment_info_data);
         }
+    }
+#pragma endregion
+
+#pragma region 헤어, 성형, 피부
+    GetInstance()->SetSearchContent(u8"헤어, 성형, 피부 데이터 요청 중...");
+    rapidjson::Document beauty_equipment_document = APIManager::GetInstance()->RequestBeautyEquipment(DataManager->GetOcid(), GetInstance()->GetDate());
+
+    DataManager::GetInstance()->GetBeautyEquipmentData().character_hair =
+    {
+        GetInstance()->SafeGetString(beauty_equipment_document["character_hair"], "hair_name"),
+        GetInstance()->SafeGetString(beauty_equipment_document["character_hair"], "base_color"),
+        GetInstance()->SafeGetString(beauty_equipment_document["character_hair"], "mix_color"),
+        GetInstance()->SafeGetString(beauty_equipment_document["character_hair"], "mix_rate")
+    };
+
+    DataManager::GetInstance()->GetBeautyEquipmentData().character_face =
+    {
+        GetInstance()->SafeGetString(beauty_equipment_document["character_face"], "face_name"),
+        GetInstance()->SafeGetString(beauty_equipment_document["character_face"], "base_color"),
+        GetInstance()->SafeGetString(beauty_equipment_document["character_face"], "mix_color"),
+        GetInstance()->SafeGetString(beauty_equipment_document["character_face"], "mix_rate")
+    };
+
+    DataManager::GetInstance()->GetBeautyEquipmentData().character_skin_name = GetInstance()->SafeGetString(beauty_equipment_document, "character_skin_name");
+
+    if (beauty_equipment_document["additional_character_hair"].IsObject())
+    {
+        DataManager::GetInstance()->GetBeautyEquipmentData().additional_character_hair =
+        {
+            GetInstance()->SafeGetString(beauty_equipment_document["additional_character_hair"], "hair_name"),
+            GetInstance()->SafeGetString(beauty_equipment_document["additional_character_hair"], "base_color"),
+            GetInstance()->SafeGetString(beauty_equipment_document["additional_character_hair"], "mix_color"),
+            GetInstance()->SafeGetString(beauty_equipment_document["additional_character_hair"], "mix_rate")
+        };
+
+        DataManager::GetInstance()->GetBeautyEquipmentData().additional_character_face =
+        {
+            GetInstance()->SafeGetString(beauty_equipment_document["additional_character_face"], "face_name"),
+            GetInstance()->SafeGetString(beauty_equipment_document["additional_character_face"], "base_color"),
+            GetInstance()->SafeGetString(beauty_equipment_document["additional_character_face"], "mix_color"),
+            GetInstance()->SafeGetString(beauty_equipment_document["additional_character_face"], "mix_rate")
+        };
+
+        DataManager::GetInstance()->GetBeautyEquipmentData().additional_character_skin_name = GetInstance()->SafeGetString(beauty_equipment_document, "additional_character_skin_name");
     }
 #pragma endregion
 }

@@ -8,113 +8,91 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 버전 체크 로직 변경">
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/21.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/22.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/23.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/24.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/25.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/26.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/0.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/9.png" afterDir="false" />
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 캐시 장비 로직 수정">
+      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/BeautyEquipmentData.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/11.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/12.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/13.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/15.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/16.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/17.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/17.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/18.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/18.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/19.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/19.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/20.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/21.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/21.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/22.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/22.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/9.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/10.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/11.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/9.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/10.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/10.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/11.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/11.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/12.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/12.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/13.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/13.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/14.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/14.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/15.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/15.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/16.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/17.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/17.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/18.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/18.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/19.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/19.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/20.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/20.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/21.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/21.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/22.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/22.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/6.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/7.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/8.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/8.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/9.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/9.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/0.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/0.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -136,7 +114,8 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="cidr-memory-view://26" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui_demo.cpp" root0="SKIP_HIGHLIGHTING" />
@@ -329,7 +308,7 @@
       <workItem from="1704780835195" duration="391000" />
       <workItem from="1704871402404" duration="5776000" />
       <workItem from="1704886403790" duration="35000" />
-      <workItem from="1704886454766" duration="5108000" />
+      <workItem from="1704886454766" duration="9728000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -515,7 +494,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704872792454</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="FEAT: 캐시 장비 로직 수정">
+      <option name="closed" value="true" />
+      <created>1704893797465</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1704893797465</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -548,6 +535,7 @@
     <MESSAGE value="CHORE: 문구 수정" />
     <MESSAGE value="FEAT: 메뉴 수정" />
     <MESSAGE value="FEAT: 버전 체크 로직 변경" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 버전 체크 로직 변경" />
+    <MESSAGE value="FEAT: 캐시 장비 로직 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 캐시 장비 로직 수정" />
   </component>
 </project>
