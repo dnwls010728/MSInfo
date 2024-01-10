@@ -813,7 +813,7 @@ void Scene::ShowItemEquipment(bool* p_open)
     struct ItemEquipmentData& item_equipment_data = DataManager::GetInstance()->GetItemEquipmentData();
     for (auto& item_equipment : item_equipment_data.item_equipment)
     {
-        ImGui::Image(item_equipment.icon, ImVec2(item_equipment.icon_width, item_equipment.icon_height));
+        ImGui::Image(item_equipment.icon, ImVec2(32, 32));
         ImGui::SameLine();
 
         ImGui::BeginGroup();
@@ -856,7 +856,7 @@ void Scene::ShowItemEquipment(bool* p_open)
             }
             
             ImGui::Separator();
-            ImGui::Image(item_equipment.icon, ImVec2(item_equipment.icon_width, item_equipment.icon_height));
+            ImGui::Image(item_equipment.icon, ImVec2(32, 32));
             ImGui::Separator();
             ImGui::Text(u8"장비분류: %s", item_equipment.item_equipment_part.c_str());
 
@@ -929,6 +929,38 @@ void Scene::ShowCashItemEquipment(bool* p_open)
         return;
     }
 
+    struct CashItemEquipmentData& cash_item_equipment_data = DataManager::GetInstance()->GetCashItemEquipmentData();
+    ImGui::Text(u8"현재 프리셋: %s", cash_item_equipment_data.preset_no.c_str());
+    
+    if (ImGui::BeginTabBar(u8"##캐시 장비"))
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (ImGui::BeginTabItem((u8"프리셋 " + std::to_string(i + 1)).c_str()))
+            {
+                ImGui::BeginChild("Scrolling", ImVec2(0, 0), false, ImGuiWindowFlags_AlwaysVerticalScrollbar);
+
+                for (auto& cash_item_equipment : cash_item_equipment_data.presets[i])
+                {
+                    ImGui::Image(cash_item_equipment.icon, ImVec2(32, 32));
+                    ImGui::SameLine();
+
+                    ImGui::BeginGroup();
+                    ImGui::Text(u8"%s", cash_item_equipment.cash_item_name.c_str());
+
+                    ImGui::EndGroup();
+
+                    ImGui::Separator();
+                }
+
+                ImGui::EndChild();
+                ImGui::EndTabItem();
+            }
+        }
+
+        ImGui::EndTabBar();
+    }
+
     ImGui::End();
 }
 
@@ -943,6 +975,7 @@ void Scene::ShowVersion(bool* p_open)
 
     std::vector<std::string> log = {
         u8"v2.0",
+        u8"캐시 장비 메뉴 추가",
         u8"v1.15",
         u8"API Key 변경",
         u8"v1.1",
@@ -955,7 +988,7 @@ void Scene::ShowVersion(bool* p_open)
         SetAlignCenter(log[i]);
         ImGui::Text(u8"%s", log[i].c_str());
 
-        if (i != log.size() - 1 && log[i].find("v") == std::string::npos)
+        if (i + 1 < log.size() - 1 && log[i].find("v") == std::string::npos)
         {
             ImGui::Separator();
         }
@@ -1436,6 +1469,9 @@ DWORD Scene::SearchThread(LPVOID lpParam)
     {
         std::string key = "cash_item_equipment_preset_" + std::to_string(i + 1);
         rapidjson::Value& cash_equipment_info = cash_equipment_document[key.c_str()].GetArray();
+
+        DataManager::GetInstance()->GetCashItemEquipmentData().presets[i].clear();
+        
         for (int j = 0; j < cash_equipment_info.Size(); j++)
         {
             struct CashItemEquipmentInfoData cash_item_equipment_info_data;
@@ -1453,6 +1489,22 @@ DWORD Scene::SearchThread(LPVOID lpParam)
                                                             &cash_item_equipment_info_data.icon_height);
 
             IM_ASSERT(ret);
+
+            cash_item_equipment_info_data.date_expire = GetInstance()->SafeGetString(cash_equipment_info[j], "date_expire");
+            cash_item_equipment_info_data.date_option_expire = GetInstance()->SafeGetString(cash_equipment_info[j], "date_option_expire");
+            cash_item_equipment_info_data.cash_item_label = GetInstance()->SafeGetString(cash_equipment_info[j], "cash_item_label");
+
+            if (cash_equipment_info[j]["cash_item_coloring_prism"].IsObject())
+            {
+                cash_item_equipment_info_data.cash_item_coloring_prism = {
+                    GetInstance()->SafeGetString(cash_equipment_info[j]["cash_item_coloring_prism"], "color_range"),
+                    GetInstance()->SafeGetString(cash_equipment_info[j]["cash_item_coloring_prism"], "hue"),
+                    GetInstance()->SafeGetString(cash_equipment_info[j]["cash_item_coloring_prism"], "saturation"),
+                    GetInstance()->SafeGetString(cash_equipment_info[j]["cash_item_coloring_prism"], "value")
+                };
+            }
+
+            cash_item_equipment_info_data.base_preset_item_disable_flag = GetInstance()->SafeGetString(cash_equipment_info[j], "base_preset_item_disable_flag");
             
             DataManager::GetInstance()->GetCashItemEquipmentData().presets[i].push_back(cash_item_equipment_info_data);
         }
