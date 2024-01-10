@@ -23,6 +23,7 @@ public:
     rapidjson::Document RequestLinkSkill(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestSkill(const std::string& ocid, const std::string& date, const std::string& skill_grade);
     rapidjson::Document RequestItemEquipment(const std::string& ocid, const std::string& date);
+    rapidjson::Document RequestCashItemEquipment(const std::string& ocid, const std::string& date);
 
 private:
     static size_t WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp);

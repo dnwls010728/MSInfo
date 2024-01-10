@@ -22,6 +22,7 @@
 #define LINK_SKILL_ICON_PATH ".\\Temp\\Icon\\LinkSkill\\"
 #define SKILL_ICON_PATH ".\\Temp\\Icon\\Skill\\"
 #define ITEM_EQUIPMENT_ICON_PATH ".\\Temp\\Icon\\ItemEquipment\\"
+#define CASH_ITEM_EQUIPMENT_ICON_PATH ".\\Temp\\Icon\\CashItemEquipment\\"
 #define RESOURCES ".\\Resources\\"
 
 #define UPGRADE() ImVec4(102.f / 255.f, 1.f, 1.f, 1.f)
@@ -48,7 +49,8 @@ void Scene::Render()
     static bool show_search_error = false;
     static bool show_link_skill = false;
     static bool show_skill = false;
-    static bool show_equipment = false;
+    static bool show_item_equipment = false;
+    static bool show_cash_item_equipment = false;
     static bool show_info = false;
     static bool show_version = false;
 
@@ -70,7 +72,8 @@ void Scene::Render()
         {
             ImGui::MenuItem(u8"링크 스킬", nullptr, &show_link_skill);
             ImGui::MenuItem(u8"스킬", nullptr, &show_skill);
-            ImGui::MenuItem(u8"장비", nullptr, &show_equipment);
+            ImGui::MenuItem(u8"장비", nullptr, &show_item_equipment);
+            ImGui::MenuItem(u8"캐시 장비", nullptr, &show_cash_item_equipment);
             
             ImGui::EndMenu();
         }
@@ -644,7 +647,8 @@ void Scene::Render()
     
     if (show_link_skill) ShowLinkSkill(&show_link_skill);
     if (show_skill) ShowSkill(&show_skill);
-    if (show_equipment) ShowEquipment(&show_equipment);
+    if (show_item_equipment) ShowItemEquipment(&show_item_equipment);
+    if (show_cash_item_equipment) ShowCashItemEquipment(&show_cash_item_equipment);
     if (show_version) ShowVersion(&show_version);
     if (show_info) ShowInfo(&show_info);
 }
@@ -797,7 +801,7 @@ void Scene::ShowSkill(bool* p_open)
     ImGui::End();
 }
 
-void Scene::ShowEquipment(bool* p_open)
+void Scene::ShowItemEquipment(bool* p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
     if (!ImGui::Begin(u8"장비", p_open))
@@ -911,6 +915,18 @@ void Scene::ShowEquipment(bool* p_open)
         }
 
         ImGui::Separator();
+    }
+
+    ImGui::End();
+}
+
+void Scene::ShowCashItemEquipment(bool* p_open)
+{
+    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
+    if (!ImGui::Begin(u8"캐시 장비", p_open))
+    {
+        ImGui::End();
+        return;
     }
 
     ImGui::End();
@@ -1406,6 +1422,40 @@ DWORD Scene::SearchThread(LPVOID lpParam)
         item_equipment_info_data.date_expire = GetInstance()->SafeGetString(item_equipment_info[i], "date_expire");
 
         DataManager::GetInstance()->GetItemEquipmentData().item_equipment.push_back(item_equipment_info_data);
+    }
+#pragma endregion
+
+#pragma region 캐시 장비
+    GetInstance()->SetSearchContent(u8"캐시 장비 데이터 요청 중...");
+    rapidjson::Document cash_equipment_document = APIManager::GetInstance()->
+        RequestCashItemEquipment(DataManager->GetOcid(), GetInstance()->GetDate());
+
+    DataManager::GetInstance()->GetCashItemEquipmentData().preset_no = GetInstance()->SafeGetString(cash_equipment_document, "preset_no");
+
+    for (int i = 0; i < 3; i++)
+    {
+        std::string key = "cash_item_equipment_preset_" + std::to_string(i + 1);
+        rapidjson::Value& cash_equipment_info = cash_equipment_document[key.c_str()].GetArray();
+        for (int j = 0; j < cash_equipment_info.Size(); j++)
+        {
+            struct CashItemEquipmentInfoData cash_item_equipment_info_data;
+            cash_item_equipment_info_data.cash_item_equipment_part = GetInstance()->SafeGetString(cash_equipment_info[j], "cash_item_equipment_part");
+            cash_item_equipment_info_data.cash_item_equipment_slot = GetInstance()->SafeGetString(cash_equipment_info[j], "cash_item_equipment_slot");
+            cash_item_equipment_info_data.cash_item_name = GetInstance()->SafeGetString(cash_equipment_info[j], "cash_item_name");
+
+            GetInstance()->SetSearchContent(u8"캐시 장비 이미지 다운로드 중...");
+            std::string cash_item_icon_url = GetInstance()->SafeGetString(cash_equipment_info[j], "cash_item_icon");
+            DownloadManager::GetInstance()->DownloadFile(cash_item_icon_url, CASH_ITEM_EQUIPMENT_ICON_PATH + std::to_string(i + 1) + "\\" + std::to_string(j) + ".png");
+
+            bool ret = Graphics::GetInstance()->LoadTexture(CASH_ITEM_EQUIPMENT_ICON_PATH + std::to_string(i + 1) + "\\" + std::to_string(j) + ".png",
+                                                            &cash_item_equipment_info_data.icon,
+                                                            &cash_item_equipment_info_data.icon_width,
+                                                            &cash_item_equipment_info_data.icon_height);
+
+            IM_ASSERT(ret);
+            
+            DataManager::GetInstance()->GetCashItemEquipmentData().presets[i].push_back(cash_item_equipment_info_data);
+        }
     }
 #pragma endregion
 }

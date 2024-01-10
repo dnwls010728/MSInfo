@@ -32,7 +32,8 @@ private:
     void SearchCharacter(const std::string& character_name);
     void ShowLinkSkill(bool* p_open);
     void ShowSkill(bool* p_open);
-    void ShowEquipment(bool* p_open);
+    void ShowItemEquipment(bool* p_open);
+    void ShowCashItemEquipment(bool* p_open);
     void ShowVersion(bool* p_open);
     void ShowInfo(bool* p_open);
 

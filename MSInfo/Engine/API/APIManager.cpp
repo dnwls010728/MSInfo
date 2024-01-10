@@ -139,6 +139,12 @@ rapidjson::Document APIManager::RequestItemEquipment(const std::string& ocid, co
     return doc;
 }
 
+rapidjson::Document APIManager::RequestCashItemEquipment(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = RequestAPI("/character/cashitem-equipment?ocid=" + ocid + "&date=" + date);
+    return doc;
+}
+
 size_t APIManager::WriteCallback(char* contents, size_t size, size_t nmemb, std::string* userp)
 {
     size_t total_size = size * nmemb;

@@ -1,5 +1,4 @@
 ﻿#pragma once
-
 #include <vector>
 
 #include "../Singleton.h"
@@ -10,6 +9,7 @@
 #include "SetEffectData.h"
 #include "SkillData.h"
 #include "ItemEquipment/ItemEquipmentData.h"
+#include "CashItemEquipment/CashItemEquipmentData.h"
 
 class DataManager : public Singleton<DataManager>
 {
@@ -32,6 +32,7 @@ public:
     inline struct HyperStatData& GetHyperStatData() { return hyper_stat_data_; }
     inline struct SetEffectData& GetSetEffectData() { return set_effect_data_; }
     inline struct ItemEquipmentData& GetItemEquipmentData() { return item_equipment_data_; }
+    inline struct CashItemEquipmentData& GetCashItemEquipmentData() { return cash_item_equipment_data_; }
     
     inline std::vector<struct SkillData>& GetLinkSkillData() { return link_skill_data_; }
     
@@ -46,6 +47,7 @@ private:
     struct HyperStatData hyper_stat_data_;
     struct SetEffectData set_effect_data_;
     struct ItemEquipmentData item_equipment_data_;
+    struct CashItemEquipmentData cash_item_equipment_data_;
 
     std::vector<struct SkillData> link_skill_data_;
     
