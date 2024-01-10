@@ -926,6 +926,7 @@ void Scene::ShowVersion(bool* p_open)
     }
 
     std::vector<std::string> log = {
+        u8"v2.0",
         u8"v1.15",
         u8"API Key 변경",
         u8"v1.1",
@@ -933,10 +934,15 @@ void Scene::ShowVersion(bool* p_open)
         u8"도움말 메뉴 추가"
     };
 
-    for (auto& log_text : log)
+    for (int i = 0; i < log.size(); i++)
     {
-        SetAlignCenter(log_text);
-        ImGui::Text(u8"%s", log_text.c_str());
+        SetAlignCenter(log[i]);
+        ImGui::Text(u8"%s", log[i].c_str());
+
+        if (i != log.size() - 1 && log[i].find("v") == std::string::npos)
+        {
+            ImGui::Separator();
+        }
     }
 
     ImGui::End();
@@ -951,10 +957,10 @@ void Scene::ShowInfo(bool* p_open)
         return;
     }
 
-    std::string api = u8"대적자 정보 탐색기 - v1.1";
-    std::string email = u8"이메일: dnwls010728@gmail.com";
+    std::string api = u8"대적자 정보 탐색기 - v" + Core::GetInstance()->GetVersion();
+    std::string email = u8"버그 제보 및 피드백: dnwls010728@gmail.com";
     std::string github = u8"GitHub: https://github.com/UnitySio";
-    std::string content = u8"함계 개발해 나가실 분이 있다면, 위의 이메일로 연락 부탁드립니다.";
+    std::string content = u8"함께 발전시켜 나가실 분을 모집하고 있습니다.";
 
     ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
     SetAlignCenter(api);

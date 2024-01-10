@@ -18,6 +18,8 @@ public:
     inline POINT GetResolution() const { return resolution_; }
     inline HWND GetWindowHandle() const { return hWnd_; }
 
+    inline std::string GetVersion() const { return version_; }
+
 private:
     static LRESULT CALLBACK StaticWndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
     LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
@@ -37,5 +39,7 @@ private:
     HANDLE logic_handle_;
 
     bool is_running_;
+
+    std::string version_;
     
 };

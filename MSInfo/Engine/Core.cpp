@@ -11,7 +11,7 @@
 #include "imgui/imgui_impl_dx11.h"
 #include "imgui/imgui_impl_win32.h"
 
-Core::Core() : class_name_(L"MSINFO")
+Core::Core() : class_name_(L"MSINFO"), version_("2.0")
 {
 }
 
@@ -40,10 +40,12 @@ BOOL Core::InitInstance(HINSTANCE hInstance, int nCmdShow)
     window_area_ = {0, 0, resolution_.x, resolution_.y};
     AdjustWindowRect(&window_area_, WS_OVERLAPPEDWINDOW, FALSE);
 
+    std::wstring window_name = L"대적자 정보 탐색기 - v" +  std::wstring(version_.begin(), version_.end());
+
     hWnd_ = CreateWindowEx(
         0,
         class_name_,
-        L"대적자 정보 탐색기 - v1.15",
+        window_name.c_str(),
         WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX,
         (screen_width - (window_area_.right - window_area_.left)) / 2,
         (screen_height - (window_area_.bottom - window_area_.top)) / 2,

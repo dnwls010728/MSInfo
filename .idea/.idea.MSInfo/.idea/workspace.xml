@@ -10,8 +10,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.cpp" afterDir="false" />
     </list>
@@ -198,35 +198,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;C++ Project.AutoUpdater.executor&quot;: &quot;Debug&quot;,
-    &quot;C++ Project.MSInfo.executor&quot;: &quot;Debug&quot;,
-    &quot;C++ 프로젝트.MSInfo.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "C++ Project.AutoUpdater.executor": "Debug",
+    "C++ Project.MSInfo.executor": "Debug",
+    "C++ 프로젝트.AutoUpdater.executor": "Debug",
+    "C++ 프로젝트.MSInfo.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Nexol\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Nexol\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
-  <component name="RunManager" selected="C++ Project.MSInfo">
+}]]></component>
+  <component name="RunManager" selected="C++ 프로젝트.MSInfo">
     <configuration name="AutoUpdater" type="CppProject" factoryName="C++ Project">
       <configuration_1>
         <option name="CONFIGURATION" value="Debug" />
@@ -366,6 +367,7 @@
       <workItem from="1704522872921" duration="1908000" />
       <workItem from="1704763139033" duration="13985000" />
       <workItem from="1704780835195" duration="391000" />
+      <workItem from="1704871402404" duration="820000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />

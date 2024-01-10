@@ -1,5 +1,4 @@
 ﻿#define _CRTDBG_MAP_ALLOC
-#define VERSION "1.15"
 
 #include <Windows.h>
 
@@ -33,8 +32,8 @@ int APIENTRY wWinMain(
 #ifdef NDEBUG
     rapidjson::Document version_document = APIManager::GetInstance()->Request("https://my-bundle-bucket.s3.ap-northeast-2.amazonaws.com/version.json");
     std::string latest_version = version_document["version"].GetString();
-    if (latest_version.compare(VERSION) != 0)
-    {
+    if (latest_version.compare(Core::GetInstance()->GetVersion()) != 0)
+    {    
         MessageBox(Core::GetInstance()->GetWindowHandle(), L"최신 버전이 아닙니다. 업데이트를 진행합니다.", L"Update", MB_OK);
         ShellExecute(Core::GetInstance()->GetWindowHandle(), L"open", L"AutoUpdater.exe", L"update", nullptr, SW_SHOW);
         return 0;
