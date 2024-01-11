@@ -1119,7 +1119,7 @@ void Scene::ShowVersion(bool* p_open)
         SetAlignCenter(log[i]);
         ImGui::Text(u8"%s", log[i].c_str());
 
-        if (i + 1 < log.size() - 1 && log[i].find("v") == std::string::npos)
+        if (i + 1 < log.size() - 1 && log[i + 1].find("v") != std::string::npos)
         {
             ImGui::Separator();
         }
