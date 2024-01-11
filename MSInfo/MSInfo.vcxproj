@@ -159,6 +159,7 @@
     <ClInclude Include="Engine\Data\SetEffectData.h" />
     <ClInclude Include="Engine\Data\StatData.h" />
     <ClInclude Include="Engine\Data\Union\UnionBlockData.h" />
+    <ClInclude Include="Engine\Data\Union\UnionData.h" />
     <ClInclude Include="Engine\Data\Union\UnionRaiderData.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
     <ClInclude Include="Engine\Scene.h" />
@@ -252,6 +253,7 @@
     <ClCompile Include="Engine\API\DownloadManager.cpp" />
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Data\DataManager.cpp" />
+    <ClCompile Include="Engine\Data\Union\UnionData.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\Time\Time.cpp" />

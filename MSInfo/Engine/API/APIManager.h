@@ -25,6 +25,7 @@ public:
     rapidjson::Document RequestItemEquipment(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestCashItemEquipment(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestBeautyEquipment(const std::string& ocid, const std::string& date);
+    rapidjson::Document RequestUnion(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestUnionRaider(const std::string& ocid, const std::string& date);
 
 private:

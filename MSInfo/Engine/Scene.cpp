@@ -994,15 +994,33 @@ void Scene::UnionRaider(bool* p_open)
         return;
     }
 
-    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+    struct UnionData& union_data = DataManager::GetInstance()->GetUnionData();
+
+    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+
+    SetAlignCenter(union_data.union_grade);
+    ImGui::Text(u8"%s", union_data.union_grade.c_str());
     
+    ImGui::PopFont();
+    
+    SetAlignCenter(union_data.union_level);
+    ImGui::Text(u8"Lv.%s", union_data.union_level.c_str());
+
+    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+
+    const ImVec2 window_size = ImGui::GetWindowSize();
     const ImVec2 p = ImGui::GetCursorScreenPos();
+
+    const float union_board_width = 308;
+    const float union_board_height = 280;
+    const float left_padding = (window_size.x - union_board_width) / 2;
+    const float top_padding = 14;
     
     ImU32 col_a = ImGui::GetColorU32(IM_COL32(70, 70, 93, 0));
     ImU32 col_b = ImGui::GetColorU32(IM_COL32(39, 40, 46, 255));
-    draw_list->AddRectFilledMultiColor(ImVec2(p.x + 8, p.y + 24), ImVec2(p.x + 360, p.y + 328), col_b, col_b, col_a, col_a);
+    draw_list->AddRectFilledMultiColor(ImVec2(p.x + left_padding, p.y + top_padding), ImVec2(p.x + (left_padding + union_board_width), p.y + (top_padding + union_board_height)), col_b, col_b, col_a, col_a);
     
-    draw_list->AddImage(union_board_image, ImVec2(p.x + 8, p.y + 24), ImVec2(p.x + 360, p.y + 328));
+    draw_list->AddImage(union_board_image, ImVec2(p.x + left_padding, p.y + top_padding), ImVec2(p.x + (left_padding + union_board_width), p.y + (top_padding + union_board_height)));
 
     struct UnionRaiderData& union_raider_data = DataManager::GetInstance()->GetUnionRaiderData();
     for (auto& union_block : union_raider_data.union_block)
@@ -1018,7 +1036,7 @@ void Scene::UnionRaider(bool* p_open)
             float x = 11 + std::stof(union_block.block_position[i].x);
             float y = 10 + std::stof(union_block.block_position[i].y);
 
-            ImVec2 position = ImVec2(16 + (16 * (1 * x)), 16 + (16 * (1 * y)));
+            ImVec2 position = ImVec2((left_padding + 7) + (14 * (1 * x)), (top_padding - 7) + (14 * (1 * y)));
             UnionBlock(draw_list, position, union_block.block_color);
 
             if (i == union_block.block_position.size() - 1)
@@ -1039,6 +1057,35 @@ void Scene::UnionRaider(bool* p_open)
         }
     }
 
+    ImGui::SetCursorPosY(ImGui::GetCursorPosY() + top_padding + union_board_height + 10);
+    ImGui::Separator();
+
+    ImGui::BeginGroup();
+    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+    ImGui::Text(u8"공격대원 효과");
+    ImGui::PopFont();
+    ImGui::BeginChild("Union Raider Stat", ImVec2(window_size.x / 2, 0), false, ImGuiWindowFlags_AlwaysVerticalScrollbar);
+    for (auto& union_raider_stat : union_raider_data.union_raider_stat)
+    {
+        ImGui::Text(u8"%s", union_raider_stat.c_str());
+    }
+    ImGui::EndChild();
+    ImGui::EndGroup();
+
+    ImGui::SameLine();
+
+    ImGui::BeginGroup();
+    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+    ImGui::Text(u8"공격대 점령 효과");
+    ImGui::PopFont();
+    ImGui::BeginChild("Union Occupied Stat", ImVec2(0, 0), false, ImGuiWindowFlags_AlwaysVerticalScrollbar);
+    for (auto& union_occupied_stat : union_raider_data.union_occupied_stat)
+    {
+        ImGui::Text(u8"%s", union_occupied_stat.c_str());
+    }
+    ImGui::EndChild();
+    ImGui::EndGroup();
+
     ImGui::End();
 }
 
@@ -1055,7 +1102,7 @@ void Scene::ShowVersion(bool* p_open)
         u8"v2.0",
         u8"캐시 장비 메뉴 추가",
         u8"헤어, 성형, 피부 추가",
-        u8"유니온 관련 메뉴 추가",
+        u8"유니온 메뉴 추가",
         u8"v1.15",
         u8"API Key 변경",
         u8"v1.1",
@@ -1120,7 +1167,7 @@ void Scene::UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position, sig
     float x = p.x + position.x;
     float y = p.y + position.y;
 
-    draw_list->AddRectFilled(ImVec2(x - 8, y - 8), ImVec2(x + 8, y + 8), col);
+    draw_list->AddRectFilled(ImVec2(x - 7, y - 7), ImVec2(x + 7, y + 7), col);
 }
 
 std::string Scene::SafeGetString(const rapidjson::Value& value, const std::string& key)
@@ -1645,14 +1692,21 @@ DWORD Scene::SearchThread(LPVOID lpParam)
     }
 #pragma endregion
 
+#pragma region 유니온
+    GetInstance()->SetSearchContent(u8"유니온 데이터 요청 중...");
+    rapidjson::Document union_document = APIManager::GetInstance()->RequestUnion(DataManager->GetOcid(), GetInstance()->GetDate());
+    DataManager::GetInstance()->GetUnionData().union_level = GetInstance()->SafeGetString(union_document, "union_level");
+    DataManager::GetInstance()->GetUnionData().union_grade = GetInstance()->SafeGetString(union_document, "union_grade");
+#pragma endregion
+
 #pragma region 유니온 공격대
     GetInstance()->SetSearchContent(u8"유니온 공격대 데이터 요청 중...");
-    rapidjson::Document union_document = APIManager::GetInstance()->RequestUnionRaider(DataManager->GetOcid(), GetInstance()->GetDate());
+    rapidjson::Document union_raider_document = APIManager::GetInstance()->RequestUnionRaider(DataManager->GetOcid(), GetInstance()->GetDate());
     
-    rapidjson::Value& union_raider_stat_info = union_document["union_raider_stat"].GetArray();
-    rapidjson::Value& union_occupied_stat_info = union_document["union_occupied_stat"].GetArray();
-    rapidjson::Value& union_block_info = union_document["union_block"].GetArray();
-    rapidjson::Value& union_inner_stat_info = union_document["union_inner_stat"].GetArray();
+    rapidjson::Value& union_raider_stat_info = union_raider_document["union_raider_stat"].GetArray();
+    rapidjson::Value& union_occupied_stat_info = union_raider_document["union_occupied_stat"].GetArray();
+    rapidjson::Value& union_block_info = union_raider_document["union_block"].GetArray();
+    rapidjson::Value& union_inner_stat_info = union_raider_document["union_inner_stat"].GetArray();
 
     DataManager::GetInstance()->GetUnionRaiderData().union_raider_stat.clear();
     for (int i = 0; i < union_raider_stat_info.Size(); i++)

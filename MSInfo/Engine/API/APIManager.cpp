@@ -151,6 +151,12 @@ rapidjson::Document APIManager::RequestBeautyEquipment(const std::string& ocid, 
     return doc;
 }
 
+rapidjson::Document APIManager::RequestUnion(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = RequestAPI("/user/union?ocid=" + ocid + "&date=" + date);
+    return doc;
+}
+
 rapidjson::Document APIManager::RequestUnionRaider(const std::string& ocid, const std::string& date)
 {
     rapidjson::Document doc = RequestAPI("/user/union-raider?ocid=" + ocid + "&date=" + date);

@@ -11,6 +11,7 @@
 #include "ItemEquipment/ItemEquipmentData.h"
 #include "CashItemEquipment/CashItemEquipmentData.h"
 #include "BeautyEquipmentData.h"
+#include "Union/UnionData.h"
 #include "Union/UnionRaiderData.h"
 
 class DataManager : public Singleton<DataManager>
@@ -36,6 +37,7 @@ public:
     inline struct ItemEquipmentData& GetItemEquipmentData() { return item_equipment_data_; }
     inline struct CashItemEquipmentData& GetCashItemEquipmentData() { return cash_item_equipment_data_; }
     inline struct BeautyEquipmentData& GetBeautyEquipmentData() { return beauty_equipment_data_; }
+    inline struct UnionData& GetUnionData() { return union_data_; }
     inline struct UnionRaiderData& GetUnionRaiderData() { return union_raider_data_; }
     
     inline std::vector<struct SkillData>& GetLinkSkillData() { return link_skill_data_; }
@@ -53,6 +55,7 @@ private:
     struct ItemEquipmentData item_equipment_data_;
     struct CashItemEquipmentData cash_item_equipment_data_;
     struct BeautyEquipmentData beauty_equipment_data_;
+    struct UnionData union_data_;
     struct UnionRaiderData union_raider_data_;
 
     std::vector<struct SkillData> link_skill_data_;
