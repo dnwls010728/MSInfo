@@ -16,6 +16,8 @@ public:
     rapidjson::Document RequestAPI(const std::string& api_url);
     rapidjson::Document RequestID(const std::string& character_name);
     rapidjson::Document RequestCharacter(const std::string& ocid, const std::string& date);
+    rapidjson::Document RequestPopularity(const std::string& ocid, const std::string& date);
+    rapidjson::Document RequestDojang(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestStat(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestAbility(const std::string& ocid, const std::string& date);
     rapidjson::Document RequestHyperStat(const std::string& ocid, const std::string& date);

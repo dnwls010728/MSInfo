@@ -145,6 +145,7 @@
     <ClInclude Include="Engine\Data\CashItemEquipment\CashItemEquipmentInfoData.h" />
     <ClInclude Include="Engine\Data\CharacterData.h" />
     <ClInclude Include="Engine\Data\DataManager.h" />
+    <ClInclude Include="Engine\Data\DojangData.h" />
     <ClInclude Include="Engine\Data\ItemEquipment\ItemAddOptionData.h" />
     <ClInclude Include="Engine\Data\ItemEquipment\ItemBaseOptionData.h" />
     <ClInclude Include="Engine\Data\ItemEquipment\ItemEquipmentData.h" />
@@ -253,6 +254,7 @@
     <ClCompile Include="Engine\API\DownloadManager.cpp" />
     <ClCompile Include="Engine\Core.cpp" />
     <ClCompile Include="Engine\Data\DataManager.cpp" />
+    <ClCompile Include="Engine\Data\DojangData.cpp" />
     <ClCompile Include="Engine\Data\Union\UnionData.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />

@@ -9,15 +9,118 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 유니온 공격대 추가">
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/Union/UnionData.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/Union/UnionData.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DojangData.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DojangData.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/API/APIManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/DataManager.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Character/character_image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/1/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/2/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/CashItemEquipment/3/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/ItemEquipment/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/LinkSkill/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/11.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/12.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/13.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/14.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/17.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/18.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/19.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/20.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/22.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/23.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/24.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/25.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/26.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/5/9.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/8.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MSInfo/Temp/Icon/Skill/6/9.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,35 +165,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;C++ Project.AutoUpdater.executor&quot;: &quot;Debug&quot;,
-    &quot;C++ Project.MSInfo.executor&quot;: &quot;Debug&quot;,
-    &quot;C++ 프로젝트.AutoUpdater.executor&quot;: &quot;Debug&quot;,
-    &quot;C++ 프로젝트.MSInfo.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "C++ Project.AutoUpdater.executor": "Debug",
+    "C++ Project.MSInfo.executor": "Debug",
+    "C++ 프로젝트.AutoUpdater.executor": "Debug",
+    "C++ 프로젝트.MSInfo.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\Nexol\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\Nexol\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\Woojin Choi\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\Woojin Choi\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\Woojin Choi\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C++ Project.MSInfo">
     <configuration name="AutoUpdater" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -236,6 +339,7 @@
       <workItem from="1704886454766" duration="9728000" />
       <workItem from="1704937819289" duration="12993000" />
       <workItem from="1704956921314" duration="4810000" />
+      <workItem from="1704976627441" duration="5502000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />

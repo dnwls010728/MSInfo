@@ -96,6 +96,18 @@ rapidjson::Document APIManager::RequestCharacter(const std::string& ocid, const 
     return doc;
 }
 
+rapidjson::Document APIManager::RequestPopularity(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = RequestAPI("/character/popularity?ocid=" + ocid + "&date=" + date);
+    return doc;
+}
+
+rapidjson::Document APIManager::RequestDojang(const std::string& ocid, const std::string& date)
+{
+    rapidjson::Document doc = RequestAPI("/character/dojang?ocid=" + ocid + "&date=" + date);
+    return doc;
+}
+
 rapidjson::Document APIManager::RequestStat(const std::string& ocid, const std::string& date)
 {
     rapidjson::Document doc = RequestAPI("/character/stat?ocid=" + ocid + "&date=" + date);

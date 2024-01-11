@@ -1,5 +1,6 @@
 ﻿#include "Scene.h"
 
+#include <filesystem>
 #include <string>
 #include <sstream>
 
@@ -174,12 +175,11 @@ void Scene::Render()
 
         if (!DataManager->GetCharacterData().character_name.empty())
         {
-            ImGui::Text(u8"%s (%s)\nLv.%s | %s | %s",
-                        DataManager->GetCharacterData().character_name.c_str(),
-                        DataManager->GetCharacterData().world_name.c_str(),
-                        DataManager->GetCharacterData().character_level.c_str(),
-                        DataManager->GetCharacterData().character_class.c_str(),
-                        DataManager->GetCharacterData().character_guild_name.c_str());
+            ImGui::BeginGroup();
+            ImGui::Text(u8"%s (%s)", DataManager->GetCharacterData().character_name.c_str(), DataManager->GetCharacterData().world_name.c_str());
+            ImGui::Text(u8"Lv.%s | %s | %s", DataManager->GetCharacterData().character_level.c_str(), DataManager->GetCharacterData().character_class.c_str(), DataManager->GetCharacterData().character_guild_name.c_str());
+            ImGui::Text(u8"인기도 %s | 무릉 %s층", DataManager->GetPopularity().c_str(), DataManager->GetDojangData().dojang_best_floor.c_str());
+            ImGui::EndGroup();
         }
 
         ImGui::Separator();
@@ -1099,6 +1099,10 @@ void Scene::ShowVersion(bool* p_open)
     }
 
     std::vector<std::string> log = {
+        u8"v2.1",
+        u8"최적화",
+        u8"인기도 정보 추가",
+        u8"무릉도장 최고 기록 정보 추가",
         u8"v2.0",
         u8"캐시 장비 메뉴 추가",
         u8"헤어, 성형, 피부 추가",
@@ -1244,6 +1248,20 @@ DWORD Scene::SearchThread(LPVOID lpParam)
     DataManager->GetCharacterData().character_class = GetInstance()->SafeGetString(character_document, "character_class");
     DataManager->GetCharacterData().character_level = GetInstance()->SafeGetString(character_document, "character_level");
     DataManager->GetCharacterData().character_guild_name = GetInstance()->SafeGetString(character_document, "character_guild_name");
+#pragma endregion
+
+#pragma region 인기도 정보 조회
+    GetInstance()->SetSearchContent(u8"인기도 데이터 요청 중...");
+    rapidjson::Document popularity_document = APIManager::GetInstance()->RequestPopularity(DataManager->GetOcid(), GetInstance()->GetDate());
+    DataManager::GetInstance()->SetPopularity(GetInstance()->SafeGetString(popularity_document, "popularity"));
+#pragma endregion
+
+#pragma region 무릉도장 최고 기록 정보 조회
+    GetInstance()->SetSearchContent(u8"무릉도장 최고 기록 데이터 요청 중...");
+    rapidjson::Document dojang_document = APIManager::GetInstance()->RequestDojang(DataManager->GetOcid(), GetInstance()->GetDate());
+    DataManager::GetInstance()->GetDojangData().dojang_best_floor = GetInstance()->SafeGetString(dojang_document, "dojang_best_floor");
+    DataManager::GetInstance()->GetDojangData().date_dojang_record = GetInstance()->SafeGetString(dojang_document, "date_dojang_record");
+    DataManager::GetInstance()->GetDojangData().dojang_best_time = GetInstance()->SafeGetString(dojang_document, "dojang_best_time");
 #pragma endregion
 
 #pragma region 스텟
@@ -1757,4 +1775,10 @@ DWORD Scene::SearchThread(LPVOID lpParam)
         });
     }
 #pragma endregion
+
+    std::filesystem::path p(".\\Temp");
+    if (std::filesystem::exists(p) && std::filesystem::is_directory(p))
+    {
+        std::filesystem::remove_all(p);
+    }
 }
