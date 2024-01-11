@@ -1,6 +1,7 @@
 ﻿#include "Scene.h"
 
 #include <string>
+#include <sstream>
 
 #include "Data/DataManager.h"
 #include "API/APIManager.h"
@@ -36,6 +37,9 @@ Scene::Scene()
 
     bool ret = Graphics::GetInstance()->LoadTexture(RESOURCES "star.png", &star_icon, &star_icon_width, &star_icon_height);
     IM_ASSERT(ret);
+    
+    ret = Graphics::GetInstance()->LoadTexture(RESOURCES + std::string("UnionBoard.png"), &union_board_image, &union_board_width, &union_board_height);
+    IM_ASSERT(ret);
 }
 
 void Scene::Tick(float delta_time)
@@ -51,6 +55,7 @@ void Scene::Render()
     static bool show_skill = false;
     static bool show_item_equipment = false;
     static bool show_cash_item_equipment = false;
+    static bool show_union_raider = false;
     static bool show_info = false;
     static bool show_version = false;
 
@@ -74,6 +79,7 @@ void Scene::Render()
             ImGui::MenuItem(u8"스킬", nullptr, &show_skill);
             ImGui::MenuItem(u8"장비", nullptr, &show_item_equipment);
             ImGui::MenuItem(u8"캐시 장비", nullptr, &show_cash_item_equipment);
+            ImGui::MenuItem(u8"유니온", nullptr, &show_union_raider);
             
             ImGui::EndMenu();
         }
@@ -649,6 +655,7 @@ void Scene::Render()
     if (show_skill) ShowSkill(&show_skill);
     if (show_item_equipment) ShowItemEquipment(&show_item_equipment);
     if (show_cash_item_equipment) ShowCashItemEquipment(&show_cash_item_equipment);
+    if (show_union_raider) UnionRaider(&show_union_raider);
     if (show_version) ShowVersion(&show_version);
     if (show_info) ShowInfo(&show_info);
 }
@@ -979,6 +986,34 @@ void Scene::ShowCashItemEquipment(bool* p_open)
     ImGui::End();
 }
 
+void Scene::UnionRaider(bool* p_open)
+{
+    if (!ImGui::Begin(u8"유니온", p_open))
+    {
+        ImGui::End();
+        return;
+    }
+
+    ImDrawList* draw_list = ImGui::GetWindowDrawList();
+    
+    const ImVec2 p = ImGui::GetCursorScreenPos();
+    draw_list->AddImage(union_board_image, ImVec2(p.x + 8, p.y + 24), ImVec2(p.x + 360, p.y + 328));
+
+    struct UnionRaiderData& union_raider_data = DataManager::GetInstance()->GetUnionRaiderData();
+    for (auto& union_block : union_raider_data.union_block)
+    {
+        for (auto& block_position : union_block.block_position)
+        {
+            float x = 11 + std::stof(block_position.x);
+            float y = 10 + std::stof(block_position.y);
+
+            UnionBlock(draw_list, ImVec2(16 + (16 * (1 * x)), 16 + (16 * (1 * y))));
+        }
+    }
+
+    ImGui::End();
+}
+
 void Scene::ShowVersion(bool* p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
@@ -1048,6 +1083,16 @@ void Scene::ShowInfo(bool* p_open)
     ImGui::Text(u8"%s", content.c_str());
 
     ImGui::End();
+}
+
+void Scene::UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position)
+{
+    const ImVec2 p = ImGui::GetCursorScreenPos();
+
+    float x = p.x + position.x;
+    float y = p.y + position.y;
+
+    draw_list->AddRectFilled(ImVec2(x - 8, y - 8), ImVec2(x + 8, y + 8), IM_COL32(214, 170, 124, 255));
 }
 
 std::string Scene::SafeGetString(const rapidjson::Value& value, const std::string& key)
@@ -1569,6 +1614,63 @@ DWORD Scene::SearchThread(LPVOID lpParam)
         };
 
         DataManager::GetInstance()->GetBeautyEquipmentData().additional_character_skin_name = GetInstance()->SafeGetString(beauty_equipment_document, "additional_character_skin_name");
+    }
+#pragma endregion
+
+#pragma region 유니온 공격대
+    GetInstance()->SetSearchContent(u8"유니온 공격대 데이터 요청 중...");
+    rapidjson::Document union_document = APIManager::GetInstance()->RequestUnionRaider(DataManager->GetOcid(), GetInstance()->GetDate());
+    
+    rapidjson::Value& union_raider_stat_info = union_document["union_raider_stat"].GetArray();
+    rapidjson::Value& union_occupied_stat_info = union_document["union_occupied_stat"].GetArray();
+    rapidjson::Value& union_block_info = union_document["union_block"].GetArray();
+    rapidjson::Value& union_inner_stat_info = union_document["union_inner_stat"].GetArray();
+
+    DataManager::GetInstance()->GetUnionRaiderData().union_raider_stat.clear();
+    for (int i = 0; i < union_raider_stat_info.Size(); i++)
+    {
+        DataManager::GetInstance()->GetUnionRaiderData().union_raider_stat.push_back(union_raider_stat_info[i].GetString());
+    }
+
+    DataManager::GetInstance()->GetUnionRaiderData().union_occupied_stat.clear();
+    for (int i = 0; i < union_occupied_stat_info.Size(); i++)
+    {
+        DataManager::GetInstance()->GetUnionRaiderData().union_occupied_stat.push_back(union_occupied_stat_info[i].GetString());
+    }
+
+    DataManager::GetInstance()->GetUnionRaiderData().union_block.clear();
+    for (int i = 0; i < union_block_info.Size(); i++)
+    {
+        struct UnionBlockData union_block;
+        union_block.block_type = GetInstance()->SafeGetString(union_block_info[i], "block_type");
+        union_block.block_class = GetInstance()->SafeGetString(union_block_info[i], "block_class");
+        union_block.block_level = GetInstance()->SafeGetString(union_block_info[i], "block_level");
+        
+        union_block.block_control_point = {
+            GetInstance()->SafeGetString(union_block_info[i]["block_control_point"], "x"),
+            GetInstance()->SafeGetString(union_block_info[i]["block_control_point"], "y")
+        };
+
+        rapidjson::Value& block_position_info = union_block_info[i]["block_position"].GetArray();
+        for (int j = 0; j < block_position_info.Size(); j++)
+        {
+            union_block.block_position.push_back({
+                GetInstance()->SafeGetString(block_position_info[j], "x"),
+                GetInstance()->SafeGetString(block_position_info[j], "y")
+            });
+        }
+
+        DataManager::GetInstance()->GetUnionRaiderData().union_block.push_back(union_block);
+    }
+
+    DataManager::GetInstance()->GetUnionRaiderData().union_inner_stat.clear();
+    for (int i = 0; i < union_inner_stat_info.Size(); i++)
+    {
+        DataManager::GetInstance()->GetUnionRaiderData().union_inner_stat.push_back(
+        {
+            GetInstance()->SafeGetString(union_inner_stat_info[i], "stat_field_id"),
+            GetInstance()->SafeGetString(union_inner_stat_info[i], "stat_field_effect")
+        });
     }
 #pragma endregion
 }

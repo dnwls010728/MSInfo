@@ -34,8 +34,10 @@ private:
     void ShowSkill(bool* p_open);
     void ShowItemEquipment(bool* p_open);
     void ShowCashItemEquipment(bool* p_open);
+    void UnionRaider(bool* p_open);
     void ShowVersion(bool* p_open);
     void ShowInfo(bool* p_open);
+    void UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position);
 
     std::string SafeGetString(const rapidjson::Value& value, const std::string& key);
 
@@ -50,9 +52,12 @@ private:
     int character_image_height;
     int star_icon_width;
     int star_icon_height;
+    int union_board_width;
+    int union_board_height;
 
     ID3D11ShaderResourceView* character_image;
     ID3D11ShaderResourceView* star_icon;
+    ID3D11ShaderResourceView* union_board_image;
 
     float progress_ = 0.f;
 
