@@ -37,7 +37,7 @@ private:
     void UnionRaider(bool* p_open);
     void ShowVersion(bool* p_open);
     void ShowInfo(bool* p_open);
-    void UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position);
+    void UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position, signed int col);
 
     std::string SafeGetString(const rapidjson::Value& value, const std::string& key);
 

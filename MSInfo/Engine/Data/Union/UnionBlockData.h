@@ -16,4 +16,6 @@ struct UnionBlockData
 
     struct BlockPosition block_control_point;
     std::vector<struct BlockPosition> block_position;
+
+    signed int block_color;
 };

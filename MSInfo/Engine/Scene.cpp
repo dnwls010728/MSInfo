@@ -997,17 +997,45 @@ void Scene::UnionRaider(bool* p_open)
     ImDrawList* draw_list = ImGui::GetWindowDrawList();
     
     const ImVec2 p = ImGui::GetCursorScreenPos();
+    
+    ImU32 col_a = ImGui::GetColorU32(IM_COL32(70, 70, 93, 0));
+    ImU32 col_b = ImGui::GetColorU32(IM_COL32(39, 40, 46, 255));
+    draw_list->AddRectFilledMultiColor(ImVec2(p.x + 8, p.y + 24), ImVec2(p.x + 360, p.y + 328), col_b, col_b, col_a, col_a);
+    
     draw_list->AddImage(union_board_image, ImVec2(p.x + 8, p.y + 24), ImVec2(p.x + 360, p.y + 328));
 
     struct UnionRaiderData& union_raider_data = DataManager::GetInstance()->GetUnionRaiderData();
     for (auto& union_block : union_raider_data.union_block)
     {
-        for (auto& block_position : union_block.block_position)
+        if (union_block.block_color == 0)
         {
-            float x = 11 + std::stof(block_position.x);
-            float y = 10 + std::stof(block_position.y);
+            ImU32 rand_col = ImGui::GetColorU32(IM_COL32(rand() % 255, rand() % 255, rand() % 255, 255));
+            union_block.block_color = rand_col;
+        }
+        
+        for (int i = 0; i < union_block.block_position.size(); i++)
+        {
+            float x = 11 + std::stof(union_block.block_position[i].x);
+            float y = 10 + std::stof(union_block.block_position[i].y);
 
-            UnionBlock(draw_list, ImVec2(16 + (16 * (1 * x)), 16 + (16 * (1 * y))));
+            ImVec2 position = ImVec2(16 + (16 * (1 * x)), 16 + (16 * (1 * y)));
+            UnionBlock(draw_list, position, union_block.block_color);
+
+            if (i == union_block.block_position.size() - 1)
+            {
+                float mouse_x = p.x + position.x;
+                float mouse_y = p.y + position.y;
+
+                draw_list->AddCircle(ImVec2(mouse_x, mouse_y), 2, IM_COL32(255, 0, 0, 255), 16, 2.f);
+                
+                bool is_hovered = ImGui::IsMouseHoveringRect(ImVec2(mouse_x - 8, mouse_y - 8), ImVec2(mouse_x + 8, mouse_y + 8));
+                if (is_hovered)
+                {
+                    ImGui::BeginTooltip();
+                    ImGui::Text(u8"%s Lv.%s", union_block.block_class.c_str(), union_block.block_level.c_str());
+                    ImGui::EndTooltip();
+                }
+            }
         }
     }
 
@@ -1085,14 +1113,14 @@ void Scene::ShowInfo(bool* p_open)
     ImGui::End();
 }
 
-void Scene::UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position)
+void Scene::UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position, signed int col)
 {
     const ImVec2 p = ImGui::GetCursorScreenPos();
 
     float x = p.x + position.x;
     float y = p.y + position.y;
 
-    draw_list->AddRectFilled(ImVec2(x - 8, y - 8), ImVec2(x + 8, y + 8), IM_COL32(214, 170, 124, 255));
+    draw_list->AddRectFilled(ImVec2(x - 8, y - 8), ImVec2(x + 8, y + 8), col);
 }
 
 std::string Scene::SafeGetString(const rapidjson::Value& value, const std::string& key)
@@ -1659,6 +1687,8 @@ DWORD Scene::SearchThread(LPVOID lpParam)
                 GetInstance()->SafeGetString(block_position_info[j], "y")
             });
         }
+
+        union_block.block_color = 0;
 
         DataManager::GetInstance()->GetUnionRaiderData().union_block.push_back(union_block);
     }
