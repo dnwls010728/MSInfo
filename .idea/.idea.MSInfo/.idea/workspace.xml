@@ -8,17 +8,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Settings.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MSInfo/Engine/Settings.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MSInfo/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Core.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Data/HyperStatData.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Data/HyperStatData.h" afterDir="false" />
+    <list default="true" id="c71445f4-a0e6-4d62-bb56-beb16dd85c48" name="Changes" comment="FEAT: 최적화 및 기능 제거">
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MSInfo/Engine/Scene.h" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/Engine/Scene.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/MSInfo.vcxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MSInfo/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/MSInfo/imgui.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -1051,12 +1043,15 @@
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um/WinBase.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um/minwinbase.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files (x86)/Windows Kits/10/Include/10.0.22000.0/um/winnt.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/include/string" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/include/xmemory" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.34.31933/include/xstring" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Nexol/Projects/VCPP/MSInfo/MSInfo/Engine/Core.cpp" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MSInfo/Include/imgui/imgui_demo.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -1255,7 +1250,7 @@
       <workItem from="1704956921314" duration="4810000" />
       <workItem from="1704976627441" duration="5612000" />
       <workItem from="1704985104077" duration="272000" />
-      <workItem from="1705020877719" duration="9419000" />
+      <workItem from="1705020877719" duration="11732000" />
     </task>
     <task id="LOCAL-00001" summary="FEAT: 로직 추가">
       <option name="closed" value="true" />
@@ -1465,7 +1460,15 @@
       <option name="project" value="LOCAL" />
       <updated>1704984864775</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="FEAT: 최적화 및 기능 제거">
+      <option name="closed" value="true" />
+      <created>1705036380686</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1705036380686</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1475,7 +1478,6 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="FEAT: 누락 파일" />
     <MESSAGE value="CHORE: gitignore 추가" />
     <MESSAGE value="FEAT: 장비 기능 추가" />
     <MESSAGE value="FEAT: 윈도우 사이즈 제한 추가" />
@@ -1500,6 +1502,7 @@
     <MESSAGE value="FEAT: 캐시 장비 로직 수정" />
     <MESSAGE value="FEAT: 유니온 공격대 추가" />
     <MESSAGE value="FEAT: 최적화" />
-    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 최적화" />
+    <MESSAGE value="FEAT: 최적화 및 기능 제거" />
+    <option name="LAST_COMMIT_MESSAGE" value="FEAT: 최적화 및 기능 제거" />
   </component>
 </project>

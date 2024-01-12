@@ -42,6 +42,32 @@ Scene::Scene()
     
     ret = Graphics::GetInstance()->LoadTexture(RESOURCES + std::string("UnionBoard.png"), &union_board_image, &union_board_width, &union_board_height);
     IM_ASSERT(ret);
+
+    std::string show_link_skill = Settings::GetInstance()->ReadFile("ShowLinkSkill");
+    show_link_skill_ = show_link_skill.compare("true") == 0;
+
+    std::string show_skill = Settings::GetInstance()->ReadFile("ShowSkill");
+    show_skill_ = show_skill.compare("true") == 0;
+
+    std::string show_item_equipment = Settings::GetInstance()->ReadFile("ShowItemEquipment");
+    show_item_equipment_ = show_item_equipment.compare("true") == 0;
+
+    std::string show_cash_item_equipment = Settings::GetInstance()->ReadFile("ShowCashItemEquipment");
+    show_cash_item_equipment_ = show_cash_item_equipment.compare("true") == 0;
+
+    std::string show_union_raider = Settings::GetInstance()->ReadFile("ShowUnionRaider");
+    show_union_raider_ = show_union_raider.compare("true") == 0;
+}
+
+void Scene::Release()
+{
+    Settings::GetInstance()->WriteFile("ShowLinkSkill", show_link_skill_ ? "true" : "false");
+    Settings::GetInstance()->WriteFile("ShowSkill", show_skill_ ? "true" : "false");
+    Settings::GetInstance()->WriteFile("ShowItemEquipment", show_item_equipment_ ? "true" : "false");
+    Settings::GetInstance()->WriteFile("ShowCashItemEquipment", show_cash_item_equipment_ ? "true" : "false");
+    Settings::GetInstance()->WriteFile("ShowUnionRaider", show_union_raider_ ? "true" : "false");
+    
+    Singleton<Scene>::Release();
 }
 
 void Scene::Tick(float delta_time)

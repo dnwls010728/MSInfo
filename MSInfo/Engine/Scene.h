@@ -9,6 +9,8 @@ class Scene : public Singleton<Scene>
 public:
     Scene();
     virtual ~Scene() final = default;
+
+    virtual void Release() final;
     
     void Tick(float delta_time);
     void Render();
