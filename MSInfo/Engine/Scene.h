@@ -44,6 +44,14 @@ private:
     class ImVec4 GetColorByGrade(const std::string& grade);
 
     static DWORD WINAPI SearchThread(LPVOID lpParam);
+    
+    bool show_link_skill_ = false;
+    bool show_skill_ = false;
+    bool show_item_equipment_ = false;
+    bool show_cash_item_equipment_ = false;
+    bool show_union_raider_ = false;
+    bool show_info_ = false;
+    bool show_version_ = false;
 
     std::string search_content_;
     std::string date_;

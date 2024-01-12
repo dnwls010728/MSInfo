@@ -21,23 +21,23 @@ int APIENTRY wWinMain(
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
     
-    HANDLE mutex_handle = CreateMutex(nullptr, FALSE, L"MSInfo");
-    if (GetLastError() == ERROR_ALREADY_EXISTS)
-    {
-        CloseHandle(mutex_handle);
-        MessageBox(Core::GetInstance()->GetWindowHandle(), L"이미 실행 중입니다.", L"Error", MB_OK);
-        return 0;
-    }
+    // HANDLE mutex_handle = CreateMutex(nullptr, FALSE, L"MSInfo");
+    // if (GetLastError() == ERROR_ALREADY_EXISTS)
+    // {
+    //     CloseHandle(mutex_handle);
+    //     MessageBox(Core::GetInstance()->GetWindowHandle(), L"이미 실행 중입니다.", L"Error", MB_OK);
+    //     return 0;
+    // }
 
 #ifdef NDEBUG
-    rapidjson::Document version_document = APIManager::GetInstance()->Request("https://my-bundle-bucket.s3.ap-northeast-2.amazonaws.com/version.json");
-    std::string latest_version = version_document["version"].GetString();
-    if (latest_version.compare(Core::GetInstance()->GetVersion()) != 0)
-    {    
-        MessageBox(Core::GetInstance()->GetWindowHandle(), L"최신 버전이 아닙니다. 업데이트를 진행합니다.", L"Update", MB_OK);
-        ShellExecute(Core::GetInstance()->GetWindowHandle(), L"open", L"AutoUpdater.exe", L"update", nullptr, SW_SHOW);
-        return 0;
-    }
+    // rapidjson::Document version_document = APIManager::GetInstance()->Request("https://my-bundle-bucket.s3.ap-northeast-2.amazonaws.com/version.json");
+    // std::string latest_version = version_document["version"].GetString();
+    // if (latest_version.compare(Core::GetInstance()->GetVersion()) != 0)
+    // {    
+    //     MessageBox(Core::GetInstance()->GetWindowHandle(), L"최신 버전이 아닙니다. 업데이트를 진행합니다.", L"Update", MB_OK);
+    //     ShellExecute(Core::GetInstance()->GetWindowHandle(), L"open", L"AutoUpdater.exe", L"update", nullptr, SW_SHOW);
+    //     return 0;
+    // }
 #endif
 
     if (!Core::GetInstance()->InitWindow(hInstance, nCmdShow)) return 0;

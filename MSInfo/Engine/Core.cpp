@@ -11,7 +11,7 @@
 #include "imgui/imgui_impl_dx11.h"
 #include "imgui/imgui_impl_win32.h"
 
-Core::Core() : class_name_(L"MSINFO"), version_("2.1")
+Core::Core() : class_name_(L"MSINFO"), version_("2.2")
 {
 }
 

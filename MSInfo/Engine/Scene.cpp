@@ -2,8 +2,8 @@
 
 #include <filesystem>
 #include <string>
-#include <sstream>
 
+#include "Settings.h"
 #include "Data/DataManager.h"
 #include "API/APIManager.h"
 #include "API/DownloadManager.h"
@@ -19,6 +19,7 @@
 #include "Data/ItemEquipment/ItemBaseOptionData.h"
 #include "Data/ItemEquipment/ItemExceptionalOptionData.h"
 #include "Data/ItemEquipment/ItemAddOptionData.h"
+#include "imgui/imgui_internal.h"
 
 #define CHARACTER_IMAGE_PATH ".\\Temp\\Character\\character_image.png"
 #define LINK_SKILL_ICON_PATH ".\\Temp\\Icon\\LinkSkill\\"
@@ -52,13 +53,6 @@ void Scene::Render()
     std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
 
     static bool show_search_error = false;
-    static bool show_link_skill = false;
-    static bool show_skill = false;
-    static bool show_item_equipment = false;
-    static bool show_cash_item_equipment = false;
-    static bool show_union_raider = false;
-    static bool show_info = false;
-    static bool show_version = false;
 
 #pragma region 기본
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
@@ -76,19 +70,19 @@ void Scene::Render()
 
         if (ImGui::BeginMenu(u8"창"))
         {
-            ImGui::MenuItem(u8"링크 스킬", nullptr, &show_link_skill);
-            ImGui::MenuItem(u8"스킬", nullptr, &show_skill);
-            ImGui::MenuItem(u8"장비", nullptr, &show_item_equipment);
-            ImGui::MenuItem(u8"캐시 장비", nullptr, &show_cash_item_equipment);
-            ImGui::MenuItem(u8"유니온", nullptr, &show_union_raider);
+            ImGui::MenuItem(u8"링크 스킬", nullptr, &show_link_skill_);
+            ImGui::MenuItem(u8"스킬", nullptr, &show_skill_);
+            ImGui::MenuItem(u8"장비", nullptr, &show_item_equipment_);
+            ImGui::MenuItem(u8"캐시 장비", nullptr, &show_cash_item_equipment_);
+            ImGui::MenuItem(u8"유니온", nullptr, &show_union_raider_);
             
             ImGui::EndMenu();
         }
 
         if (ImGui::BeginMenu(u8"도움말"))
         {
-            ImGui::MenuItem(u8"업데이트 내역", nullptr, &show_version);
-            ImGui::MenuItem(u8"정보", nullptr, &show_info);
+            ImGui::MenuItem(u8"업데이트 내역", nullptr, &show_version_);
+            ImGui::MenuItem(u8"정보", nullptr, &show_info_);
             
             ImGui::EndMenu();
         }
@@ -590,55 +584,24 @@ void Scene::Render()
 
             if (ImGui::BeginTabBar("하이퍼 스텟 프리셋"))
             {
-                if (ImGui::BeginTabItem(u8"프리셋 1"))
+                for (int i = 0; i < 3; i++)
                 {
-                    for (auto& hyper_stat : hyper_stat_data.preset_1)
+                    if (ImGui::BeginTabItem((u8"프리셋 " + std::to_string(i + 1)).c_str()))
                     {
-                        std::string stat_type = hyper_stat.stat_type;
-                        std::string stat_point = hyper_stat.stat_point;
-                        std::string stat_level = hyper_stat.stat_level;
-                        std::string stat_increase = hyper_stat.stat_increase;
+                        for (auto& hyper_stat : hyper_stat_data.presets[i])
+                        {
+                            std::string stat_type = hyper_stat.stat_type;
+                            std::string stat_point = hyper_stat.stat_point;
+                            std::string stat_level = hyper_stat.stat_level;
+                            std::string stat_increase = hyper_stat.stat_increase;
 
-                        if (stat_point.empty()) continue;
+                            if (stat_point.empty()) continue;
 
-                        ImGui::Text(u8"Lv.%s: %s", stat_level.c_str(), stat_increase.c_str());
+                            ImGui::Text(u8"Lv.%s: %s", stat_level.c_str(), stat_increase.c_str());
+                        }
+
+                        ImGui::EndTabItem();
                     }
-
-                    ImGui::EndTabItem();
-                }
-
-                if (ImGui::BeginTabItem(u8"프리셋 2"))
-                {
-                    for (auto& hyper_stat : hyper_stat_data.preset_2)
-                    {
-                        std::string stat_type = hyper_stat.stat_type;
-                        std::string stat_point = hyper_stat.stat_point;
-                        std::string stat_level = hyper_stat.stat_level;
-                        std::string stat_increase = hyper_stat.stat_increase;
-
-                        if (stat_point.empty()) continue;
-
-                        ImGui::Text(u8"Lv.%s: %s", stat_level.c_str(), stat_increase.c_str());
-                    }
-
-                    ImGui::EndTabItem();
-                }
-
-                if (ImGui::BeginTabItem(u8"프리셋 3"))
-                {
-                    for (auto& hyper_stat : hyper_stat_data.preset_3)
-                    {
-                        std::string stat_type = hyper_stat.stat_type;
-                        std::string stat_point = hyper_stat.stat_point;
-                        std::string stat_level = hyper_stat.stat_level;
-                        std::string stat_increase = hyper_stat.stat_increase;
-
-                        if (stat_point.empty()) continue;
-
-                        ImGui::Text(u8"Lv.%s: %s", stat_level.c_str(), stat_increase.c_str());
-                    }
-
-                    ImGui::EndTabItem();
                 }
 
                 ImGui::EndTabBar();
@@ -651,13 +614,13 @@ void Scene::Render()
     ImGui::End();
 #pragma endregion
     
-    if (show_link_skill) ShowLinkSkill(&show_link_skill);
-    if (show_skill) ShowSkill(&show_skill);
-    if (show_item_equipment) ShowItemEquipment(&show_item_equipment);
-    if (show_cash_item_equipment) ShowCashItemEquipment(&show_cash_item_equipment);
-    if (show_union_raider) UnionRaider(&show_union_raider);
-    if (show_version) ShowVersion(&show_version);
-    if (show_info) ShowInfo(&show_info);
+    if (show_link_skill_) ShowLinkSkill(&show_link_skill_);
+    if (show_skill_) ShowSkill(&show_skill_);
+    if (show_item_equipment_) ShowItemEquipment(&show_item_equipment_);
+    if (show_cash_item_equipment_) ShowCashItemEquipment(&show_cash_item_equipment_);
+    if (show_union_raider_) UnionRaider(&show_union_raider_);
+    if (show_version_) ShowVersion(&show_version_);
+    if (show_info_) ShowInfo(&show_info_);
 }
 
 void Scene::SetAlignCenter(std::string text)
@@ -736,7 +699,10 @@ void Scene::SearchCharacter(const std::string& character_name)
 {
     character_name_ = character_name;
     thread_handle_ = CreateThread(nullptr, 0, SearchThread, &character_name_, 0, nullptr);
-    if (thread_handle_) ImGui::OpenPopup(u8"캐릭터 조회 중");
+    if (thread_handle_)
+    {
+        ImGui::OpenPopup(u8"캐릭터 조회 중");
+    }
 }
 
 void Scene::ShowLinkSkill(bool* p_open)
@@ -1033,6 +999,7 @@ void Scene::UnionRaider(bool* p_open)
         
         for (int i = 0; i < union_block.block_position.size(); i++)
         {
+            int size = union_block.block_position.size();
             float x = 11 + std::stof(union_block.block_position[i].x);
             float y = 10 + std::stof(union_block.block_position[i].y);
 
@@ -1071,9 +1038,9 @@ void Scene::UnionRaider(bool* p_open)
     }
     ImGui::EndChild();
     ImGui::EndGroup();
-
+    
     ImGui::SameLine();
-
+    
     ImGui::BeginGroup();
     ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
     ImGui::Text(u8"공격대 점령 효과");
@@ -1099,6 +1066,10 @@ void Scene::ShowVersion(bool* p_open)
     }
 
     std::vector<std::string> log = {
+        u8"v2.2",
+        u8"자동 업데이트 기능 제거",
+        u8"다중 실행 해제",
+        u8"최적화",
         u8"v2.1",
         u8"최적화",
         u8"인기도 정보 추가",
@@ -1337,46 +1308,25 @@ DWORD Scene::SearchThread(LPVOID lpParam)
     GetInstance()->SetSearchContent(u8"하이퍼 스텟 데이터 요청 중...");
     rapidjson::Document hyper_stat_document = APIManager::GetInstance()->
         RequestHyperStat(DataManager->GetOcid(), GetInstance()->GetDate());
-    rapidjson::Value& hyper_stat_preset_1 = hyper_stat_document["hyper_stat_preset_1"].GetArray();
-    rapidjson::Value& hyper_stat_preset_2 = hyper_stat_document["hyper_stat_preset_2"].GetArray();
-    rapidjson::Value& hyper_stat_preset_3 = hyper_stat_document["hyper_stat_preset_3"].GetArray();
 
     DataManager->GetHyperStatData().use_preset_no = GetInstance()->SafeGetString(hyper_stat_document, "use_preset_no");
-    DataManager->GetHyperStatData().preset_1.clear();
-    DataManager->GetHyperStatData().preset_2.clear();
-    DataManager->GetHyperStatData().preset_3.clear();
 
-    for (int i = 0; i < hyper_stat_preset_1.Size(); i++)
+    for (int i = 0; i < 3; i++)
     {
-        struct HyperStatData::HyperStat hyper_stat;
-        hyper_stat.stat_type = GetInstance()->SafeGetString(hyper_stat_preset_1[i], "stat_type");
-        hyper_stat.stat_point = GetInstance()->SafeGetString(hyper_stat_preset_1[i], "stat_point");
-        hyper_stat.stat_level = GetInstance()->SafeGetString(hyper_stat_preset_1[i], "stat_level");
-        hyper_stat.stat_increase = GetInstance()->SafeGetString(hyper_stat_preset_1[i], "stat_increase");
+        std::string key = "hyper_stat_preset_" + std::to_string(i + 1);
+        rapidjson::Value& hyper_stat_info = hyper_stat_document[key.c_str()].GetArray();
 
-        DataManager->GetHyperStatData().preset_1.push_back(hyper_stat);
-    }
+        DataManager->GetHyperStatData().presets[i].clear();
 
-    for (int i = 0; i < hyper_stat_preset_2.Size(); i++)
-    {
-        struct HyperStatData::HyperStat hyper_stat;
-        hyper_stat.stat_type = GetInstance()->SafeGetString(hyper_stat_preset_2[i], "stat_type");
-        hyper_stat.stat_point = GetInstance()->SafeGetString(hyper_stat_preset_2[i], "stat_point");
-        hyper_stat.stat_level = GetInstance()->SafeGetString(hyper_stat_preset_2[i], "stat_level");
-        hyper_stat.stat_increase = GetInstance()->SafeGetString(hyper_stat_preset_2[i], "stat_increase");
-
-        DataManager->GetHyperStatData().preset_2.push_back(hyper_stat);
-    }
-
-    for (int i = 0; i < hyper_stat_preset_3.Size(); i++)
-    {
-        struct HyperStatData::HyperStat hyper_stat;
-        hyper_stat.stat_type = GetInstance()->SafeGetString(hyper_stat_preset_3[i], "stat_type");
-        hyper_stat.stat_point = GetInstance()->SafeGetString(hyper_stat_preset_3[i], "stat_point");
-        hyper_stat.stat_level = GetInstance()->SafeGetString(hyper_stat_preset_3[i], "stat_level");
-        hyper_stat.stat_increase = GetInstance()->SafeGetString(hyper_stat_preset_3[i], "stat_increase");
-
-        DataManager->GetHyperStatData().preset_3.push_back(hyper_stat);
+        for (int j = 0; j < hyper_stat_info.Size(); j++)
+        {
+            DataManager->GetHyperStatData().presets[i].push_back({
+                GetInstance()->SafeGetString(hyper_stat_info[j], "stat_type"),
+                GetInstance()->SafeGetString(hyper_stat_info[j], "stat_point"),
+                GetInstance()->SafeGetString(hyper_stat_info[j], "stat_level"),
+                GetInstance()->SafeGetString(hyper_stat_info[j], "stat_increase")
+            });
+        }
     }
 
 #pragma endregion

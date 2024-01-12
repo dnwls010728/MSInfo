@@ -13,7 +13,5 @@ struct HyperStatData
     };
     
     std::string use_preset_no;
-    std::vector<HyperStat> preset_1;
-    std::vector<HyperStat> preset_2;
-    std::vector<HyperStat> preset_3;
+    std::vector<HyperStat> presets[3];
 };
