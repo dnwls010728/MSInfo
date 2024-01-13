@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include <d3d11.h>
+#include <shared_mutex>
 
 #include "Singleton.h"
 #include "rapidjson/document.h"
@@ -14,16 +15,6 @@ public:
     
     void Tick(float delta_time);
     void Render();
-    
-    inline std::string GetDate() const { return date_; }
-
-    inline int* GetCharacterImageWidth() { return &character_image_width; }
-    inline int* GetCharacterImageHeight() { return &character_image_height; }
-
-    inline ID3D11ShaderResourceView** GetCharacterImage() { return &character_image; }
-
-    inline void SetSearchContent(const std::string& search_content) { search_content_ = search_content; }
-    inline std::string GetSearchContent() const { return search_content_; }
 
     inline void SetProgress(float progress) { progress_ = progress; }
     inline float GetProgress() const { return progress_; }
@@ -46,6 +37,8 @@ private:
     class ImVec4 GetColorByGrade(const std::string& grade);
 
     static DWORD WINAPI SearchThread(LPVOID lpParam);
+
+    bool is_searching_ = false;
     
     bool show_link_skill_ = false;
     bool show_skill_ = false;
