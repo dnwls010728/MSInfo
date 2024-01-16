@@ -162,15 +162,21 @@
     <ClInclude Include="Engine\Data\Union\UnionBlockData.h" />
     <ClInclude Include="Engine\Data\Union\UnionData.h" />
     <ClInclude Include="Engine\Data\Union\UnionRaiderData.h" />
+    <ClInclude Include="Engine\Extension\ImGuiEx.h" />
     <ClInclude Include="Engine\Graphics\Graphics.h" />
+    <ClInclude Include="Engine\ResourceManager.h" />
     <ClInclude Include="Engine\Scene.h" />
     <ClInclude Include="Engine\Settings.h" />
     <ClInclude Include="Engine\Singleton.h" />
     <ClInclude Include="Engine\Texture.h" />
     <ClInclude Include="Engine\Time\Time.h" />
+    <ClInclude Include="Engine\Window\CashItemEquipmentWindow.h" />
+    <ClInclude Include="Engine\Window\InfoWindow.h" />
     <ClInclude Include="Engine\Window\ItemEquipmentWindow.h" />
     <ClInclude Include="Engine\Window\LinkSkillWindow.h" />
     <ClInclude Include="Engine\Window\SkillWindow.h" />
+    <ClInclude Include="Engine\Window\UnionRaiderWindow.h" />
+    <ClInclude Include="Engine\Window\VersionWindow.h" />
     <ClInclude Include="Engine\Window\Window.h" />
     <ClInclude Include="Include\curl\curl.h" />
     <ClInclude Include="Include\curl\curlver.h" />
@@ -262,10 +268,14 @@
     <ClCompile Include="Engine\Data\DataManager.cpp" />
     <ClCompile Include="Engine\Data\DojangData.cpp" />
     <ClCompile Include="Engine\Data\Union\UnionData.cpp" />
+    <ClCompile Include="Engine\Extension\ImGuiEx.cpp" />
     <ClCompile Include="Engine\Graphics\Graphics.cpp" />
+    <ClCompile Include="Engine\ResourceManager.cpp" />
     <ClCompile Include="Engine\Scene.cpp" />
     <ClCompile Include="Engine\Settings.cpp" />
     <ClCompile Include="Engine\Time\Time.cpp" />
+    <ClCompile Include="Engine\Window\CashItemEquipmentWindow.cpp" />
+    <ClCompile Include="Engine\Window\InfoWindow.cpp" />
     <ClCompile Include="Engine\Window\ItemEquipmentWindow.cpp" />
     <ClCompile Include="Engine\Window\LinkSkillWindow.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
@@ -342,6 +352,8 @@
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
     <ClCompile Include="Engine\Window\SkillWindow.cpp" />
+    <ClCompile Include="Engine\Window\UnionRaiderWindow.cpp" />
+    <ClCompile Include="Engine\Window\VersionWindow.cpp" />
     <ClCompile Include="Engine\Window\Window.cpp">
       <RuntimeLibrary>MultiThreadedDebugDll</RuntimeLibrary>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>

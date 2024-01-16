@@ -1,5 +1,6 @@
 ﻿#include "Core.h"
 
+#include "ResourceManager.h"
 #include "Graphics/Graphics.h"
 #include "Time/Time.h"
 #include "API/APIManager.h"
@@ -132,6 +133,7 @@ LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         DataManager::GetInstance()->Release();
         DownloadManager::GetInstance()->Release();
         Settings::GetInstance()->Release();
+        ResourceManager::GetInstance()->Release();
         Scene::GetInstance()->Release();
         GetInstance()->Release();
 

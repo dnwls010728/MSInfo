@@ -3,6 +3,7 @@
 #include <filesystem>
 #include <string>
 
+#include "ResourceManager.h"
 #include "Settings.h"
 #include "Data/DataManager.h"
 #include "API/APIManager.h"
@@ -20,32 +21,28 @@
 #include "Data/ItemEquipment/ItemExceptionalOptionData.h"
 #include "Data/ItemEquipment/ItemAddOptionData.h"
 #include "imgui/imgui_internal.h"
+#include "Window/CashItemEquipmentWindow.h"
+#include "Window/InfoWindow.h"
+#include "Window/ItemEquipmentWindow.h"
 #include "Window/LinkSkillWindow.h"
 #include "Window/SkillWindow.h"
+#include "Window/UnionRaiderWindow.h"
+#include "Window/VersionWindow.h"
 
 #define CHARACTER_IMAGE_PATH ".\\Temp\\Character\\character_image.png"
 #define LINK_SKILL_ICON_PATH ".\\Temp\\Icon\\LinkSkill\\"
 #define SKILL_ICON_PATH ".\\Temp\\Icon\\Skill\\"
 #define ITEM_EQUIPMENT_ICON_PATH ".\\Temp\\Icon\\ItemEquipment\\"
 #define CASH_ITEM_EQUIPMENT_ICON_PATH ".\\Temp\\Icon\\CashItemEquipment\\"
-#define RESOURCES ".\\Resources\\"
-
-#define UPGRADE() ImVec4(102.f / 255.f, 1.f, 1.f, 1.f)
-#define ADD_OPTION() ImVec4(204.f / 255.f, 1.f, 0.f, 1.f);
-#define ETC_OPTION() ImVec4(170.f / 255.f, 170.f / 255.f, 1.f, 1.f);
-#define STARFORCE_OPTION() ImVec4(1.f, 204.f / 255.f, 0.f, 1.f);
 
 Scene::Scene()
 {
     date_ = DataManager::GetInstance()->GetDataDate();
 
-    bool ret = Graphics::GetInstance()->LoadTexture(RESOURCES "star.png", &star_texture_.texture, &star_texture_.width,
-                                                    &star_texture_.height);
-    IM_ASSERT(ret);
+    std::shared_ptr<ResourceManager> ResourceManager = ResourceManager::GetInstance();
 
-    ret = Graphics::GetInstance()->LoadTexture(RESOURCES + std::string("UnionBoard.png"), &union_board_texture_.texture,
-                                               &union_board_texture_.width, &union_board_texture_.height);
-    IM_ASSERT(ret);
+    ResourceManager->AddTexture("Star", "\\Star.png");
+    ResourceManager->AddTexture("UnionBoard", "\\UnionBoard.png");
 
     std::string show_link_skill = Settings::GetInstance()->ReadFile("ShowLinkSkill");
     show_link_skill_ = show_link_skill.compare("true") == 0;
@@ -64,6 +61,11 @@ Scene::Scene()
 
     link_skill_window_ = std::make_unique<LinkSkillWindow>();
     skill_window_ = std::make_unique<SkillWindow>();
+    item_equipment_window_ = std::make_unique<ItemEquipmentWindow>();
+    cash_item_equipment_window_ = std::make_unique<CashItemEquipmentWindow>();
+    union_raider_window_ = std::make_unique<UnionRaiderWindow>();
+    version_window_ = std::make_unique<VersionWindow>();
+    info_window_ = std::make_unique<InfoWindow>();
 }
 
 void Scene::Release()
@@ -660,522 +662,11 @@ void Scene::Render()
 
     if (show_link_skill_) link_skill_window_->Open(u8"링크 스킬", &show_link_skill_);
     if (show_skill_) skill_window_->Open(u8"스킬", &show_skill_);
-    if (show_item_equipment_) ShowItemEquipment(&show_item_equipment_);
-    if (show_cash_item_equipment_) ShowCashItemEquipment(&show_cash_item_equipment_);
-    if (show_union_raider_) UnionRaider(&show_union_raider_);
-    if (show_version_) ShowVersion(&show_version_);
-    if (show_info_) ShowInfo(&show_info_);
-}
-
-void Scene::SetAlignCenter(std::string text)
-{
-    float window_width = ImGui::GetWindowSize().x;
-    float text_width = ImGui::CalcTextSize(text.c_str()).x;
-    float text_pos_x = (window_width - text_width) * .5f;
-
-    ImGui::SetCursorPosX(text_pos_x);
-}
-
-void Scene::DrawOption(std::string option, std::string total, std::string base, std::string add, std::string etc,
-                       std::string starforce, bool is_percent)
-{
-    if (total.compare("0") == 0) return;
-
-    ImVec4 upgrade_color = UPGRADE();
-    ImVec4 add_option_color = ADD_OPTION();
-    ImVec4 etc_option_color = ETC_OPTION();
-    ImVec4 starforce_option_color = STARFORCE_OPTION();
-
-    if (add.compare("0") != 0 || etc.compare("0") != 0 || starforce.compare("0") != 0)
-    {
-        ImGui::TextColored(upgrade_color, u8"%s: +%s%s", option.c_str(), total.c_str(), is_percent ? u8"%" : "");
-        ImGui::SameLine();
-        ImGui::Text(u8"(");
-        ImGui::SameLine();
-
-        if (starforce.compare("0") != 0)
-        {
-            ImGui::Text(u8"%s", base.c_str());
-            ImGui::SameLine();
-            ImGui::Text(u8"+");
-            ImGui::SameLine();
-            ImGui::TextColored(add_option_color, u8"%s", add.c_str());
-            ImGui::SameLine();
-            ImGui::Text(u8"+");
-            ImGui::SameLine();
-            ImGui::TextColored(etc_option_color, u8"%s", etc.c_str());
-            ImGui::SameLine();
-            ImGui::Text(u8"+");
-            ImGui::SameLine();
-            ImGui::TextColored(starforce_option_color, u8"%s", starforce.c_str());
-        }
-        else if (etc.compare("0") != 0)
-        {
-            ImGui::Text(u8"%s", base.c_str());
-            ImGui::SameLine();
-            ImGui::Text(u8"+");
-            ImGui::SameLine();
-            ImGui::TextColored(add_option_color, u8"%s", add.c_str());
-            ImGui::SameLine();
-            ImGui::Text(u8"+");
-            ImGui::SameLine();
-            ImGui::TextColored(etc_option_color, u8"%s", etc.c_str());
-        }
-        else
-        {
-            ImGui::Text(u8"%s", base.c_str());
-            ImGui::SameLine();
-            ImGui::Text(u8"+");
-            ImGui::SameLine();
-            ImGui::TextColored(add_option_color, u8"%s", add.c_str());
-        }
-
-        ImGui::SameLine();
-        ImGui::Text(u8")");
-
-        return;
-    }
-
-    ImGui::Text(u8"%s: +%s%s", option.c_str(), total.c_str(), is_percent ? u8"%" : "");
-}
-
-void Scene::SearchCharacter(const std::string& character_name)
-{
-    character_name_ = character_name;
-    thread_handle_ = CreateThread(nullptr, 0, SearchThread, &character_name_, 0, nullptr);
-    if (thread_handle_)
-    {
-        ImGui::OpenPopup(u8"캐릭터 조회 중");
-        is_searching_ = true;
-    }
-}
-
-void Scene::ShowItemEquipment(bool* p_open)
-{
-    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin(u8"장비", p_open) || is_searching_)
-    {
-        ImGui::End();
-        return;
-    }
-
-    struct ItemEquipmentData& item_equipment_data = DataManager::GetInstance()->GetItemEquipmentData();
-    for (auto& item_equipment : item_equipment_data.item_equipment)
-    {
-        ImGui::Image(item_equipment.item_shape_texture.texture, ImVec2(32, 32));
-        ImGui::SameLine();
-
-        ImGui::BeginGroup();
-        ImGui::Text(u8"%s", item_equipment.item_name.c_str());
-
-        if (item_equipment.starforce.compare("0") != 0)
-        {
-            ImGui::Image(star_texture_.texture, ImVec2(16, 16));
-            ImGui::SameLine();
-            ImGui::Text(u8"%s", item_equipment.starforce.c_str());
-        }
-
-        ImGui::EndGroup();
-
-        if (ImGui::IsItemHovered())
-        {
-            ImGui::BeginTooltip();
-
-            if (item_equipment.starforce.compare("0") != 0)
-            {
-                float window_width = ImGui::GetWindowSize().x;
-                float text_width = ImGui::CalcTextSize(item_equipment.starforce.c_str()).x;
-                float text_pos_x = (window_width - (text_width + 20)) / 2;
-
-                ImGui::SetCursorPosX(text_pos_x);
-                ImGui::Image(star_texture_.texture, ImVec2(16, 16));
-                ImGui::SameLine();
-                ImGui::Text(u8"%s", item_equipment.starforce.c_str());
-            }
-
-            std::string item_name = item_equipment.item_name + "(+" + item_equipment.scroll_upgrade + ")";
-            SetAlignCenter(item_name);
-            ImGui::Text(u8"%s", item_name.c_str());
-
-            if (!item_equipment.potential_option_grade.empty())
-            {
-                std::string item_grade = "(" + item_equipment.potential_option_grade + u8" 아이템)";
-                SetAlignCenter(item_grade);
-                ImGui::Text(u8"%s", item_grade.c_str());
-            }
-
-            ImGui::Separator();
-            ImGui::Image(item_equipment.item_shape_texture.texture, ImVec2(32, 32));
-            ImGui::Separator();
-            ImGui::Text(u8"장비분류: %s", item_equipment.item_equipment_part.c_str());
-
-            DrawOption(u8"STR", item_equipment.item_total_option.stat_str, item_equipment.item_base_option.stat_str,
-                       item_equipment.item_add_option.stat_str, item_equipment.item_etc_option.stat_str,
-                       item_equipment.item_starforce_option.stat_str);
-            DrawOption(u8"DEX", item_equipment.item_total_option.stat_dex, item_equipment.item_base_option.stat_dex,
-                       item_equipment.item_add_option.stat_dex, item_equipment.item_etc_option.stat_dex,
-                       item_equipment.item_starforce_option.stat_dex);
-            DrawOption(u8"INT", item_equipment.item_total_option.stat_int, item_equipment.item_base_option.stat_int,
-                       item_equipment.item_add_option.stat_int, item_equipment.item_etc_option.stat_int,
-                       item_equipment.item_starforce_option.stat_int);
-            DrawOption(u8"LUK", item_equipment.item_total_option.stat_luk, item_equipment.item_base_option.stat_luk,
-                       item_equipment.item_add_option.stat_luk, item_equipment.item_etc_option.stat_luk,
-                       item_equipment.item_starforce_option.stat_luk);
-            DrawOption(u8"최대 HP", item_equipment.item_total_option.max_hp, item_equipment.item_base_option.max_hp,
-                       item_equipment.item_add_option.max_hp, item_equipment.item_etc_option.max_hp,
-                       item_equipment.item_starforce_option.max_hp);
-            DrawOption(u8"최대 MP", item_equipment.item_total_option.max_mp, item_equipment.item_base_option.max_mp,
-                       item_equipment.item_add_option.max_mp, item_equipment.item_etc_option.max_mp,
-                       item_equipment.item_starforce_option.max_mp);
-            DrawOption(u8"최대 HP", item_equipment.item_total_option.max_hp_rate,
-                       item_equipment.item_base_option.max_hp_rate, "0", "0", "0", true);
-            DrawOption(u8"최대 MP", item_equipment.item_total_option.max_mp_rate,
-                       item_equipment.item_base_option.max_mp_rate, "0", "0", "0", true);
-            DrawOption(u8"공격력", item_equipment.item_total_option.attack_power,
-                       item_equipment.item_base_option.attack_power, item_equipment.item_add_option.attack_power,
-                       item_equipment.item_etc_option.attack_power, item_equipment.item_starforce_option.attack_power);
-            DrawOption(u8"마력", item_equipment.item_total_option.magic_power,
-                       item_equipment.item_base_option.magic_power, item_equipment.item_add_option.magic_power,
-                       item_equipment.item_etc_option.magic_power, item_equipment.item_starforce_option.magic_power);
-            DrawOption(u8"방어력", item_equipment.item_total_option.armor, item_equipment.item_base_option.armor,
-                       item_equipment.item_add_option.armor, item_equipment.item_etc_option.armor,
-                       item_equipment.item_starforce_option.armor);
-            DrawOption(u8"이동속도", item_equipment.item_total_option.speed, item_equipment.item_base_option.speed,
-                       item_equipment.item_add_option.speed, item_equipment.item_etc_option.speed,
-                       item_equipment.item_starforce_option.speed);
-            DrawOption(u8"점프력", item_equipment.item_total_option.jump, item_equipment.item_base_option.jump,
-                       item_equipment.item_add_option.jump, item_equipment.item_etc_option.jump,
-                       item_equipment.item_starforce_option.jump);
-            DrawOption(u8"보스 몬스터 공격 시 데미지", item_equipment.item_total_option.boss_damage,
-                       item_equipment.item_base_option.boss_damage, item_equipment.item_add_option.boss_damage, "0",
-                       "0", true);
-            DrawOption(u8"몬스터 방어율 무시", item_equipment.item_total_option.ignore_monster_armor,
-                       item_equipment.item_base_option.ignore_monster_armor, "0", "0", "0", true);
-            DrawOption(u8"올스탯", item_equipment.item_total_option.all_stat, item_equipment.item_base_option.all_stat,
-                       item_equipment.item_add_option.all_stat, "0", "0", true);
-            DrawOption(u8"데미지", item_equipment.item_total_option.damage, "0", item_equipment.item_add_option.damage,
-                       "0", "0", true);
-
-            if (!item_equipment.potential_option_grade.empty())
-            {
-                ImGui::Separator();
-
-                ImVec4 potential_value_color = GetColorByGrade(item_equipment.potential_option_grade);
-                ImGui::TextColored(potential_value_color, u8"잠재옵션");
-
-                if (!item_equipment.potential_option_1.empty()) ImGui::Text(
-                    u8"%s", item_equipment.potential_option_1.c_str());
-                if (!item_equipment.potential_option_2.empty()) ImGui::Text(
-                    u8"%s", item_equipment.potential_option_2.c_str());
-                if (!item_equipment.potential_option_3.empty()) ImGui::Text(
-                    u8"%s", item_equipment.potential_option_3.c_str());
-            }
-
-            if (!item_equipment.additional_potential_option_grade.empty())
-            {
-                ImGui::Separator();
-
-                ImVec4 additional_potential_value_color = GetColorByGrade(
-                    item_equipment.additional_potential_option_grade);
-                ImGui::TextColored(additional_potential_value_color, u8"에디셔널 잠재옵션");
-
-                if (!item_equipment.additional_potential_option_1.empty()) ImGui::Text(
-                    u8"%s", item_equipment.additional_potential_option_1.c_str());
-                if (!item_equipment.additional_potential_option_2.empty()) ImGui::Text(
-                    u8"%s", item_equipment.additional_potential_option_2.c_str());
-                if (!item_equipment.additional_potential_option_3.empty()) ImGui::Text(
-                    u8"%s", item_equipment.additional_potential_option_3.c_str());
-            }
-
-            if (item_equipment.item_name.compare(item_equipment.item_shape_name) != 0)
-            {
-                ImVec4 add_option_color = ADD_OPTION();
-
-                ImGui::Separator();
-                // ImGui::Text(u8"신비의 모루에 의해 [%s]의 외형이 합성됨", item_equipment.item_shape_name.c_str());
-                ImGui::TextColored(add_option_color, u8"신비의 모루에 의해 [%s]의 외형이 합성됨",
-                                   item_equipment.item_shape_name.c_str());
-            }
-
-            ImGui::EndTooltip();
-        }
-
-        ImGui::Separator();
-    }
-
-    ImGui::End();
-}
-
-void Scene::ShowCashItemEquipment(bool* p_open)
-{
-    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin(u8"캐시 장비", p_open) || is_searching_)
-    {
-        ImGui::End();
-        return;
-    }
-
-    struct CashItemEquipmentData& cash_item_equipment_data = DataManager::GetInstance()->GetCashItemEquipmentData();
-    ImGui::Text(u8"현재 프리셋: %s", cash_item_equipment_data.preset_no.c_str());
-
-    ImGui::Separator();
-
-    struct BeautyEquipmentData& beauty_equipment_data = DataManager::GetInstance()->GetBeautyEquipmentData();
-    ImGui::Text(u8"헤어: %s", beauty_equipment_data.character_hair.name.c_str());
-    ImGui::Text(u8"성형: %s", beauty_equipment_data.character_face.name.c_str());
-    ImGui::Text(u8"피부: %s", beauty_equipment_data.character_skin_name.c_str());
-
-    if (!beauty_equipment_data.additional_character_face.name.empty())
-    {
-        ImGui::Separator();
-        ImGui::Text(u8"헤어: %s", beauty_equipment_data.additional_character_hair.name.c_str());
-        ImGui::Text(u8"성형: %s", beauty_equipment_data.additional_character_face.name.c_str());
-        ImGui::Text(u8"피부: %s", beauty_equipment_data.additional_character_skin_name.c_str());
-    }
-
-    if (ImGui::BeginTabBar(u8"##캐시 장비"))
-    {
-        for (int i = 0; i < 3; i++)
-        {
-            if (ImGui::BeginTabItem((u8"프리셋 " + std::to_string(i + 1)).c_str()))
-            {
-                ImGui::BeginChild("Scrolling", ImVec2(0, 0), false, ImGuiWindowFlags_AlwaysVerticalScrollbar);
-
-                for (auto& cash_item_equipment : cash_item_equipment_data.presets[i])
-                {
-                    ImGui::Image(cash_item_equipment.cash_item_texture.texture, ImVec2(32, 32));
-                    ImGui::SameLine();
-
-                    ImGui::BeginGroup();
-                    ImGui::Text(u8"%s", cash_item_equipment.cash_item_name.c_str());
-
-                    ImGui::EndGroup();
-
-                    ImGui::Separator();
-                }
-
-                ImGui::EndChild();
-                ImGui::EndTabItem();
-            }
-        }
-
-        ImGui::EndTabBar();
-    }
-
-    ImGui::End();
-}
-
-void Scene::UnionRaider(bool* p_open)
-{
-    if (!ImGui::Begin(u8"유니온", p_open) || is_searching_)
-    {
-        ImGui::End();
-        return;
-    }
-
-    struct UnionData& union_data = DataManager::GetInstance()->GetUnionData();
-
-    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
-
-    SetAlignCenter(union_data.union_grade);
-    ImGui::Text(u8"%s", union_data.union_grade.c_str());
-
-    ImGui::PopFont();
-
-    SetAlignCenter(union_data.union_level);
-    ImGui::Text(u8"Lv.%s", union_data.union_level.c_str());
-
-    ImDrawList* draw_list = ImGui::GetWindowDrawList();
-
-    const ImVec2 window_size = ImGui::GetWindowSize();
-    const ImVec2 p = ImGui::GetCursorScreenPos();
-
-    const float union_board_width = 308;
-    const float union_board_height = 280;
-    const float left_padding = (window_size.x - union_board_width) / 2;
-    const float top_padding = 14;
-
-    ImU32 col_a = ImGui::GetColorU32(IM_COL32(70, 70, 93, 0));
-    ImU32 col_b = ImGui::GetColorU32(IM_COL32(39, 40, 46, 255));
-    draw_list->AddRectFilledMultiColor(ImVec2(p.x + left_padding, p.y + top_padding),
-                                       ImVec2(p.x + (left_padding + union_board_width),
-                                              p.y + (top_padding + union_board_height)), col_b, col_b, col_a, col_a);
-
-    draw_list->AddImage(union_board_texture_.texture, ImVec2(p.x + left_padding, p.y + top_padding),
-                        ImVec2(p.x + (left_padding + union_board_width), p.y + (top_padding + union_board_height)));
-
-    struct UnionRaiderData& union_raider_data = DataManager::GetInstance()->GetUnionRaiderData();
-    for (auto& union_block : union_raider_data.union_block)
-    {
-        if (union_block.block_color == 0)
-        {
-            ImU32 rand_col = ImGui::GetColorU32(IM_COL32(rand() % 255, rand() % 255, rand() % 255, 255));
-            union_block.block_color = rand_col;
-        }
-
-        for (int i = 0; i < union_block.block_position.size(); i++)
-        {
-            float x = 11 + std::stof(union_block.block_position[i].x);
-            float y = 10 + std::stof(union_block.block_position[i].y);
-
-            ImVec2 position = ImVec2((left_padding + 7) + (14 * (1 * x)), (top_padding - 7) + (14 * (1 * y)));
-            UnionBlock(draw_list, position, union_block.block_color);
-
-            if (i == union_block.block_position.size() - 1)
-            {
-                float mouse_x = p.x + position.x;
-                float mouse_y = p.y + position.y;
-
-                draw_list->AddCircle(ImVec2(mouse_x, mouse_y), 2, IM_COL32(255, 0, 0, 255), 16, 2.f);
-
-                bool is_hovered = ImGui::IsMouseHoveringRect(ImVec2(mouse_x - 8, mouse_y - 8),
-                                                             ImVec2(mouse_x + 8, mouse_y + 8));
-                if (is_hovered)
-                {
-                    ImGui::BeginTooltip();
-                    ImGui::Text(u8"%s Lv.%s", union_block.block_class.c_str(), union_block.block_level.c_str());
-                    ImGui::EndTooltip();
-                }
-            }
-        }
-    }
-
-    ImGui::SetCursorPosY(ImGui::GetCursorPosY() + top_padding + union_board_height + 10);
-    ImGui::Separator();
-
-    ImGui::BeginGroup();
-    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
-    ImGui::Text(u8"공격대원 효과");
-    ImGui::PopFont();
-    ImGui::BeginChild("Union Raider Stat", ImVec2(window_size.x / 2, 0), false,
-                      ImGuiWindowFlags_AlwaysVerticalScrollbar);
-    for (auto& union_raider_stat : union_raider_data.union_raider_stat)
-    {
-        ImGui::Text(u8"%s", union_raider_stat.c_str());
-    }
-    ImGui::EndChild();
-    ImGui::EndGroup();
-
-    ImGui::SameLine();
-
-    ImGui::BeginGroup();
-    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
-    ImGui::Text(u8"공격대 점령 효과");
-    ImGui::PopFont();
-    ImGui::BeginChild("Union Occupied Stat", ImVec2(0, 0), false, ImGuiWindowFlags_AlwaysVerticalScrollbar);
-    for (auto& union_occupied_stat : union_raider_data.union_occupied_stat)
-    {
-        ImGui::Text(u8"%s", union_occupied_stat.c_str());
-    }
-    ImGui::EndChild();
-    ImGui::EndGroup();
-
-    ImGui::End();
-}
-
-void Scene::ShowVersion(bool* p_open)
-{
-    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin(u8"업데이트 내역", p_open))
-    {
-        ImGui::End();
-        return;
-    }
-
-    std::vector<std::string> log = {
-        u8"v2.2",
-        u8"자동 업데이트 기능 제거",
-        u8"다중 실행 해제",
-        u8"최적화 및 버그 수정",
-        u8"창 활성화 여부 저장 기능 추가",
-        u8"v2.1",
-        u8"최적화",
-        u8"인기도 정보 추가",
-        u8"무릉도장 최고 기록 정보 추가",
-        u8"v2.0",
-        u8"캐시 장비 메뉴 추가",
-        u8"헤어, 성형, 피부 추가",
-        u8"유니온 메뉴 추가",
-        u8"v1.15",
-        u8"API Key 변경",
-        u8"v1.1",
-        u8"프로그램 최적화",
-        u8"도움말 메뉴 추가"
-    };
-
-    for (int i = 0; i < log.size(); i++)
-    {
-        SetAlignCenter(log[i]);
-        ImGui::Text(u8"%s", log[i].c_str());
-
-        if (i + 1 < log.size() - 1 && log[i + 1].find("v") != std::string::npos)
-        {
-            ImGui::Separator();
-        }
-    }
-
-    ImGui::End();
-}
-
-void Scene::ShowInfo(bool* p_open)
-{
-    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin(u8"정보", p_open))
-    {
-        ImGui::End();
-        return;
-    }
-
-    std::string api = u8"대적자 정보 탐색기 - v" + Core::GetInstance()->GetVersion();
-    std::string email = u8"버그 제보 및 피드백: dnwls010728@gmail.com";
-    std::string github = u8"GitHub: https://github.com/UnitySio";
-    std::string content = u8"함께 발전시켜 나가실 분을 모집하고 있습니다.";
-
-    ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
-    SetAlignCenter(api);
-    ImGui::Text(u8"%s", api.c_str());
-    ImGui::PopFont();
-
-    ImGui::NewLine();
-    ImGui::NewLine();
-
-    SetAlignCenter(email);
-    ImGui::Text(u8"%s", email.c_str());
-
-    SetAlignCenter(github);
-    ImGui::Text(u8"%s", github.c_str());
-
-    ImGui::NewLine();
-
-    SetAlignCenter(content);
-    ImGui::Text(u8"%s", content.c_str());
-
-    ImGui::End();
-}
-
-void Scene::UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position, signed int col)
-{
-    const ImVec2 p = ImGui::GetCursorScreenPos();
-
-    float x = p.x + position.x;
-    float y = p.y + position.y;
-
-    draw_list->AddRectFilled(ImVec2(x - 7, y - 7), ImVec2(x + 7, y + 7), col);
-}
-
-std::string Scene::SafeGetString(const rapidjson::Value& value, const std::string& key)
-{
-    const rapidjson::Value::ConstMemberIterator iter = value.FindMember(key.c_str());
-
-    if (iter != value.MemberEnd() && !iter->value.IsNull())
-    {
-        if (iter->value.IsString()) return iter->value.GetString();
-        if (iter->value.IsInt()) return std::to_string(iter->value.GetInt());
-        if (iter->value.IsDouble()) return std::to_string(iter->value.GetDouble());
-        if (iter->value.IsBool()) return std::to_string(iter->value.GetBool());
-    }
-
-    return "";
+    if (show_item_equipment_) item_equipment_window_->Open(u8"장비", &show_item_equipment_);
+    if (show_cash_item_equipment_) cash_item_equipment_window_->Open(u8"캐시 장비", &show_cash_item_equipment_);
+    if (show_union_raider_) union_raider_window_->Open(u8"유니온", &show_union_raider_);
+    if (show_version_) version_window_->Open(u8"업데이트 내역", &show_version_);
+    if (show_info_) info_window_->Open(u8"정보", &show_info_);
 }
 
 ImVec4 Scene::GetColorByGrade(const std::string& grade)
@@ -1201,6 +692,32 @@ ImVec4 Scene::GetColorByGrade(const std::string& grade)
     }
 
     return ImVec4(1.f, 1.f, 1.f, 1.f);
+}
+
+void Scene::SearchCharacter(const std::string& character_name)
+{
+    character_name_ = character_name;
+    thread_handle_ = CreateThread(nullptr, 0, SearchThread, &character_name_, 0, nullptr);
+    if (thread_handle_)
+    {
+        ImGui::OpenPopup(u8"캐릭터 조회 중");
+        is_searching_ = true;
+    }
+}
+
+std::string Scene::SafeGetString(const rapidjson::Value& value, const std::string& key)
+{
+    const rapidjson::Value::ConstMemberIterator iter = value.FindMember(key.c_str());
+
+    if (iter != value.MemberEnd() && !iter->value.IsNull())
+    {
+        if (iter->value.IsString()) return iter->value.GetString();
+        if (iter->value.IsInt()) return std::to_string(iter->value.GetInt());
+        if (iter->value.IsDouble()) return std::to_string(iter->value.GetDouble());
+        if (iter->value.IsBool()) return std::to_string(iter->value.GetBool());
+    }
+
+    return "";
 }
 
 DWORD Scene::SearchThread(LPVOID lpParam)

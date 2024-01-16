@@ -16,6 +16,8 @@ public:
     
     void Tick(float delta_time);
     void Render();
+    
+    class ImVec4 GetColorByGrade(const std::string& grade);
 
     inline bool IsSearching() const { return is_searching_; }
 
@@ -23,19 +25,9 @@ public:
     inline float GetProgress() const { return progress_; }
 
 private:
-    void SetAlignCenter(std::string text);
-    void DrawOption(std::string option, std::string total, std::string base, std::string add, std::string etc, std::string starforce, bool is_percent = false);
     void SearchCharacter(const std::string& character_name);
-    void ShowItemEquipment(bool* p_open);
-    void ShowCashItemEquipment(bool* p_open);
-    void UnionRaider(bool* p_open);
-    void ShowVersion(bool* p_open);
-    void ShowInfo(bool* p_open);
-    void UnionBlock(struct ImDrawList* draw_list, struct ImVec2 position, signed int col);
 
     std::string SafeGetString(const rapidjson::Value& value, const std::string& key);
-
-    class ImVec4 GetColorByGrade(const std::string& grade);
 
     static DWORD WINAPI SearchThread(LPVOID lpParam);
 
@@ -53,8 +45,6 @@ private:
     std::string date_;
 
     struct Texture character_texture_;
-    struct Texture star_texture_;
-    struct Texture union_board_texture_;
 
     float progress_ = 0.f;
 
@@ -64,5 +54,10 @@ private:
 
     std::unique_ptr<class LinkSkillWindow> link_skill_window_;
     std::unique_ptr<class SkillWindow> skill_window_;
+    std::unique_ptr<class ItemEquipmentWindow> item_equipment_window_;
+    std::unique_ptr<class CashItemEquipmentWindow> cash_item_equipment_window_;
+    std::unique_ptr<class UnionRaiderWindow> union_raider_window_;
+    std::unique_ptr<class VersionWindow> version_window_;
+    std::unique_ptr<class InfoWindow> info_window_;
     
 };
