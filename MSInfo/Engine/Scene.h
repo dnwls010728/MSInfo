@@ -3,6 +3,7 @@
 #include <shared_mutex>
 
 #include "Singleton.h"
+#include "Texture.h"
 #include "rapidjson/document.h"
 
 class Scene : public Singleton<Scene>
@@ -16,6 +17,8 @@ public:
     void Tick(float delta_time);
     void Render();
 
+    inline bool IsSearching() const { return is_searching_; }
+
     inline void SetProgress(float progress) { progress_ = progress; }
     inline float GetProgress() const { return progress_; }
 
@@ -23,8 +26,6 @@ private:
     void SetAlignCenter(std::string text);
     void DrawOption(std::string option, std::string total, std::string base, std::string add, std::string etc, std::string starforce, bool is_percent = false);
     void SearchCharacter(const std::string& character_name);
-    void ShowLinkSkill(bool* p_open);
-    void ShowSkill(bool* p_open);
     void ShowItemEquipment(bool* p_open);
     void ShowCashItemEquipment(bool* p_open);
     void UnionRaider(bool* p_open);
@@ -51,21 +52,17 @@ private:
     std::string search_content_;
     std::string date_;
 
-    int character_image_width;
-    int character_image_height;
-    int star_icon_width;
-    int star_icon_height;
-    int union_board_width;
-    int union_board_height;
-
-    ID3D11ShaderResourceView* character_image;
-    ID3D11ShaderResourceView* star_icon;
-    ID3D11ShaderResourceView* union_board_image;
+    struct Texture character_texture_;
+    struct Texture star_texture_;
+    struct Texture union_board_texture_;
 
     float progress_ = 0.f;
 
     HANDLE thread_handle_;
 
     std::string character_name_;
+
+    std::unique_ptr<class LinkSkillWindow> link_skill_window_;
+    std::unique_ptr<class SkillWindow> skill_window_;
     
 };

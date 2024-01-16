@@ -6,6 +6,7 @@
 #include "Data/DataManager.h"
 #include "API/DownloadManager.h"
 #include "Scene.h"
+#include "Settings.h"
 
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_dx11.h"
@@ -130,6 +131,7 @@ LRESULT Core::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         APIManager::GetInstance()->Release();
         DataManager::GetInstance()->Release();
         DownloadManager::GetInstance()->Release();
+        Settings::GetInstance()->Release();
         Scene::GetInstance()->Release();
         GetInstance()->Release();
 

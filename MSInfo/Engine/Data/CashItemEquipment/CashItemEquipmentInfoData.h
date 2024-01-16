@@ -18,10 +18,7 @@ struct CashItemEquipmentInfoData
         std::string value;
     };
 
-    int icon_width;
-    int icon_height;
-
-    ID3D11ShaderResourceView* icon;
+    struct Texture cash_item_texture;
 
     std::string cash_item_equipment_part;
     std::string cash_item_equipment_slot;

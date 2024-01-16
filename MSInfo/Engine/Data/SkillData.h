@@ -1,7 +1,8 @@
 ﻿#pragma once
 
 #include <string>
-#include <d3d11.h>
+
+#include "../Texture.h"
 
 struct SkillData
 {
@@ -10,8 +11,5 @@ struct SkillData
     std::string skill_level;
     std::string skill_effect;
 
-    int icon_width;
-    int icon_height;
-
-    ID3D11ShaderResourceView* icon;
+    struct Texture skill_texture;
 };

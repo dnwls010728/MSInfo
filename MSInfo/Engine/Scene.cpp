@@ -20,6 +20,8 @@
 #include "Data/ItemEquipment/ItemExceptionalOptionData.h"
 #include "Data/ItemEquipment/ItemAddOptionData.h"
 #include "imgui/imgui_internal.h"
+#include "Window/LinkSkillWindow.h"
+#include "Window/SkillWindow.h"
 
 #define CHARACTER_IMAGE_PATH ".\\Temp\\Character\\character_image.png"
 #define LINK_SKILL_ICON_PATH ".\\Temp\\Icon\\LinkSkill\\"
@@ -37,12 +39,12 @@ Scene::Scene()
 {
     date_ = DataManager::GetInstance()->GetDataDate();
 
-    bool ret = Graphics::GetInstance()->LoadTexture(RESOURCES "star.png", &star_icon, &star_icon_width,
-                                                    &star_icon_height);
+    bool ret = Graphics::GetInstance()->LoadTexture(RESOURCES "star.png", &star_texture_.texture, &star_texture_.width,
+                                                    &star_texture_.height);
     IM_ASSERT(ret);
 
-    ret = Graphics::GetInstance()->LoadTexture(RESOURCES + std::string("UnionBoard.png"), &union_board_image,
-                                               &union_board_width, &union_board_height);
+    ret = Graphics::GetInstance()->LoadTexture(RESOURCES + std::string("UnionBoard.png"), &union_board_texture_.texture,
+                                               &union_board_texture_.width, &union_board_texture_.height);
     IM_ASSERT(ret);
 
     std::string show_link_skill = Settings::GetInstance()->ReadFile("ShowLinkSkill");
@@ -59,6 +61,9 @@ Scene::Scene()
 
     std::string show_union_raider = Settings::GetInstance()->ReadFile("ShowUnionRaider");
     show_union_raider_ = show_union_raider.compare("true") == 0;
+
+    link_skill_window_ = std::make_unique<LinkSkillWindow>();
+    skill_window_ = std::make_unique<SkillWindow>();
 }
 
 void Scene::Release()
@@ -194,9 +199,9 @@ void Scene::Render()
     {
         if (!is_searching_)
         {
-            if (character_image)
+            if (character_texture_.texture)
             {
-                ImGui::Image(character_image, ImVec2(character_image_width, character_image_height));
+                ImGui::Image(character_texture_.texture, ImVec2(character_texture_.width, character_texture_.height));
             }
 
             ImGui::SameLine();
@@ -653,8 +658,8 @@ void Scene::Render()
     ImGui::End();
 #pragma endregion
 
-    if (show_link_skill_) ShowLinkSkill(&show_link_skill_);
-    if (show_skill_) ShowSkill(&show_skill_);
+    if (show_link_skill_) link_skill_window_->Open(u8"링크 스킬", &show_link_skill_);
+    if (show_skill_) skill_window_->Open(u8"스킬", &show_skill_);
     if (show_item_equipment_) ShowItemEquipment(&show_item_equipment_);
     if (show_cash_item_equipment_) ShowCashItemEquipment(&show_cash_item_equipment_);
     if (show_union_raider_) UnionRaider(&show_union_raider_);
@@ -745,75 +750,6 @@ void Scene::SearchCharacter(const std::string& character_name)
     }
 }
 
-void Scene::ShowLinkSkill(bool* p_open)
-{
-    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin(u8"링크 스킬", p_open) || is_searching_)
-    {
-        ImGui::End();
-        return;
-    }
-
-    for (auto& link_skill : DataManager::GetInstance()->GetLinkSkillData())
-    {
-        ImGui::Image(link_skill.icon, ImVec2(link_skill.icon_width, link_skill.icon_height));
-        ImGui::SameLine();
-
-        ImGui::BeginGroup();
-        ImGui::Text(u8"%s Lv.%s", link_skill.skill_name.c_str(), link_skill.skill_level.c_str());
-        ImGui::TextWrapped(u8"%s", link_skill.skill_effect.c_str());
-        ImGui::EndGroup();
-
-        ImGui::Separator();
-    }
-
-    ImGui::End();
-}
-
-void Scene::ShowSkill(bool* p_open)
-{
-    ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
-    if (!ImGui::Begin(u8"스킬", p_open) || is_searching_)
-    {
-        ImGui::End();
-        return;
-    }
-
-    std::shared_ptr<DataManager> DataManager = DataManager::GetInstance();
-
-    if (ImGui::BeginTabBar(u8"전직 차수"))
-    {
-        for (int i = 0; i < 2; i++)
-        {
-            std::string skill_grade = std::to_string(i + 5);
-
-            if (ImGui::BeginTabItem((skill_grade + u8"차").c_str()))
-            {
-                ImGui::BeginChild("Scrolling", ImVec2(0, 0), false, ImGuiWindowFlags_AlwaysVerticalScrollbar);
-
-                for (auto& skill : DataManager->skill_data[i])
-                {
-                    ImGui::Image(skill.icon, ImVec2(skill.icon_width, skill.icon_height));
-                    ImGui::SameLine();
-
-                    ImGui::BeginGroup();
-                    ImGui::Text(u8"%s Lv.%s", skill.skill_name.c_str(), skill.skill_level.c_str());
-                    ImGui::TextWrapped(u8"%s", skill.skill_effect.c_str());
-                    ImGui::EndGroup();
-
-                    ImGui::Separator();
-                }
-
-                ImGui::EndChild();
-                ImGui::EndTabItem();
-            }
-        }
-    }
-
-    ImGui::EndTabBar();
-    ImGui::End();
-}
-
 void Scene::ShowItemEquipment(bool* p_open)
 {
     ImGui::SetNextWindowSize(ImVec2(500, 440), ImGuiCond_FirstUseEver);
@@ -826,7 +762,7 @@ void Scene::ShowItemEquipment(bool* p_open)
     struct ItemEquipmentData& item_equipment_data = DataManager::GetInstance()->GetItemEquipmentData();
     for (auto& item_equipment : item_equipment_data.item_equipment)
     {
-        ImGui::Image(item_equipment.icon, ImVec2(32, 32));
+        ImGui::Image(item_equipment.item_shape_texture.texture, ImVec2(32, 32));
         ImGui::SameLine();
 
         ImGui::BeginGroup();
@@ -834,7 +770,7 @@ void Scene::ShowItemEquipment(bool* p_open)
 
         if (item_equipment.starforce.compare("0") != 0)
         {
-            ImGui::Image(star_icon, ImVec2(16, 16));
+            ImGui::Image(star_texture_.texture, ImVec2(16, 16));
             ImGui::SameLine();
             ImGui::Text(u8"%s", item_equipment.starforce.c_str());
         }
@@ -852,7 +788,7 @@ void Scene::ShowItemEquipment(bool* p_open)
                 float text_pos_x = (window_width - (text_width + 20)) / 2;
 
                 ImGui::SetCursorPosX(text_pos_x);
-                ImGui::Image(star_icon, ImVec2(16, 16));
+                ImGui::Image(star_texture_.texture, ImVec2(16, 16));
                 ImGui::SameLine();
                 ImGui::Text(u8"%s", item_equipment.starforce.c_str());
             }
@@ -869,7 +805,7 @@ void Scene::ShowItemEquipment(bool* p_open)
             }
 
             ImGui::Separator();
-            ImGui::Image(item_equipment.icon, ImVec2(32, 32));
+            ImGui::Image(item_equipment.item_shape_texture.texture, ImVec2(32, 32));
             ImGui::Separator();
             ImGui::Text(u8"장비분류: %s", item_equipment.item_equipment_part.c_str());
 
@@ -1007,7 +943,7 @@ void Scene::ShowCashItemEquipment(bool* p_open)
 
                 for (auto& cash_item_equipment : cash_item_equipment_data.presets[i])
                 {
-                    ImGui::Image(cash_item_equipment.icon, ImVec2(32, 32));
+                    ImGui::Image(cash_item_equipment.cash_item_texture.texture, ImVec2(32, 32));
                     ImGui::SameLine();
 
                     ImGui::BeginGroup();
@@ -1065,7 +1001,7 @@ void Scene::UnionRaider(bool* p_open)
                                        ImVec2(p.x + (left_padding + union_board_width),
                                               p.y + (top_padding + union_board_height)), col_b, col_b, col_a, col_a);
 
-    draw_list->AddImage(union_board_image, ImVec2(p.x + left_padding, p.y + top_padding),
+    draw_list->AddImage(union_board_texture_.texture, ImVec2(p.x + left_padding, p.y + top_padding),
                         ImVec2(p.x + (left_padding + union_board_width), p.y + (top_padding + union_board_height)));
 
     struct UnionRaiderData& union_raider_data = DataManager::GetInstance()->GetUnionRaiderData();
@@ -1293,9 +1229,9 @@ DWORD Scene::SearchThread(LPVOID lpParam)
     std::string character_image_url = GetInstance()->SafeGetString(character_document, "character_image");
     DownloadManager::GetInstance()->DownloadFile(character_image_url, CHARACTER_IMAGE_PATH);
 
-    bool ret = Graphics::GetInstance()->LoadTexture(CHARACTER_IMAGE_PATH, &GetInstance()->character_image,
-                                                    &GetInstance()->character_image_width,
-                                                    &GetInstance()->character_image_height);
+    bool ret = Graphics::GetInstance()->LoadTexture(CHARACTER_IMAGE_PATH, &GetInstance()->character_texture_.texture,
+                                                    &GetInstance()->character_texture_.width,
+                                                    &GetInstance()->character_texture_.height);
     IM_ASSERT(ret);
 
     DataManager->GetCharacterData().character_name = GetInstance()->SafeGetString(character_document, "character_name");
@@ -1489,8 +1425,8 @@ DWORD Scene::SearchThread(LPVOID lpParam)
         DownloadManager::GetInstance()->DownloadFile(icon_url, LINK_SKILL_ICON_PATH + std::to_string(i) + ".png");
 
         bool ret = Graphics::GetInstance()->LoadTexture(LINK_SKILL_ICON_PATH + std::to_string(i) + ".png",
-                                                        &link_skill_data.icon, &link_skill_data.icon_width,
-                                                        &link_skill_data.icon_height);
+                                                        &link_skill_data.skill_texture.texture, &link_skill_data.skill_texture.width,
+                                                        &link_skill_data.skill_texture.height);
 
         IM_ASSERT(ret);
 
@@ -1526,8 +1462,8 @@ DWORD Scene::SearchThread(LPVOID lpParam)
 
             bool ret = Graphics::GetInstance()->LoadTexture(
                 SKILL_ICON_PATH + skill_grade + "\\" + std::to_string(j) + ".png",
-                &skill_data.icon, &skill_data.icon_width,
-                &skill_data.icon_height);
+                &skill_data.skill_texture.texture, &skill_data.skill_texture.width,
+                &skill_data.skill_texture.height);
 
             IM_ASSERT(ret);
 
@@ -1566,9 +1502,9 @@ DWORD Scene::SearchThread(LPVOID lpParam)
                                                      ITEM_EQUIPMENT_ICON_PATH + std::to_string(i) + ".png");
 
         bool ret = Graphics::GetInstance()->LoadTexture(ITEM_EQUIPMENT_ICON_PATH + std::to_string(i) + ".png",
-                                                        &item_equipment_info_data.icon,
-                                                        &item_equipment_info_data.icon_width,
-                                                        &item_equipment_info_data.icon_height);
+                                                        &item_equipment_info_data.item_shape_texture.texture,
+                                                        &item_equipment_info_data.item_shape_texture.width,
+                                                        &item_equipment_info_data.item_shape_texture.height);
 
         IM_ASSERT(ret);
 
@@ -1817,9 +1753,9 @@ DWORD Scene::SearchThread(LPVOID lpParam)
 
             bool ret = Graphics::GetInstance()->LoadTexture(
                 CASH_ITEM_EQUIPMENT_ICON_PATH + std::to_string(i + 1) + "\\" + std::to_string(j) + ".png",
-                &cash_item_equipment_info_data.icon,
-                &cash_item_equipment_info_data.icon_width,
-                &cash_item_equipment_info_data.icon_height);
+                &cash_item_equipment_info_data.cash_item_texture.texture,
+                &cash_item_equipment_info_data.cash_item_texture.width,
+                &cash_item_equipment_info_data.cash_item_texture.height);
 
             IM_ASSERT(ret);
 

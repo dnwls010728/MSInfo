@@ -10,10 +10,7 @@
 
 struct ItemEquipmentInfoData
 {
-    int icon_width;
-    int icon_height;
-
-    ID3D11ShaderResourceView* icon;
+    struct Texture item_shape_texture;
     
     std::string item_equipment_part;
     std::string item_equipment_slot;
