@@ -1,4 +1,4 @@
-# MSInfo
+# 대적자 정보 탐색기
 
 ![image](https://github.com/UnitySio/MSInfo/assets/38973547/6864dbfa-355e-43aa-a757-6c5e33024cd2)
 
