@@ -51,7 +51,7 @@ void Scene::Render()
 
 DWORD Scene::DownloadThread(LPVOID lpParam)
 {
-    std::string download_url = "https://my-bundle-bucket.s3.ap-northeast-2.amazonaws.com/MSInfo.exe";
+    std::string download_url = "";
     DownloadManager::GetInstance()->DownloadFile(download_url, ".\\MSInfo.exe");
 
     return 0;

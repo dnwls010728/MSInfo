@@ -30,7 +30,7 @@ int APIENTRY wWinMain(
     // }
 
 #ifdef NDEBUG
-    // rapidjson::Document version_document = APIManager::GetInstance()->Request("https://my-bundle-bucket.s3.ap-northeast-2.amazonaws.com/version.json");
+    // rapidjson::Document version_document = APIManager::GetInstance()->Request("");
     // std::string latest_version = version_document["version"].GetString();
     // if (latest_version.compare(Core::GetInstance()->GetVersion()) != 0)
     // {    
